@@ -1,0 +1,24 @@
+{
+    "menu_methodology": "Technical Specification",
+    "menu_pp": "Terms of use and Privacy policy",
+    "opendata": {
+        "title": "Open Data",
+        "full": "Full export",
+        "monthly": "Monthly export",
+        "license_text": "The data is published under",
+        "format": "Format",
+        "month": "Month",
+        "description": "Open Nettest provides users with transparent and detailed information on the current quality of the broadband access service while respecting their privacy. Open Nettest measurement results are freely available to the general public for information, use, dissemination and other applications."
+    },
+    "footer_nettest": {
+        "organisation": "<organization>",
+        "hosted_by": "Hosted By",
+        "external_link": "http://example.org",
+        "maintenance": {
+            "title": "NOTIFICATION !",
+            "text": "Due to urgent maintenance work, on Sunday 31 January 2021, there may be malfunctions and occasional unavailability of the Open Nettest system. Thank you for your understanding."
+        }
+    },
+    "stats_operator_list_note1": "List of operators is based on alphabetical order.",
+    "stats_operator_list_note2": "All data NOT obtained from measurements made in accordance with the \"General Act on Internet Access Services and Related End User Rights (Article 11)\" is purely informative and illustrative in nature, therefore the Agency is not responsible for any conclusions or third parties reasoning related to the comparison or ranking of operators listed in the table."
+}

@@ -1,0 +1,6 @@
+= DATA CONSUMPTION
+:encoding: utf-8
+:lang: en
+
+== Data consumption
+Using SPECURE NetTest on mobile devices may cause consumption of large data amount. By using it on 3G technology the usual data amount would be between 5 and 10 MB. On 4G data amount may exceed 100 MB.

@@ -1,0 +1,97 @@
+= Java Command-Line-Interface (CLI)
+:encoding: utf-8
+:lang: sl
+:linkattrs:
+
+== O Java RMBT odjemalcu 
+Java RMBT odjemalec se lahko uporabija za testiranje hitrosti in testov omrežnih storitev (NST). Prihaja kot preprosta rešitev z enim klikom. Predpogoj je vnaprej nameščen http://www.oracle.com/technetwork/java/javase/downloads/jre10-downloads-4417026.html[Java Runtime]
+
+== Enostavni Java RMBT odjemalec
+Za preizkus enostavne različice pritisnite link:https://example.org/RMBTControlServerV2/jnlp[tukaj, window="_self"]
+
+////
+== Napredni Java RMBT odjemalec
+Naprednega odjemalco s pomočjo ukazne vrstice lahko zaženete z naslednjimi možnostmi:
+
+[cols=3*,options="header"]
+|=======================
+|
+|Ukaz
+|Opis
+
+|1
+|-? \| -help
+|Prikaži pomoč
+
+|2
+|-h \| -host
+|RMBT strežnik IP ali ime gostitelja
+
+|3
+|-p \| -port
+|RMBT port strežnika
+
+|4
+|-s \|-ssl
+|Uporabi SSL / TLS
+
+|5
+|-ssl-no-verify
+|Izklopite validacijo potrdila SSL / TLS
+
+|6
+|-t \|-threads
+|Število niti (zahtevano pri dev-načinu)
+
+|7
+|-d \|-duration
+|Trajanje testa v sekundah (zahtevano pri dev-načinu)
+
+|8
+|-n \| -ndt
+|Zaženite NDT po RMBT
+
+|9
+|-v \| -verbose
+|Pokaži verbose izhod
+
+|10
+|-q \| -qos
+|Zaženi NST po RMBT
+
+|11
+|-ndt-host
+|NDT gostiteljica za uporabo
+
+|12
+|-u \| -uuid
+|Uporabniški uuid
+
+|13
+|-o \| -open
+|Odprite testni rezultat v brskalniku
+
+|14
+|-l \| -loop
+|Omogoči način zanka z določenim številom meritev
+
+|15
+|-i \| -interval
+|Interval v sekundah med dvema meritvama v zanki
+|=======================
+
+== Primeri izvajanja preskusov iz CLI
+
+* Izvedite osnovne preskuse hitrosti in odprite rezultate v brskalniku:
+** java -jar RMBTClient-1.0.jar -o
+* Izvedite tudi NST teste in odprite rezultate v brskalniku:
+** java -jar RMBTClient-1.0.jar -o -q
+* Izvedite osnovne preskuse hitrosti v ponovitvenem načinu (100-krat, vsako minuto) in odprite vse rezultate v brskalniku:
+** java -jar RMBTClient-1.0.jar -o -l 100 -i 60
+* Izvedite tudi NST teste v ponovitvenem načinu (100-krat, vsako minuto) in odprite vse rezultate v brskalniku:
+** java -jar RMBTClient-1.0.jar -q -o -l 100 -i 60
+
+== Prenesite CLI
+//Try the link if it doesn't work change to link://./path/to/file or link:./path/to/file
+Od link:./assets/RMBTClient-1.0.jar[tukaj] prenesete CLI.
+////

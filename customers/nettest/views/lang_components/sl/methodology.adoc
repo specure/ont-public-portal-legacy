@@ -1,0 +1,324 @@
+= {tool}: description of methodology
+v0.1, May 2019: Ready for review
+:toc: left
+:toclevels: 4
+:imagesdir: ./assets/img/en/images
+:iconsdir: ./icons
+:stylesdir: ./styles
+:scriptsdir: ./js
+:sectnums:
+:sectanchors:
+:sectlinks:
+:xrefstyle: short
+:icons: font
+:tool: Open Nettest
+//Test Net, Netmetr, NetTest, Nettfart, NetTest, Merac Internetu
+:RA: <organization>
+:exchangePoint: Slovenian Internet eXchange (SIX)
+:ccLicense: Creative Commons Attribution 4.0 (CC BY 4.0)
+:urlLicense: https://creativecommons.org/licenses/by/4.0/
+:urlPrivacy: https://example.org/en/pp
+:urlOpendata: https://example.org/en/opendata
+:urlHelp: https://example.org/en/help#
+:urlStatistics: https://example.org/en/statistics
+:emailcontact: example@example.org
+:urlTechSpec: https://example.org/assets/files/<tech_spec>.pdf
+:androidVersion: 6.0
+:iOSversion: 10
+:supportedBrowser: Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge and Opera
+:urlPlay: https://play.google.com/store/apps/details?id=<id>
+:urlApple: https://itunes.apple.com/at/app/<organization>/<id>
+:urlBrowser: https://example.org/en/
+:bl: pass:[ +]
+
+This documentation presents {tool} and describes the methodology of the measurement.
+
+//IMPORTANT: TODO: add logo and change path to figures, style, etc.
+
+////
+- intro, reasons, context, general act
+- table with other implementations
+- comparison with others (speedtest, ...)
+- links to data protection and terms of use
+- link to RTR methodology
+- link to BEREC documents
+- general requirements
+- supported platforms
+- components, server location
+- basic tests - how does it work
+    - phases (+ duration?)
+    - variable chunk size
+- qos tests
+    - test groups
+- plausibility checks
+- results - how to interpret them?
+- example
+- Data export/open data
+- (statistics)
+- (limitations)
+- (zero measurements)
+- Loop mode
+////
+== About {tool}
+{tool} is a tool to measure speed and quality of the Internet connection provided by the {RA}, and developed by the company https://martes-specure.com[Specure].
+
+For the sake of transparency, {tool} is an open source project, and the source code is available in https://github.com/specure/[Github]. 
+
+The data collected by {tool} are published as open data in compliance with the {urlPrivacy}[privacy policy]. The data are published in accordance with the {urlLicense}[{ccLicense}] and is available for {urlOpendata}[download].
+
+NOTE: For questions and feedback you can contact us by e-mail at {emailcontact}.
+
+=== Why {tool}?
+{tool} is an open software project that lets any user measure their fixed, mobile and WiFi Internet connection. Not only in terms of speed and latency, but also the quality and the neutrality. It is an independent tool, improved with the expertise of Regulatory Authorities across Europe and the contributions of thousands of users and collected measurements. The transparency of the methodology and the aggregation of the results, translated to statistics and offered as open data (always respecting privacy and anonymity of the data) makes {tool} a unique measurement platform for end users, operators, regulators and data analysts with the aim of improving the quality of Internet connection worldwide.
+
+Network speed and latency have a direct impact on the user experience when connecting to different Internet services. From sharing the pictures from your last holiday to streaming the last episode of your favourite series, a slow or unstable connection can result in long download times or low quality video images, which makes every user unhappy. {tool} provides a way to check your current connection speed and quality, not only in case of trouble, but at any moment and everywhere. In addition, you can check other user's results on a map, which can helpful when selecting your access network at a given location. Furthermore, {tool} enables a more extensive diagnostic test, including other parameters as signal strength, or quality in terms of network neutrality (e.g. blocked content, presence of middle-boxes, etc.).
+
+=== What is the difference between {tool} and other speed tests?
+Measuring the speed of a broadband connection is a challenging and complex task, which depends on a variety of factors, such as hardware, location of the server or number of users (specially in wireless networks).
+There are many online tools that offer tests to find out what is your download and upload speed, as well as the delay in your connection. However, most of these tools are not open source, which means that they keep secret the way in which they measure your connection. Since the actual speed of your Internet connection depends on many different factors, different tools may provide different results if they perform the measurement slightly differently. {tool} has several characteristics that make it stand out among all the other measurement tools:
+
+* The methodology behind {tool} and its associated platform has been trusted by several Regulatory Authorities across Europe to measure the broadband connection in their countries. This allows for a homogeneous comparison of the quality of the networks in the countries where it is deployed.
+* {tool} is not associated with any operator or ISP. Being provided by a Regulatory Authority, it benefits from the independence and expertise of the {RA}.
+* {tool} is publicly accessible and the code is published as open source. This is the most transparent way and it ensures that everybody can be able to reproduce how the measurement is performed.
+* {tool} provides more information about the measurement, including parameters from the client device, the connection as well as a comprehensive set of results regarding quality and neutrality of the Internet connection.
+* The measurement tool is provided with specific documentation, which explains the performed measurements with high level of detail.
+* The measurement servers for {tool} are located as close as possible to the {exchangePoint}. This makes it an optimal location for an independent measurement, since all the main operators and service providers in the country are connected to the Internet eXchange Point (IXP).
+* {tool} is provided for free and without advertisements in all its versions.
+* {tool} also provides a combination of measurements and tests, to check not only the speed of your connection, but also its quality according to the net neutrality policies developed in Europe.
+* {tool} platform makes possible to synchronise the results of various devices and show them in the browser.
+* {tool} provides a map and visual representation ofthe collected measurements, with the option to filter these results by different parameters, such as, date range, ISP, technology or other test parameters.
+* {tool} provides statistics on the results, with the option to filter the results according to different parameters.
+
+== How does {tool} work?
+Similarly to several countries in Europe, {tool} has adopted the methodology for the measurement based on the open source measurement tool developed by the regulatory authority in Austria, https://www.netztest.at/[RTR-NetzTest] <<RTR-original-doc>>.
+We measure the connection from your device (we often call it a _client device_, or just _client_) and a _measurement server_ (located at an Internet exchange point, to keep the measurement as independent of the operator and the service as possible). The client and the measurement server will send data to each other, which will be used to measure how much data they can transfer in a given amount of time, letting us measure the speed and the latency of your Internet connection.
+
+In order to measure the different parameters, including the ones related to network neutrality, the measurement is structured in different phases. We provide more details about the measurements in <<{tool} measurement>> and <<{tool} Quality of Service measurement>>. If after reading this document you have more questions related to the measurement, you can check {tool} {urlHelp}[frequently asked questions].
+
+=== General requirements (How can I use {tool}?)
+Using {tool} is very easy. We have made it available in the most commonly used platforms and provide detailed information to run the measurement and understand the results.
+Any type of connection can be tested, independently of the technology. However, there are some aspects that you should take into account before running a measurement:
+
+* A measurement is just a snapshot of your Internet access. Specially in the case of wireless networks, the results may be very different depending on the number of users connected to the same network or even the time of day.
+* If you want to have the least unreliable results, make sure that you are not running other applications on your device during the test, specially if they send or receive significant amounts of data (e.g. video streaming, P2P, file downloads, system updates, backups, etc.). These applications will consume a significant part of the available connection bandwidth, limiting the result of {tool} measurement. If you are connected to a WiFi, make sure that not only your client device, but the other devices (if you have and Ineternet-connected TV, for instance, sharing the same network) are not downloading or uploading data during the measurement.
+* If you are connected to a mobile network, make sure that you have not yet used your monthly data volume (in case of limited tariffs or contracts).
+
+WARNING: The total data volume transmitted during a measurement depends on the speed of your Internet connection. While the data volume for fixed connections is usually unlimited, in mobile networks the transmission of high volumes of data may incur in significant additional costs. Please keep that in mind before running measurements connected to a cellular network.
+
+* Sometimes the hardware of your own client device or the WLAN router (for instance) might be the limiting factors for your network experience. If you want to isolate these or other factors, you can use different devices for the measurement, or measure different networks.
+
+TIP: You can increase reliability of your results by repeating the measurement at different times.
+
+=== Supported platforms
+{tool} is available as a mobile app for Android and iOS mobile devices. There is a web version as well, which supports all the most common Internet browsers.
+
+==== Android
+{tool} is supported on Android devices from version {androidVersion} and above (also for tablets).
+You can download the latest version for Android in the {urlPlay}[Google Play Store].
+
+==== iOS
+{tool} is supported on Apple devices (iPhone and iPad) from iOS {iOSversion}. You can download the latest version from Apple's {urlApple}[App Store].
+
+==== Web browser
+You can run {urlBrowser}[{tool}] from {supportedBrowser} at any moment. It does not require installing any additional software or tools.
+
+=== Components
+Once you have installed your client app or when you visit {tool} website in your browser, you are ready to start a measurement. The measurement platform makes available several measurement servers, and it includes a control server to manage new connections to clients and taking care of saving the results. In <<{tool} measurement>> you can read more about how the measurement is performed.
+
+[#fig-components]
+.Main components of {tool} measurement platform
+image::test-measurement.png[Main components of {tool} measurement platform,452,align="center"]
+{bl}
+{bl}
+
+<<fig-components>> shows a simplified view of the measurement platform. The design of the system architecture has taken into account BEREC's recommendations for a measurement tool <<BEREC-meas-Tool>>.
+
+== {tool} measurement
+// methodology basic tests, phases, duration
+From the factors that can impact the result of the measurement, the methodology for the measurement itself plays a critical role. That is one of the main reasons for different measurement tools (Speedtest, Fast, M-Lab, etc.) to provide different results. However, many of the currently available tools are not open source and there is little disclosure about the specific methodology they follow to provide a result. {tool} is open source and aims to provide transparent and comprehensible information.
+With every measurement, {tool} collects information related to the Internet connection. There are two sets of measurements:
+
+* The *base measurement* provides downlink and uplink speeds and latency of the connection. If you are running the measurement from a mobile app, the base measurement will also provide jitter (variation in the delay) and packet loss measurements.
+* Additionally, the user can enable the *Quality of Service (QoS) measurement*. This is a set of measurements that checks the viability of other services related to network neutrality, which can provide very insightful information to the user and regulatory authorities about the neutrality policies. You can read more details about these measurements in <<{tool} Quality of Service measurement, {tool} Quality of Service measurement>>.
+
+The base measurement aims at estimating the performance of the user's Internet connection by measuring download and upload speeds and latency (jitter and packet loss are measured as well from the mobile applications).
+In order to do so, every measurement consists of several phases that run sequentially. We provide a brief summary of the different phases.
+
+NOTE: Several measurements cannot run simultaneously.
+
+=== Phase 1: Initialization
+The client tries to establish a secure connection to the control server and they exchange the configuration parameters that are needed to perform the measurement.
+
+[#phaseDLpre,reftext=phase DLpre]
+=== Phase 2: Downlink pre-test
+This phase aims to get the connection ready to perform the measurements that will follow.
+
+With the information received from the control server, the client can start one or more parallel connections, also called _flows_, to the measurement server. The number of connections is variable depending on the speed of your Internet connection. In slower connections, a higher number of flows will result on each of them competing with one another for low bandwidth, leading to even worse results and a less accurate measurement. On the other hand, for faster connections, opening several connections simultaneously will allow to reach the maximum capacity of the link faster, improving the accuracy of the result.
+
+In this phase, the client and the server will estimate the optimal number of parallel connections based on the state of the network. They will try to set a higher number of connections if the network conditions allow it. Otherwise, it will be reduced to just one connection.
+
+The number of parallel connections is configurable by the user in {tool}. However, if you are not sure how to select this number, you can let the client and server decide based on the current network conditions.
+
+=== Phase 3: Latency
+In this phase, the client will send several short messages to the server in short intervals, wait for the reply from the server and send a confirmation when this reply is received. Then, the client and the server measure the time between the transmission of their message and the reception of the reply. The measurement result _Ping_ shows the median of all the values measured by the server during this phase.
+
+=== Phase 4: Packet Loss
+This phase takes place only when the measurement runs on a mobile application, but not from the web browser. In this phase the jitter (how much the delay varies) and packet loss characteristics of the Internet connection are determined. The measurement is based on the same methodology as the <<voip,VoIP test>> - the client sends a series of numbered UDP datagrams with fixed size to the measurement server. On the receiving side, the server calculates the packet loss and jitter.
+
+[#phaseDL,reftext=phase DL]
+=== Phase 5: Downlink
+In this phase, the client requests data through each of the parallel connections to the server (according to the result from the downlink pre-test). The server will transmit the data to the client in chunks of the size indicated by the client. The client, upon the reception of each chunk, tracks the volume of data received and the time needed to receive it.
+
+After receiving the last chunk of data, the client will calculate the download speed of the connection taking into account the values measured for all the connections.
+
+[#phaseULpre,reftext=phase ULpre]
+=== Phase 6: Uplink pre-test
+Similarly to the <<phaseDLpre,downlink pre-test phase>>, this phase aims to get the connection ready for the speed measurement in the direction from the client to the server. Again, if the state of the network does not allow it, only one connection will be used for the uplink measurement.
+
+[#phaseUL,reftext=phase UL]
+=== Phase 7: Uplink
+In this phase, the client will send data to the server through each of the parallel connections (according to the result from the uplink pre-test) in chunks of a size established by the client. The server will measure the time and the amount of data received and send this information back to the client. The client, after receiving all the information from the server will calculate the uplink speed.
+
+=== Phase 8: Finalization
+After finishing the measurements, the client will close the connections to the measurement server and send all the collected data to the control server.
+
+== {tool} Quality of Service measurement
+// QoS tests methodology, test groups
+Based on https://berec.europa.eu/eng/netneutrality/[BEREC's recommendations] {tool} provides the tools to evaluate characteristics of the network connection that have a decisive influence on the quality and the transparency of the Internet access. In the recent years there is a strict regulation under development in Europe to ensure transparency and non-discriminatory treatment of data traffic in the Internet access services, protecting end user's rights.
+
+We call this set of measurements *Quality of Service measurements* and it consists on a set of 7 test groups, which are carried out after the base measurement, if the option is enabled from the mobile applications for Android and iOS. After all the tests are complete, we compute a _QoS score_ taking into account how many tests failed.
+//You can read more about how to <<Understanding the results, interpret the results>>.
+
+//http_proxy
+=== Web content modification
+//In this test, we download a web page we use for reference and compare the two of them. If the content downloaded by the client is the same as the reference page, that means the content of the website has not been modified along th way, and the test is successful.
+The goal of this test is to detect, whether the content is modified during the transmition of the data between the server and the client in some intermediate network device. The client requests data with a known checksum from the configured web server. Upon reception of the data, the client compares the checksum of the received data to the original checksum. A difference in the checksums indicates the manipulation of the data on the way to the client, and the test is considered not successful.
+
+//website
+=== Website loading
+In addition to checking modifications of the content, we monitor the size and the time it takes to download one or more reference web pages. If the pages can be rendered before a defined timeout, the test is successful.
+
+// non_transparent_proxy
+=== Connection transparency
+The use of proxies is a common technique in the current Internet, for instance for caching the most frequently visited webpages, compress content or protect clients from potentially harmful content. In this test, we aim at detecting the presence of proxies between client and server, or "non-transparent" connections. In that case, it cannot be guaranteed that the websites correspond exactly to those on the server. If we detect the presence of such proxy, the test is unsucessful. In this test the client sends correctly formatted HTTP requests, as well as incorrectly formatted HTTP requests to the measurement server. The measurement server reply by sending the exact copy of the request back to the client. When there is an http proxy between the client and the measurement server, it will react to the incorrectly formatted HTTP requests by sending an error message, indicating the malformed HTTP request. In this case, the test is unsucessful.
+//Such proxy requests typically buffer and possibly transmit to the client antiquated content, content of lower quality (using compression) or incomplete content.
+
+//=== Middle-box content modification
+//Some of the commonly present proxies might also be used to modify slightly the content of the requests from a client or the content of a download from a server. In this test we aim at detecting whether the request from the client or the content of the download have been modified in the way between client and server. If we detect any modification, the test is unsuccessful.
+
+//dns
+=== DNS
+DNS (Domain Name Service) translates the name of the website we visit on the Internet to an IP address, which will indicate the specific location of the content we can access. It is therefore essential to check if the translation provided by the DNS service can be trusted and is compliant with the network neutrality policies. This test is successful if we can confirm that the DNS data is consistent.
+
+//tcp, udp
+=== TCP and UDP blocked ports
+Common protocols used for different Internet services use certain port numbers in their connections. If a certain port is blocked, by the ISP or by the network administrator, any communication attempt through this port will fail. In this test we check whether any TCP or UDP ports are blocked, and therefore certain services are banned, as data cannot be sent or received using those ports. Note that in business environments it is a common practice to block certain ports for security reasons (firewall) or only the relevant ports (and services) are made available.
+
+//voip
+[#voip,reftext=voip]
+=== VoIP
+In this test we simulate a Voice over IP type of communication. We monitor the connection and measure the relevant parameters, as delay or jitter. We estimate if the quality of the connection would support a VoIP call, in which case the test is successful.
+
+//traceroute
+=== Route to the server (Traceroute)
+In this test we measure the distance (in terms of delay and network hops) between the client and a target location.
+
+//IMPORTANT: summary table of tests?
+
+== Understanding the results
+After a measurement is complete, {tool} will show you the results, with different level of detail, depending on whether you are using a mobile client or a web browser.
+
+//IMPORTANT: include screenshots?
+The speed values that you should expect depend not only on the network status, but on your access technology (DSL, WiFi, 3G, optical fibre, etc.) and potential limitations of your client device, among other factors. The download and upload speeds are shown in Megabits per second (Mbps) and the latency (_Ping_) in milliseconds.
+
+//IMPORTANT: what is megabits, what is ping? Do we need this?
+
+How to interpret if the result is _good enough_  or _bad_ depends on the type of service you would want to use. For web browsing, often 2 Mbps are often good enough. Voice services may not need high bandwidth, but delay and jitter (how much the delay varies) are very important. Therefore, you should not only consider the download speed, but also the upload (especially for cloud services or file transfers) and latency.
+
+To help you, we have included a red/orange/green color code to indicate what is a high/medium/low result. Note that the higher speeds (indicated by green) might only be achievable by certain technologies. Depending on your access network technology, a red speed value could indicate that your connection uses an older technology and might need an upgrade.
+
+When interpreting the results, you should keep in mind that even if the results differ from the advertised speed in your Internet connection contract, this does not necessarily mean that your Internet provider is not fulfilling the agreement. Moreover, operators design their service offer in different ways. Typically, the speed of the data connection is indicated as an upper bound ("up to" values).
+
+If after several measurements the results show a significant difference from the advertised bandwidth, this may indicate that there are problems with the connection, and it should be analysed by a professional. The result can also be impaired by various technological factors like the WLAN router, system configuration, etc. In addition, if your network is shared among several users, the total capacity available will be distributed among them. Moreover, although we work to keep our systems available at all times, it may happen that the test server or its connection are overloaded.
+
+Since operators implement different policies to route the traffic through their networks, it might happen that the result of {tool} reaches a higher value than normally accessible by other Internet services. However, the design of the measurement tries to follow common Internet practices to be as close to the user experience as possible. Moreover, if services are treated differently, this might be a hint of the lack of network neutrality.
+
+In any case, the most reliable way to avoid biases on the result and random errors, is to repeat the measurement frequently.
+
+If you run {tool} several times and have doubts about your results or think that there might be a problem, please contact us at {emailcontact}.
+
+TIP: If you are a more experienced user and are curious about more detailed aspects of your network connection you can access and analyse the data from your (and other user's) measurements. Please check <<Statistics, Statistics>> and <<Data export and open data, data export>> for details.
+
+=== Base measurement results
+If you run {tool} on the browser, you will see other results below the speed and latency, including the location, the total duration of the measurement, how many parallel connections were open during the test and the duration of the upload and download phases, among others. You can click on some of these values to make a more specific search.
+
+On your measurement result page, there is also a graphic representation of the download and upload phases. By clicking on the graph, a table with detailed partial information of the amount of received data and the time will be displayed.
+
+The result page includes as well a map with the location of the measurement, where you can check the location accuracy.
+
+Finally, you can share your results on Twitter and Facebook by just clicking on the buttons, print, or save the measurement results to a file. For more details about how to export data see <<Data export and open data>>.
+
+//=== QoS measurement results
+
+== Statistics
+{tool} collects data related to the measurement and the parameters from your Internet connection. Together with the data from all users, we can analyse the quality of the Internet connection and its evolution. Thanks to the open data paradigm, we make available anonymized data so everybody can access it without compromising other user's privacy.
+
+TIP: {tool} is a crowdsourced measurement platform. This means that the more measurements we can collect from different users, at different locations and connected to different networks, with different devices, the more we can trust the results and the statistics we collect. *The more people use it, the more we can trust the results!*
+
+To make easier your first contact with the data, we have designed a {urlStatistics}[Statistics page] which summarizes data in three different tables:
+
+* *Last 10 measurements*: We present a table with the last 10 measurements performed with {tool}. The table includes date and time of the measurement, operator and client device information, download and upload speeds, latency and signal strength if available. The data in the table can be ordered according to any column. By default, it is order according to the most recent measurements in time. In this table, if you click on the operator's name, you can access a website with detailed information about that specific measurement.
+
+* *Operator and Device summary statistics*: To look further into the statistics, we include filters to select the type of client device/connection (browser, WLAN or Mobile), the time range (1 day to 2 years) to look into and the type of statistic (Median, 20 or 80 percentiles). After applying these filters, we show two tables with the measurement results per *operator* and per *client device*.
+
+
+== Data export and open data
+In addition to being able to access the results from your own measurements and from other users', it is possible to share or export (download) them in different ways.
+
+.From the measurement results page:
+- share on twitter and facebook
+- print
+- export as CSV (comma separated values) file
+- export as excel table
+
+.From the {urlOpenData}[Open Data page]:
+* If you are interested in performing a deeper data analysis or you are doing research and would like to have a more script-friendly format, {tool} gives the possibility to download the open data in CSV, JSON or XML files. There are two options:
+** *Monthly* export: After selecting the file format of your choice, you can select and download the measurement data from a specific month.
+** *Full* export: By selecting the full export, you will download the data from all the results available in the file format of your choice.
+
+== Additional features
+{tool} aims to be a comprehensive tool, useful for end users, operators, regulators and data scientists. As such, we continue developing new features to make it a powerful resource, based on our experience and the feedback from regular users and European regulatory authorities.
+
+=== Loop mode
+Several users reported that under certain circumstances, it is useful to run several measurements frequently. The _Loop mode_ allows to set a specific number of measurements (or unlimited, only stopping when the user explicitly chooses to stop) to run at an interval specified by the user, with a minimum interval of 60 minutes.
+
+=== Zero measurements
+In the case of wireless connections (WiFi or mobile networks) the signal strength represents how well our devices can receive data from the network's Access Point or Base Station, how well they can _hear_ them. The signal strength is measured in dBm, and the higher its value, the stronger we can receive the signal (note that it is always a negative value, thus _higher_ means closer to 0).
+If you are very far away from your Access Point, or there are obstacles in the way of the signal (e.g. walls) your data reception will be impaired by this low signal strength. In some cases, the signal strength is so low that communication is extremely difficult, nearly impossible, achieving very low speeds and having high latency and packet loss.
+
+We identify measurements with a very low signal strength at the start and the end of each measurement as _Zero measurements_. The threshold for a measurement to be considered a Zero measurement are different for the different wireless technologies:
+
+- -110 dBm for 2G and 3G networks.
+- -124 dBm for 4G networks.
+
+We show Zero measurements on the results map if we could acquire the GPS coordinates of the mobile device with a precision of at least 2km.
+
+We do not include Zero measurements in the history of the device.
+
+=== Plausibility checks
+Sometimes, due to circumstances out of our control, there are results that are inconsistent, impossible or contradictory. After the completion of the measurement, we postprocess the data collected to identify these measurements and troubleshoot what could have happened to have those results.
+
+For instance, we may measure a very high download speed in a 2G connection (higher speed than possible for this type of networks) when there is a change of technology (e.g. from 2G to 4G) during the test.
+
+Thanks to the extensive set of data we collect during the measurement, we can identify these situations, among others, which may lead to contradictory results.
+
+//== Limitations
+
+[bibliography]
+== References
+
+- [[[RTR-original-doc,1]]] https://www.netztest.at/doc/[RTR Multithreaded Broadband Test (RMBT): Specification. Available online, window="_blank"]
+
+- [[[BEREC-meas-Tool,2]]] https://berec.europa.eu/eng/document_register/subject_matter/berec/reports/7296-net-neutrality-measurement-tool-specification[BoR (17) 179: Net Neutrality measurement tool specification. BEREC. Available online, window="_blank"]
+
+- [[[BEREC-assessment-methodology,3]]] https://berec.europa.eu/eng/document_register/subject_matter/berec/regulatory_best_practices/methodologies/7295-berec-net-neutrality-regulatory-assessment-methodology[BoR (17) 178: BEREC Net Neutrality Regulatory Assessment Methodology. BEREC. Available online, window="_blank"]

@@ -1,0 +1,22 @@
+{
+    "opendata": {
+        "title": "Odprti podatki",
+        "full": "Polni izvoz",
+        "monthly": "Mesečni izvoz",
+        "license_text": "Podatki so objavljeni pod",
+        "format": "Format",
+        "month": "Mesec",
+        "description": "Open Nettest uporabnikom zagotavlja pregledne in izčrpne informacije o trenutni kakovosti storitve širokopasovnega dostopa ob hkratnem upoštevanju uporabnikove zasebnosti. Podatki so prosto dostopni splošni javnosti za namene informiranja, uporabe, razširjanja in druge načine uporabe."
+    },
+    "footer_nettest": {
+        "organisation": "<organization>",
+        "hosted_by": "Gostovanje nudi",
+        "external_link": "http://example.org",
+        "maintenance": {
+            "title": "OBVESTILO !",
+            "text": "Zaradi nujnih vdrževalnih del, bo v nedeljo 31.1.2021 lahko prihajalo do motenj v delovanju in občašne nedosegljivosti Open Nettest sistema. Hvala za razumevanje."
+        }
+    },
+    "stats_operator_list_note1": "Seznam operaterjev je razvrščen po abecedi.",
+    "stats_operator_list_note2": "Vsi podatki, ki NISO pridobljeni z meritvami izvedenimi v skladu z  »Splošnim aktom o storitvah dostopa do interneta in s tem povezanih pravicah končnih uporabnikov (11. člen)«, so izključno informativne in ponazorilne narave, zato agencija ne odgovarja za morebitne zaključke ali sklepanja tretjih oseb povezanih s primerjavo ali rangiranjem operaterjev, navedenih v tabeli."
+}

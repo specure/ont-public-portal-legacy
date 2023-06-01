@@ -1,0 +1,56 @@
+// COLOR DEFINITION
+@blue: rgb(79, 119, 138);
+@white: rgb(255, 255, 255);
+
+// TEXT COLOR LIGHTNESS
+.smart-text-color (@a) when (lightness(@a) >= 50%) {
+  // Its a light color return a dark output
+  color: darken(@a, 86.5%);
+}
+.smart-text-color (@a) when (lightness(@a) < 50%) {
+  // Its a dark color return a light output
+  color: lighten(@a, 100%);
+}
+
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+.btn-start  {
+    color:@blue;
+}
+.aside-container,
+.aside-container a {
+    background:@blue;
+    .smart-text-color(@blue);
+}
+.main-container a {
+  color:(@blue);
+}
+.article-header  {
+    color:@blue;
+}
+.aside-header  {
+    .smart-text-color(@blue);
+}
+.detail-accordeon {
+    background:@blue;
+    .smart-text-color(@blue);
+}
+
+/*
+    Forms
+*/
+.search-opentest-filter	{
+	  border-top:solid 3px @blue;
+}
+
+/*
+    Tables
+*/
+.main-container .stacktable.large-only   {
+    border-top:solid 3px @blue;
+}
+.aside-container .stacktable.large-only   {
+    border-top:solid 3px @white;
+}

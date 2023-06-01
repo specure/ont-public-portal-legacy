@@ -1,0 +1,35 @@
+{
+  "name": "ont-public-portal-legacy",
+  "version": "0.0.1",
+  "devDependencies": {
+    "jquery": "~1.11.3",
+    "jstzdetect": "1.0.6",
+    "d3": "3.5.6",
+    "n3-line-chart": "1.1.12",
+    "angular-loading-bar": "0.9.0",
+    "angular-animate": "1.7.8",
+    "angular-responsive-tables": "0.2.0",
+    "angular": "~1.4",
+    "angular-translate": "~2.8",
+    "angular-translate-loader-static-files": "~2.8",
+    "angular-ui-router": "~0.3",
+    "angular-cookies": "1.7.8",
+    "ng-dialog": "1.4.0",
+    "normalize.css": "~3.0",
+    "modernizr": "~2.8",
+    "bootstrap": "3.3.7",
+    "angular-moment-picker": "0.0.16",
+    "moment-picker": "0.10.2",
+    "leaflet": "1.4.0",
+    "leaflet-fullscreen": "1.0.2",
+    "font-awesome": "5.8.1",
+    "ng-datepicker": "1.1.0"
+  },
+  "dependencies": {
+    "angularjs-dropdown-multiselect": "^1.11.8"
+  },
+  "resolutions": {
+    "angular": "^1.7.7",
+    "moment": "^2.16.0"
+  }
+}

@@ -1,0 +1,198 @@
+<div class="main-container">
+    <div class="main wrapper clearfix">
+        <article data-ng-if="!resultctrl.result.time && resultctrl.error">
+            <section>
+                <h2 translate="error._no_testresult"></h2>
+            </section>
+        </article>
+        <article data-ng-if="resultctrl.result.time">
+            <section id="text_data">
+                <header>
+                    <h1 id="articleHeader" class="article-header"><span translate="title_testresult_text"></span><br><span translate="title_testresult" translate-values="{ dateTime: '{{resultctrl.convertTimeString(resultctrl.result.time)}}' }">{{dateTime}}</span></h1>
+                </header>
+                <section>
+                    <div cellspacing="0">
+                        <h3>{{ 'testresult._measurement_result' | translate }}</h3>
+                        <table class="stackable stacktable large-only">
+                            <tr data-ng-repeat="(mKey, mValue) in resultctrl.result._measurement" data-ng-if="mValue.value && mValue.value !== '-'">
+                                <td class="main_results">{{ mKey | translate }}</td>
+                                <td data-ng-class="mValue.classification"></td>
+                                <td class="main_results">{{ mValue.value }} {{ mValue.unit | translate }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+                <section data-ng-if="resultctrl.qos.testresultdetail_testdesc">
+                    <h3>{{ 'testresult._qos' | translate }}</h3>
+                    <div data-ng-repeat="cat in resultctrl.qos.testresultdetail_testdesc" data-ng-show="cat._summary.total>0" cellspacing="0">
+                        <h4 data-ng-click="cat._show=!cat._show" class="detail-accordeon">{{cat.name}} {{cat._summary.success_count}}/{{cat._summary.total}}</h4>
+                        <div data-ng-show="cat._show">
+                            <p>{{cat.desc}}</p>
+                            <table>
+                                <tr data-ng-repeat="test in cat._tests">
+                                    <td data-ng-class="test.failure_count > 0 ? 'qos-error' : 'qos-success'"></td>
+                                    <td class="qos-result">
+                                        <div data-ng-click="test._show=!test._show" class="qos-show-test">{{test.test_summary}}</div>
+                                        <div data-ng-show="test._show">
+                                            <table data-ng-repeat="(resultKey, result) in test._sorted_desc_map">
+                        <tr data-ng-repeat="resultDesc in result">
+                            <td data-ng-class="resultctrl.qos._testdesc[resultDesc].status === 'fail' ? 'qos-error' : 'qos-success'"></td>
+                            <td  data-ng-class="'qos-result-' + resultKey" data-ng-bind="resultctrl.qos._testdesc[resultDesc].desc"></td>
+                        </tr>
+                                            </table>
+                    <pre class="qos-result-description">{{test.test_desc}}</pre>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <table class="stackable stacktable large-only" cellspacing="0">
+                        <tbody>
+                            <tr align="left">
+                                <th>{{'testresult._result' | translate}} ({{'testresult._detail_click_info' | translate}})</th>
+                                <th></th>
+                            </tr>
+                            <tr data-ng-repeat="(key, options) in resultctrl.detailViewKeys" data-ng-init="val[key] = resultctrl.getValue(key)" data-ng-if="resultctrl.getValue(key)">
+                                <td width="30%" translate="{{'testresult.' + key }}"></td>
+                                <td width="70%" data-ng-if="options">
+                                    <a 
+                                        data-ng-if="options.search && !options.disabled && resultctrl.showSearchLinks" 
+                                        data-dynamic-href 
+                                        data-state="home.search"
+                                        data-options="options.search(options.key ? options.key : key, val[key])" 
+                                        data-value="{{ val[key] | parseResultValue: options }}"
+                                    ></a>
+                                    <span data-ng-if="!options.search || options.disabled || !resultctrl.showSearchLinks">{{ val[key] | parseResultValue: options }}</span>
+                                </td>
+                                <td width="70%" data-ng-if="!options">{{ val[key] }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+            <section id="chart_data">
+                <p>
+                    <div data-ng-if="resultctrl.result.speed_curve.download.length>0">
+                        <h3>{{ 'download' | translate }}</h3>
+                        <linechart id="chart_download" style="cursor: pointer;" ng-init="resultctrl.onInitChart()" data="resultctrl.result.speed_curve.download" options="resultctrl.options.downloadCurve" preserveAspectRatio="xMinYMin meet" viewBox="0 0 80 30" height="300" data-ng-click="resultctrl.showDownloadTable = !resultctrl.showDownloadTable"></linechart>
+                        <linechart id="chart_download--hidden" height="300" width="1500" style="cursor: pointer;" ng-init="resultctrl.onInitChart()" data="resultctrl.result.speed_curve.download" options="resultctrl.options.downloadCurve" preserveAspectRatio="xMinYMin meet" viewBox="0 0 80 30" height="300" data-ng-click="resultctrl.showDownloadTable = !resultctrl.showDownloadTable"></linechart>
+
+                        <table data-ng-show="resultctrl.showDownloadTable">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'testresult.time' | translate }}</th>
+                                    <th>{{ 'testresult.speed_download' | translate }}</th>
+                                    <th>{{ 'testresult.data_volume' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="s in resultctrl.result.speed_curve.download" data-ng-if="s._speed">
+                                    <td data-ng-bind="s._time_elapsed_in_s"></td>
+                                    <td data-ng-bind="s._speed"></td>
+                                    <td data-ng-bind="s._parsed_data_volume"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </p>
+                <p>
+                    <div data-ng-if="resultctrl.result.speed_curve.upload.length>0">
+                        <h3>{{ 'upload' | translate }}</h3>
+                        <linechart id="chart_upload" style="cursor: pointer;" ng-init="resultctrl.onInitChart()" data="resultctrl.result.speed_curve.upload" options="resultctrl.options.uploadCurve" preserveAspectRatio="xMinYMin meet" viewBox="0 0 80 30" height="300" data-ng-click="resultctrl.showUploadTable = !resultctrl.showUploadTable"></linechart>
+                        <linechart id="chart_upload--hidden" height="300" width="1500" style="cursor: pointer;" ng-init="resultctrl.onInitChart()" data="resultctrl.result.speed_curve.upload" options="resultctrl.options.uploadCurve" preserveAspectRatio="xMinYMin meet" viewBox="0 0 80 30" height="300" data-ng-click="resultctrl.showUploadTable = !resultctrl.showUploadTable"></linechart>
+
+                        <table data-ng-show="resultctrl.showUploadTable">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'testresult.time' | translate }}</th>
+                                    <th>{{ 'testresult.speed_upload' | translate }}</th>
+                                    <th>{{ 'testresult.data_volume' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="s in resultctrl.result.speed_curve.upload" data-ng-if="s._speed">
+                                    <td data-ng-bind="s._time_elapsed_in_s"></td>
+                                    <td data-ng-bind="s._speed"></td>
+                                    <td data-ng-bind="s._parsed_data_volume"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </p>
+
+                <!--
+                <linechart data="resultctrl.result.speed_curve._signals" options="resultctrl.options.signalCurve" width="800" height="300"></linechart>
+                -->
+                <div data-ng-if="resultctrl.result.speed_curve._signal.signals">
+                    <p>
+                        <h3>{{ 'signal' | translate }}</h3>
+
+                        <canvas id="signal-curve" width="1000" height="300" data-signal-curve data-y-min="-140" data-y-max="-30" data-y-ticks="[-140,-120,-100,-80,-60,-40]" data-curve="resultctrl.result.speed_curve._signal" data-options="resultctrl.result.speed_curve" data-color="#ffffff" data-ng-click="resultctrl.showSignalTable = !resultctrl.showSignalTable"></canvas>
+
+                        <table data-ng-show="resultctrl.showSignalTable">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'testresult.time' | translate }}</th>
+                                    <th>{{ 'testresult.signal_strength' | translate }}</th>
+                                    <th>{{ 'testresult.cat_technology' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody data-ng-repeat="sarray in resultctrl.result.speed_curve._signal.signals">
+                                <tr data-ng-repeat="s in sarray">
+                                    <td data-ng-bind="s._time_elapsed_in_s"></td>
+                                    <td data-ng-bind="s._signal_strength_with_type"></td>
+                                    <td data-ng-bind="s.cat_technology"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>
+                </div>
+               
+                <!-- <canvas width="650" height="300" data-speed-curve data-curve="resultctrl.result.speed_curve.download" data-color="#ffffff"></canvas> -->
+            </section>
+        </article>
+        <article id="map-article" data-ng-show="resultctrl.result.time && resultctrl.showMap">
+            <h3>{{ 'testresult.location' | translate }}</h3>
+            <div id="map" class="test-result-map"></div>
+        </article>
+        <div class="social-media" data-ng-controller="socialMediaController as smctrl">
+            <p>{{'social_media.main' | translate}}</p>
+            <div class="twt-share-button">
+                <a style="color: white" target="_blank" href="https://twitter.com/intent/tweet?text={{'social_media.post_msg' | translate}}%20{{smctrl.testResultsURL}}">Twitter<span class="fab fa-twitter"></span></a>
+            </div>
+            <div class="fb-share-button" data-href="{{smctrl.testResultsURL}}" data-layout="button" data-size="large" data-mobile-iframe="true">
+                <a style="color: white" class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{smctrl.testResultsURL}}&amp;src=sdkpreparse">Facebook<span class="fab fa-facebook"></span></a>
+            </div>
+        </div>
+    </div><!-- #main -->
+</div><!-- #main-container -->
+
+<div class="aside-container">
+    <div class="aside wrapper clearfix">
+        <aside class="clearfix">
+            <form class="action-console">
+                <fieldset>
+                    <div class="form-row clearfix export-buttons-wrapper">
+                        <div class="form-col third-col">
+                            <button type="submit" data-ng-click="resultctrl.exportCsv();">{{ 'input.export_csv' | translate }}</button>
+                        </div>
+                        <div class="form-col third-col">
+                            <button type="submit" onclick="window.print();">{{ 'input.print' | translate }}</button>
+                        </div>
+                        <div class="form-col third-col">
+                            <button type="submit" data-ng-click="resultctrl.exportXlsx();">{{ 'input.export_excel' | translate }}</button>
+                        </div>
+                        <div class="form-col third-col">
+                            <button type="submit" data-ng-click="resultctrl.exportPDF();">{{ 'input.export_pdf' | translate }}</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </aside>
+    </div> <!-- #aside -->
+</div> <!-- #aside-container -->
+
+<canvas id="canvas_printer" style="width: 1500px; height: 300px"></canvas>

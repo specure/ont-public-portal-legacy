@@ -1,0 +1,257 @@
+<div class="main-container">
+    <div class="main wrapper clearfix">
+        <article>
+            <header>
+                <h1 class="article-header" translate="menu_statistics"></h1>
+            </header>
+
+            <ng-container ng-if="stats.MAIN.FEATURES.SHOW_RECENT_TESTS_ON_STATISTIC_PAGE === true">
+                <h2 translate="last10"></h2>
+
+                <section>
+                    <div data-ng-controller="RecentTestsController as last10Controller" data-target="home.opentest">
+                        <table class="stackable stacktable large-only sorting-icons" cellspacing="0" wt-responsive-table>
+                            <tr align="left">
+                                <th width="15%"></th>
+                                <th width="30%">{{ "stats_operator_and_device" | translate }}
+                                    <span data-ng-if="i.provider_name" data-ng-class="last10Controller.assignClass('provider_name', last10Controller.chevronGlyphs)"
+                                        data-ng-click="last10Controller.organizeList('provider_name')"></span>
+                                    <span data-ng-if="!i.provider_name" data-ng-class="last10Controller.assignClass('platform', last10Controller.chevronGlyphs)"
+                                        data-ng-click="last10Controller.organizeList('platform')"></span>
+                                </th>
+                                <th width="15%" class="align-right">{{ "down_with_unit" | translate }}
+                                    <span data-ng-class="last10Controller.assignClass('download_kbit', last10Controller.chevronGlyphs)"
+                                        data-ng-click="last10Controller.organizeList('download_kbit')" </span>
+                                </th>
+                                <th width="10%" class="align-right">{{ "up_with_unit" | translate }}
+                                    <span data-ng-class="last10Controller.assignClass('upload_kbit', last10Controller.chevronGlyphs)"
+                                        data-ng-click="last10Controller.organizeList('upload_kbit')" </span>
+                                </th>
+                                <th width="15%" class="align-right">{{ "ping_with_unit" | translate }}
+                                    <span data-ng-class="last10Controller.assignClass('ping_ms', last10Controller.chevronGlyphs)"
+                                        data-ng-click="last10Controller.organizeList('ping_ms')" </span>
+                                </th>
+                                <th width="15%" class="align-right">{{ "signal_with_unit" | translate }}
+                                    <span data-ng-class="last10Controller.assignClass('signal_strength', last10Controller.chevronGlyphs)"
+                                        data-ng-click="last10Controller.organizeList('signal_strength')" </span>
+                                </th>
+                            </tr>
+                            <tr data-ng-repeat="i in last10Controller.recentTests.results | orderBy: last10Controller.listOrganizer">
+                                <td>{{::i.time}}</td>
+                                <td>
+                                    <a data-ui-sref="home.opentest({opentestuuid: i.open_test_uuid})" target="_blank">{{::target}}{{::i.provider_name}}</a>, {{::i.model.trim()}} ({{::i.platform.trim()}})
+                                </td>
+                                <!-- SDNT-347 -->
+                                <!-- <td data-ng-if="!i.provider_name"><a data-ui-sref="home.opentest({opentestuuid: i.open_test_uuid})" target="_blank" >{{::i.platform}}</a></td> -->
+                                <td class="align-right">{{::i.download_kbit | formatSpeed}}</td>
+                                <td class="align-right">{{::i.upload_kbit | formatSpeed}}</td>
+                                <td class="align-right">{{::i.ping_ms | roundPing}}</td>
+                                <td class="align-right">{{i.signal_strength | ifnullSignal: i.lte_rsrp:'-' }}</td>
+                            </tr>
+                        </table>
+                        <p class="note">{{"stats_test_note" | translate}}</p>
+                    </div>
+                </section>
+            </ng-container>
+            <!--
+            <section data-hide-on-mobile data-ng-controller="RecentTestsController as recentctrl">
+                <h2 translate="stats_recent_tests" translate-values="{ value: '{{recentctrl.recentTestsAmount}}' }"></h2>
+
+                <table class="stackable stacktable large-only" cellspacing="0" data-scrollable="recentctrl.showMore" data-show-more-results wt-responsive-table>
+                    <thead>
+                        <tr align="left">
+                            <th width="15%"></th>
+                            <th width="30%">{{ "stats_operator_and_device" | translate }}</th>
+                            <th width="15%" class="align-right">{{ "down_with_unit" | translate }}</th>
+                            <th width="10%" class="align-right">{{ "up_with_unit" | translate }}</th>
+                            <th width="15%" class="align-right">{{ "ping_with_unit" | translate }}</th>
+                            <th width="15%" class="align-right">{{ "signal_with_unit" | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="i in recentctrl.recentTests.results">
+                            <td>{{ i.time }}</td>
+                            <td><a data-ui-sref="home.opentest({opentestuuid: i.open_test_uuid})">{{ i | formatOpentestTitle }}</a></td>
+                            <td class="align-right">{{ i.download_kbit | formatSpeed: '-' }}</td>
+                            <td class="align-right">{{ i.upload_kbit | formatSpeed: '-' }}</td>
+                            <td class="align-right">{{ i.ping_ms }}</td>
+                            <td class="align-right">{{ i.signal_strength | ifnull: '-' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <p><a data-ui-sref="home.search">{{'stats_show_more' | translate}}</a></p>
+            </section>
+            -->
+        </article>
+        <article>
+            <section>
+
+                <form>
+                    <fieldset>
+                        <div class="form-row clearfix" data-ng-if="!stats.MAIN.FEATURES.STATISTICS_COUNTRY">
+                            <div class="form-col large-col">
+                                <label for="operators_country" translate="stats_operators_from"></label>
+                                <select id="operators_country" data-ng-model="stats.searchParams.country">
+                                    <option data-ng-repeat="c in stats.operatorCountries.countries" value="{{c}}">{{ 'countries.' + c | translate }}</option>
+                                </select>
+                            </div>
+                            <p data-ng-controller="CustomerController as customerctrl" data-ng-if="!customerctrl.MAIN.FEATURES.SHOW_ALL_OPERATORS" class="external-link">
+                                <a href="https://nettest.org/en/statistics" target="_blank">{{'alert.stats_external_link' | translate}}</a>
+                            </p>
+                        </div>
+                        <div data-ng-if="stats.MAIN.FEATURES.STATISTICS_COUNTRY" class="form-row clearfix">
+                            <div class="form-col large-col">
+                                <strong translate="stats_operators_from"></strong>
+                                <strong>{{ 'countries.' + stats.MAIN.FEATURES.STATISTICS_COUNTRY | translate }}</strong>
+                                <br/>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-row clearfix">
+                            <div class="form-col" data-ng-repeat="(title, f) in stats.filter"
+                                data-ng-if="!stats.isHidden(title)"
+                                ng-class="{'third-col':f.type==='datepicker', 'short-col':f.type==='select'}"
+                            >
+                                <label for="{{::title}}">{{f.prefix}} {{f.name}} {{f.translate | translate}}
+                                    {{f.suffix}}</label>
+
+                                <select data-ng-if="f.type==='select'" id="{{::title}}" name="{{::title}}"
+                                        data-ng-model="stats.searchParams[title]" class="col-sm-1"
+                                        data-ng-on-change="stats.resetTechnology(title)"
+                                    >
+                                    <option data-ng-repeat="v in f.values" value="{{v.value}}">
+                                        {{v.prefix}} {{v.name}} {{v.translate | translate}} {{v.suffix}}
+                                    </option>
+                                </select>
+
+                                <div data-ng-if="f.type==='datepicker'" class="input-group" id="{{::key}}">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    <input date-range-picker class="form-control date-picker"
+                                           options="stats.date_input_options"
+                                           data-ng-model="stats.searchParams[title]"
+                                           data-ng-model-options="{updateOn: 'default'}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            <button style="border-left: 50%" class="center" data-ng-click="stats.runSearch()"
+                                    translate="search._apply_filters">{{'stats_apply_filters' | translate}}
+                            </button>
+                        </p>
+                    </fieldset>
+                </form>
+
+                <!--
+                <table class="stackable stacktable large-only" cellspacing="0" wt-responsive-table data-ng-controller="HistoryController as historyctrl">
+                    <tr align="left">
+                        <th width="15%">{{ "device" | translate }}</th>
+                        <th width="15%">{{ "access" | translate }}</th>
+                        <th width="30%">{{ "date" | translate }}</th>
+                        <th width="10%" class="align-right">{{ "down_with_unit" | translate }}</th>
+                        <th width="10%" class="align-right">{{ "up_with_unit" | translate }}</th>
+                        <th width="10%" class="align-right">{{ "ping_with_unit" | translate }}</th>
+                    </tr>
+                    <tr data-ng-repeat="i in ::historyctrl.search.history">
+                        <td>{{::i.model}}</td>
+                        <td>{{::i.network_type}}</td>
+                        <td><a href="" data-ng-click="historyctrl.showTest(i.test_uuid)">{{i._time}}</a></td>
+                        <td class="align-right">{{::i.speed_download}}</td>
+                        <td class="align-right">{{::i.speed_upload}}</td>
+                        <td class="align-right">{{::i.ping_shortest}}</td>
+                    </tr>
+                </table>
+    -->
+
+                <h2 translate="stats_operators"></h2>
+
+                <table class="stackable stacktable large-only sorting-icons" cellspacing="0" wt-responsive-table>
+                    <tr align="left">
+                        <th width="40%">{{"name" | translate}}
+                            <span data-ng-class="stats.activateClass('name' + 'prov')" data-ng-click="stats.organizeProviders('name')"></span>
+                        </th>
+                        <th width="15%" class="align-right">{{"down_with_unit" | translate}}
+                            <span data-ng-class="stats.activateClass('quantile_down' + 'prov')"
+                                data-ng-click="stats.organizeProviders('quantile_down')"></span>
+                        </th>
+                        <th width="15%" class="align-right">{{"up_with_unit" | translate}}
+                            <span data-ng-class="stats.activateClass('quantile_up' + 'prov')" data-ng-click="stats.organizeProviders('quantile_up')"></span>
+                        </th>
+                        <th width="15%" class="align-right">{{"ping_with_unit" | translate}}
+                            <span data-ng-class="stats.activateClass('quantile_ping' + 'prov')"
+                                data-ng-click="stats.organizeProviders('quantile_ping')"></span>
+                        </th>
+                        <!-- <th width="15%" class="align-right">{{"signal_with_unit" | translate}}</th> -->
+                        <th width="15%" class="align-right">{{"quantity" | translate}}
+                            <span data-ng-class="stats.activateClass('count' + 'prov')" data-ng-click="stats.organizeProviders('count')"></span>
+                        </th>
+                    </tr>
+                    <tr data-ng-repeat="i in stats.searchResult.providers | orderBy: stats.filterProviders ">
+                        <td width="40%">{{ i.name }}</td>
+                        <td width="15%" class="align-right">{{ i.quantile_down | formatSpeed: '-' }}</td>
+                        <td width="15%" class="align-right">{{ i.quantile_up | formatSpeed: '-' }}</td>
+                        <td width="15%" class="align-right">{{ i.quantile_ping | formatPing }}</td>
+                        <!-- <td width="15%" class="align-right">{{ i.quantile_signal | ifnull: '-' }}</td> -->
+                        <td width="15%" class="align-right">{{ i.count }}</td>
+                    </tr>
+                    <tr>
+                        <th width="40%">{{"all" | translate}}</th>
+                        <th width="15%" class="align-right">{{stats.searchResult.providersAll[0].quantile_down | formatSpeed: '-'}}</th>
+                        <th width="15%" class="align-right">{{stats.searchResult.providersAll[0].quantile_up | formatSpeed: '-'}}</th>
+                        <th width="15%" class="align-right">{{stats.searchResult.providersAll[0].quantile_ping | formatPing: '-'}}</th>
+                        <th width="15%" class="align-right">{{stats.searchResult.providersAll[0].count | round: '-'}}</th>
+                    </tr>
+                </table>
+            </section>
+
+            <p class="note">{{"stats_operator_list_note1" | translate}}</p>
+            <p class="note">{{"stats_operator_list_note2" | translate}}</p>
+
+            <section>
+                <h2 translate="stats_devices"></h2>
+
+                <table class="stackable stacktable large-only sorting-icons" cellspacing="0" wt-responsive-table>
+                    <tr align="left">
+                        <th width="40%">{{"name" | translate}}
+                            <span data-ng-class="stats.activateClass('model' + 'dev')" data-ng-click="stats.organizeDevices('model')"></span>
+                        </th>
+                        <th width="15%" class="align-right">{{"down_with_unit" | translate}}
+                            <span data-ng-class="stats.activateClass('quantile_down' + 'dev')"
+                                data-ng-click="stats.organizeDevices('quantile_down')"></span>
+                        </th>
+                        <th width="15%" class="align-right">{{"up_with_unit" | translate}}
+                            <span data-ng-class="stats.activateClass('quantile_up' + 'dev')" data-ng-click="stats.organizeDevices('quantile_up')"></span>
+                        </th>
+                        <th width="15%" class="align-right">{{"ping_with_unit" | translate}}
+                            <span data-ng-class="stats.activateClass('quantile_ping' + 'dev')"
+                                data-ng-click="stats.organizeDevices('quantile_ping')"></span>
+                        </th>
+                        <th width="15%" class="align-right">{{"quantity" | translate}}
+                            <span data-ng-class="stats.activateClass('count' + 'dev')" data-ng-click="stats.organizeDevices('count')"></span>
+                        </th>
+                    </tr>
+                    <tr data-ng-repeat="i in stats.searchResult.devices | orderBy: stats.filterDevices">
+                        <td width="40%">{{ i.model }}</td>
+                        <td width="15%" class="align-right">{{ i.quantile_down | formatSpeed: '-' }}</td>
+                        <td width="15%" class="align-right">{{ i.quantile_up | formatSpeed: '-' }}</td>
+                        <td width="15%" class="align-right">{{ i.quantile_ping | formatPing }}</td>
+                        <td width="15%" class="align-right">{{ i.count }}</td>
+                    </tr>
+                    <tr>
+                        <th width="40%">{{"all" | translate}}</th>
+                        <th width="15%" class="align-right">{{stats.searchResult.devicesAll[0].quantile_down | formatSpeed: '-'}}</th>
+                        <th width="15%" class="align-right">{{stats.searchResult.devicesAll[0].quantile_up | formatSpeed: '-'}}</th>
+                        <th width="15%" class="align-right">{{stats.searchResult.devicesAll[0].quantile_ping | formatPing: '-'}}</th>
+                        <th width="15%" class="align-right">{{stats.searchResult.devicesAll[0].count | round: '-'}}</th>
+                    </tr>
+                </table>
+            </section>
+        </article>
+    </div>
+    <!-- #main -->
+</div>
+<!-- #main-container -->

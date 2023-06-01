@@ -1,0 +1,108 @@
+<div class="flex-wrapper height-adjust">
+	<div data-hide-on-mobile class="header-container" ng-show="customerctrl.isMenuVisible">
+		<header class="header-nav">
+			<a href="#" class="menu-link" title="Menu">
+				<span class="hidden" translate="menu_menu"></span>
+			</a>
+			<nav id="nav">
+				<ul class="main-nav">
+					<li>
+						<a class="home" data-ui-sref="home.index" translate="menu_home"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.INITIAL_HOME_SCREEN!=='NewTest'">
+						<a class="home" data-ui-sref="home.newtest" translate="menu_test"></a>
+					</li>
+					<li>
+						<a class="history" data-ui-sref="home.history" translate="menu_history"></a>
+					</li>
+					<li>
+						<a class="map" data-ui-sref="home.map" translate="menu_map"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.OPENDATA.IS_OPENDATA_ENABLED">
+						<a class="search-opentest" data-ui-sref="home.search" translate="menu_opentest_search"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.OPENDATA.IS_OPENDATA_ENABLED">
+						<a class="statistics" data-ui-sref="home.stats" translate="menu_statistics"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.OPENDATA.IS_OPENDATA_ENABLED">
+						<a class="opendata" data-ui-sref="home.opendata" translate="menu_opendata"></a>
+					</li>
+					<li>
+						<a class="help" data-ui-sref="home.help" translate="menu_help"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.SHOW_COOKIES || customerctrl.MAIN.FEATURES.SHOW_COOKIES_POLICY">
+						<a class="information" data-ui-sref="home.cookies" translate="menu_cookies"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.IS_JAVA_CLI_ENABLED">
+						<a class="java-cli" data-ui-sref="home.java_cli" translate="menu_java_cli"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.SHOW_PRIVACY_POLICY">
+						<a class="information" data-ui-sref="home.privacy_policy" translate="menu_pp"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.SHOW_ABOUT">
+						<a class="about" data-ui-sref="home.about" translate="menu_about"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.SHOW_TERMS_OF_USE">
+						<a class="information" data-ui-sref="home.terms_of_use" translate="menu_tc"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.SHOW_METHODOLOGY">
+						<a class="information" data-ui-sref="home.methodology" translate="menu_methodology"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.SHOW_WIZARD">
+						<a class="information" data-ui-sref="home.wizard" translate="menu_wizard"></a>
+					</li>
+					<li data-ng-if="customerctrl.MAIN.FEATURES.COOKIE_WIDGET && customerctrl.MAIN.FEATURES.COOKIE_WIDGET.ENABLED">
+						<a class="java-cli" data-ng-click="menuctrl.toggleCookieWidget($event)" translate="menu_cookie_settings"></a>
+					</li>
+				</ul>
+
+				<div class="app-version">{{customerctrl.MAIN.NAME}} {{customerctrl.VERSION}}</div>
+			</nav>
+
+			<!--<a href="#" class="settings-link" title="Settings"><span class="hidden" translate="menu_settings"></span></a>-->
+			<div class="lang-selection">
+				<label>{{ "lang.language" | translate }}</label>
+				<ul>
+					<li
+						data-ng-hide="menuctrl.lang === lang.code"
+						data-ng-repeat="lang in customerctrl.MAIN.LANGUAGES"
+						data-ng-model="menuctrl.lang"
+						data-ng-click="menuctrl.changeLang(lang.code)"
+						value="{{::lang.code}}"
+						style="cursor:pointer"
+					>[{{ lang.translation | translate }}]</li>
+				</ul>
+				<!--
+						<select data-ng-model="menuctrl.lang" data-ng-change="menuctrl.changeLang()">
+							<option data-ng-repeat="lang in customerctrl.MAIN.LANGUAGES" value="{{::lang.code}}">{{ lang.translation | translate }}</option>
+							<p>{{lang.code}}</p>
+						</select>
+						-->
+			</div>
+		</header>
+		<!--
+                <section class="settings" style="display:none;">
+                    <div class="wrapper">
+                        <h3 translate="menu_settings"></h3>
+
+                        <div class="form-row">
+                        	<label>{{ "lang.language" | translate }}
+		                        <select data-ng-model="menuctrl.lang" data-ng-change="menuctrl.changeLang()">
+		                        	<option data-ng-repeat="lang in customerctrl.MAIN.LANGUAGES" value="{{::lang.code}}">{{ lang.translation | translate }}</option>
+		                    	</select>
+	                    	</label>
+                    	</div>
+                    </div>
+                </section>
+				-->
+
+		<!--
+                remove the comment to add an error handler (some kind of console)
+                <error-handler></error-handler>
+                -->
+	</div>
+
+	<div data-hide-on-mobile data-jquery-menu></div>
+
+	<div data-ui-view class="flex-wrapper height-adjust" ng-class="'menu-' + !!customerctrl.isMenuVisible"></div>
+</div>

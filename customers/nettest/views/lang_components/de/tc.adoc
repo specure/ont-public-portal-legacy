@@ -1,0 +1,69 @@
+= SPECURE NetTest Datenschutzerklärung und Nutzungsbedingungen
+:encoding: utf-8
+:lang: de
+
+== Datenschutzerklärung und Nutzungsbedingungen
+
+SPECURE offers users the opportunity to use the SPECURE NetTest software to test the quality and capacity of their current broadband connection. Users use the browser version and apps of the SPECURE NetTest at their own risk. Please send any comments on correction of inaccurate content, graphics etc. by e-mail to info@specure.com. Children under 16 years can use the SPECURE NetTest with the consent of their legal guardian.
+
+SPECURE NetTest provides users with transparent and detailed information on the current quality of their broadband access service while respecting their privacy. The test is based on open source and open data principles. Open source principle means that the source code of SPECURE NetTest software is published entirely. This is mainly for transparency and reliability issues. Any commercial use of SPECUER NetTest source code, which is published under the MAME license, is not allowed. The SPECURE logo and used fonts are not subject to open source and open data principles. Therefore copying, modifying or processing them in changed or unchanged form is strictly prohibited.
+
+SPECURE NetTest measurement results data are retrievable as Open Data and available for re-use under the "Creative Commons Namensnennung 3.0 Österreich" (CC BY 3.0) license. So  data are freely available to the general public for information, use, dissemination and other applications. Data which are not retrievable as Open Data are not subject to the open data principle.
+
+Links and references to other websites or persons outside SPECURE are provided to facilitate use and should not be deemed as approved by SPECURE. SPECURE offers the service only to provide a greater and easier public access to information. Where the website (netTest.specure.com) includes links to other websites, SPECURE shall not be deemed responsible for their content, copyright or privacy policy, and shall not be held liable for any damage which the user incur due or in connection to the use of the website, or use of any resources or services offered by the relevant website, even if SPECURE has been informed on the possibility for such damage or should reasonably anticipate such loss or damage.
+There is no legal claim to permanent availability of the service. SPECURE explicitly reserves the right to change, add to or delete parts of the SPECURE NetTest or the entire SPECURE NetTest service without prior announcement, or to cease publication of it temporarily or finally.
+
+SPECURE makes every endeavour to ensure the SPECURE NetTest browser version/website and SPECUER NetTest apps are constantly up-to-date, complete and accurate. To ensure the correctness of the results, implausible measurements may be marked and/or removed by SPECURE. SPECURE reserves the right to initiate appropriate legal action in case of non-compliance. SPECURE accepts no liability for the up-to-dateness, correctness, completeness or quality of the information and services provided. As a basic principle, no claims can be brought against SPECURE for material or immaterial disadvantages and/or losses resulting from the use or non-use of information provided or from the use of incorrect and incomplete information. Where SPECURE cannot assert a full waiver of liability due to the statutory provisions applicable in the individual case, liability shall be limited to gross negligence and malicious intent.
+
+Test results acquired by SPECURE NetTest are solely of informative and illustrative purposes as there are too many technical parameters undefined on the user side. Therefore test results don’t represent any legal proof of broadband connection speed which could lead to any consumer complaints cases.
+
+All the data acquired through the SPECURE NetTest system for monitoring the quality of broadband service are solely of informative and illustrative purposes and SPECURE shall not be liable for any conclusions or decisions of third parties with respect to the comparison and ranking of network operators and service providers.
+
+== Privacy Policy
+
+SPECURE respects the right to privacy and shall not collect any personal data without the explicit consent of users. The personal data which SPECURE shall acquire on the basis of an explicit and informed consent of users shall be processed by complying with the highest security and confidentiality standards.
+
+Prior to using SPECURE NetTest users must acknowledge their explicit acceptance of the Terms of Use and Privacy Policy of the SPECURE NetTest system for measuring the quality of broadband service. Without this the SPECURE NetTest cannot be performed. This acceptance can be withdrawn at any time.
+
+By accepting the general Terms of Use and Privacy Policy users explicitly accept that SPECURE (as the personal data administrator) collects and processes their personal data specified under section “What data are processed and transmitted?” for the purposes specified under section “The purpose of personal data collection”. The acceptance (YES/NO) is logged for evidential purposes that Terms of Use and Privacy Policy were accepted. When changes are made to the processing and transmission of data (in connection with updates or new releases of the SPECURE NetTest), users will have to renew their acceptance of the General Terms of Use and Privacy Policy.
+
+Personal data are not collected for commercial purposes in any way. SPECURE shall not try to identify specific users, nor shall it link the collected data therewith.
+
+You can send all questions regarding the personal data protection and privacy policy when using SPECURE NetTest system for measuring the quality of broadband service to the SPECURE's email address: netTest@specure.com.
+The browser version of the SPECURE NetTest uses cookies. Cookies are little files sent from the server hosting the website to your computer's hard disk when you visit the SPECURE NetTest website. These cookies store the following sets of data: acceptance of the privacy policy and terms of use, the randomly generated client ID (client UUID) and the location (temporarily). These data are used to identify users the next time they visit the SPECURE NetTest website. By accepting the Terms of Use and Privacy Policy the user also grants explicit approval for the use and storage of cookies.
+
+=== What data are processed and transmitted?
+
+The following data are processed as part of the SPECURE NetTest:
+
+- Speed of data connection in both directions (downlink/uplink)*
+- Latency of data connection (ping)*
+- Quality parameters (e.g. signal strength, connectivity on different ports, modifications of content, transfer time for a reference web page)*
+- Test parameters (test method, test progress, test server, test configuration (e.g. test duration))*
+- Randomly generated client ID (client UUID)
+- Public client ID*
+- Client sync code and group
+- Test time*
+- Automatically determined client location (where known) / time zone*
+- Device type/model, operating system/software version of app or browser*
+- NAT Yes/No (direct Internet access or private address used)*
+- IP version*
+- IP address
+- Anonymised public IP address (hidden last octet) *
+- IP network (autonomous system, AS)*
+- WLAN network ID (SSID) and numerical WLAN ID (BSSID) *
+- Mobile network (home network, network used, type of connection (GSM, UMTS, LTE, etc.), name of mobile network*
+
+Data marked with * are published on the SPECURE NetTest website and the SPECURE NetTest apps and are made freely available to the general public as open data for information, use, dissemination and other applications. Data not marked with * are not published, i.e. these data are neither disclosed nor published and are not retrievable as open data.
+
+In the course of the SPECURE NetTest the IP address and the Client UUID are processed. The IP address and the Client UUID are not transmitted, i.e. they are neither disclosed nor published and are not retrievable as open data.
+
+=== The purpose of personal data collection
+
+All data acquired by SPECURE through the use of SPECURE NetTest and results of all measurements, which are carried out by users are recorded in a database. This database can only be accessed by the employees of SPECURE responsible for the management of the database. Users and SPECURE shall use the SPECURE NetTest system to measure the capacity and quality of network services provided by operators or service providers. The system shall show where and with which ISPs there are potential problems with access to internet services, where there is no mobile or wireless signal and whether operators are acting not net-neutral.
+
+The user's public IP address is being processed in order to determine the network operator, to identify potential improper use of the system and in order to prepare a history of measurements for a specific user. The full IP address is recorded in the database, but shall not be disclosed to public and can be viewed by the user itself only in the mobile app under "Details" or in the browser under the "History" tab.
+
+Data on WLAN network ID is stored for the purposes of interpreting his own results of users by having overlook on this information to all his measurements stored. This is critical especially when different WiFi access points are used.
+
+The selected and anonymised data from completed measurements (marked with an asterisk) are published online and can be accessed through the SPECURE NetTest website, while allowing the interested public to gain an independent and realistic insight in the state of mobile, wireless and fixed communication systems and internet services. This provides users with information on the network coverage for a specific network or service provider at the level of regions, cities, districts or the most common regular communication routes. Information on mobile coverage is especially important for users, who travel on a daily basis, or users without the possibilities to access fixed broadband networks.

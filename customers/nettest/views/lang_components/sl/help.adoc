@@ -1,0 +1,499 @@
+= Open Nettest Help
+:toc: left
+:toc-title: Kazalo vsebine
+:encoding: utf-8
+:lang: sl
+:linkattrs:
+:urlGeneralAct: assets/files/<general_act>.pdf
+:urlHowTo: sl/wizard
+
+toc::[]
+
+== Splošna vprašanja in odgovori
+
+=== Kaj je namen aplikacije Open Nettest?
+Open Nettest je merilno in analitično orodje, potrjeno s strani agencije, ki končnim uporabnikom storitev dostopa do interneta omogoča izvajanje meritev zmogljivosti, kakovosti in transparentnosti internetne povezave. Njen namen je uporabnikom zagotavljati pregledne in razumljive informacije.
+
+Open Nettest vključuje:
+
+* zemljevid in vizualizacijo opravljenih meritev, ki jih lahko filtrira po tipu dostopa (fiksni, mobilni), testnih parametrih, tehnologiji, statistiki, ponudnikih spletnega dostopa in časovnem obdobju;
+* statistiko meritev za vse večje ponudnike dostopa do spleta z možnostjo filtriranja po kvantilih, testnih parametrih in trajanju testa;
+* prikaz rezultatov meritev glede na izmerjeno hitrost (sistem "semaforja");
+* možnost sinhronizacije rezultatov za različne naprave ter njihov prikaz v brskalniku;
+* zgodovino uporabnikovih meritev;
+* zagotavljanje podatkov o meritvah v skladu z načelom odprtih podatkov;
+* zagotavljanje programske kode v skladu z načelom odprte kode;
+* pogoste odgovore in vprašanja.
+
+=== Kdo je ponudnik Open Nettest?
+
+Ponudnik storitve Open Nettest je <organization>, rešitev pa je bila razvita v sodelovanju s proizvajalcem programske opreme Specure. Test se lahko izvaja v omrežju katerega koli ponudnika širokopasovnega dostopa in je kot tak v večini primerov neodvisen od ponudnika.
+
+=== Zakaj bi testiral svojo povezavo?
+Razpoložljiva pasovna širina ter drugi omrežni parametri pomembno vplivajo na uporabniško izkušnjo pri uporabi različnih komunikacijskih storitev. Če so parametri povezave od ponudnika storitve do vašega terminala slabi oziroma nihajo, se lahko to odraža v počasnem nalaganju spletnih strani, prekinjanju govora pri govorni storitvi ali kockanju slike pri gledanju videa in televizije. To je še posebej očitno, kadar omrežje ali storitev uporablja veliko uporabnikov, razpoložljive kapacitete pa so zasičene. Open Nettest vam nudi priložnost, da s pomočjo spletne ali mobilne aplikacije preverite dejansko hitrost in kakovost povezave, hkrati pa lahko na pregledni karti Slovenije preverite tudi rezultate meritev drugih uporabnikov, kar vam lahko potencialno pomaga pri odločitvi o izbiri ponudnika dostopa glede na svojo lokacijo in vrsto dostopa (fiksno/mobilno). Mobilna aplikacija Open Nettest za Android omogoča tudi podrobnejšo diagnostiko povezave in omrežja. Ta vključuje merjenje jakosti signala, merjenje parametrov kakovosti in transparentnosti povezave ter dodatnih omrežnih parametrov (uporablja orodje NDT).
+
+=== Kaj aplikacija preverja?
+Z aplikacijo Open Nettest lahko preverjate sledeče parametre kakovosti:
+
+* hitrost povezave od merilnega strežnika do uporabnika,
+* hitrost povezave od uporabnika do merilnega strežnika,
+* zakasnitev (latenca),
+* transparentnost in kakovost povezave (mobilne naprave),
+* moč signala (odvisno od mobilne naprave in operacijskega sistema).
+
+Aplikacija za mobilne naprave Android nudi tudi možnost izvajanja obširnejšega testa (NDT-Test) in, odvisno od vaše naprave, testiranje dodatnih parametrov kakovosti, kot je izguba paketov. Trenutna verzija za Android omogoča tudi preverjanje transparentnosti povezave oziroma morebitno onemogočanje dostopa do specifičnih storitev (glej kakovost storitve).
+
+=== Kako lahko vzpostavim stik z ekipo, ki je odgovorna za Open Nettest?
+Za vprašanja in povratne informacije nam pošljite elektronsko sporočilo na e-naslov: example@example.org.
+
+=== Kakšne vrste povezav lahko testiram?
+Open Nettest je na voljo za:
+
+* sodobne brskalnike,
+* mobilne telefone z operacijskim sistemom Android (najmanj verzija 6.0) in iOS (najmanj verzija 10).
+
+S sodobnimi brskalniki lahko testirate fiksna dostopovna (DSL, kabelska in optična) omrežja, z mobilno aplikacijo in pametnimi telefoni pa brezžična (EDGE, UMTS, HSPA, LTE, WLAN) omrežja.
+
+=== Kdo mi lahko nudi podporo, če imam težave z aplikacijo Open Nettest?
+Če ne najdete informacij za vašo težavo med temi pogostimi vprašanji in odgovori, vam bomo z veseljem pomagali po elektronski pošti: example@example.org.
+
+=== V čem se Open Nettest razlikuje od drugih testov hitrosti?
+Open Nettest združuje:
+
+* neodvisnost in strokovno znanje slovenskega regulatorja, <organization>,
+* priložnost za sinhronizacijo rezultatov vaših testov iz več različnih naprav,
+* statistično predstavitev rezultatov vseh meritev glede na ponudnika dostopa s številnimi filtri,
+* zemljevid, ki prikazuje rezultate opravljenih testov,
+* pregledna in enostavna pogosta vprašanja in odgovore, kjer lahko najdete nasvete o možnih vzrokih nedelujočih povezav,
+* odprte podatke in odprto kodo,
+* testiranje transparentnosti in kakovosti povezave (na voljo samo za Android).
+
+== Tehnologija
+
+=== Kako deluje Open Nettest?
+Open Nettest meri parametre kakovosti vašega trenutnega širokopasovnega dostopa s testnimi prenosi manjših datotek med vašo terminalno opremo (računalnik, pametni telefon) in merilnim strežnikom <organization>. Rezultati posameznega testa se izračunajo na podlagi pridobljenih parametrov prenosa. Vse podrobnosti metodologije testa so na voljo (Open Nettest Tehnične specifikacije).
+
+Open Nettest je sestavljen iz večfazne testne procedure.
+
+* Najprej se izvede t. i. inicializacijski test, kjer se odjemalec (terminal) prek varne TLS povezave poveže do testnega strežnika, overi ter izmenja osnovne parametre.
+* Sledi preizkusni test povezave v pritočni smeri, kjer se s pomočjo uporabe več sočasnih TCP povezav in izmenjavo majhnih datotek oceni trenutno zmogljivost uporabniške povezave ter izmeri zakasnitev na povezavi (ping). V primeru Android mobilnega terminala se izmeri tudi trenutna moč radijskega signala.
+* Na podlagi dobljenih parametrov sledita glavna testa merjenja hitrosti povezave v pritočni (download) in odtočni smeri (upload).
+* Po zaključku merjenja hitrosti na mobilnih napravah sledi test transparentnosti in kakovosti povezave. Mobilna aplikacija omogoča tudi izvajanje podrobnega merilnega testa (NDT - Network Diagnostic Tool) testa, ki se izvaja s pomočjo neodvisne M-Lab platforme (http://www.measurementlab.net).
+
+=== Kaj naredi izbirni, podrobni test na mobilnih napravah?
+Mobilna aplikacija za Android omogoča tudi izvajanje podrobnega testa povezave, ki temelji na orodju, ki je bil razvit v okviru platforme M-Lab. Test je praviloma namenjen naprednim uporabnikom, saj ne izmeri samo podatkovne hitrosti, temveč poskuša ugotoviti, katere težave morebiti omejujejo hitrost. NDT test je v mobilni aplikaciji privzeto izklopljen in ga morate ročno aktivirati v nastavitvah aplikacije. Rezultati NDT testa so po zaključku testiranja vidni v pogledu Podrobnosti (Details). NDT test je trenutno podprt samo na platformi Android.
+
+=== Kakšne so prednosti izbirnega, podrobnega testa?
+Podrobnejši test vključuje številne performančne parametre omrežja, ki so potrebni za celovito analizo vaše povezave in jih Open Nettest ne preverja. Nadaljnje informacije in celoten seznam vseh testiranih parametrov lahko najdete na spletni strani www.measurementlab.net/tools/ndt in povezavah na tej strani.
+
+=== Kateri del mojega spletnega dostopa se testira?
+Open Nettest meri povezavo od vašega terminala (računalnika, mobilnega telefona) do testnih strežnikov Open Nettest prek omrežja vašega ponudnika dostopa. Testni strežniki so postavljeni v neposredni bližini slovenske izmenjevalne točke (SIX). Na SIX so povezani vsi glavni operaterji in internetni ponudniki v Sloveniji, zato predstavlja najoptimalnejšo in neodvisno stičišče vseh operaterjev, kjer prihaja do neposredne izmenjave prometa.
+
+=== Na kaj moram biti pozoren ob testiranju povezave?
+Za izvedbo meritev, ki so v skladu z s link:{urlGeneralAct}[»*Splošnim aktom o storitvah dostopa do interneta in s tem povezanih pravicah končnih uporabnikov (11. člen)*«, window="_self"], sledite link:{urlHowTo}[»*navodila tej povezavi*«].
+
+Za izvedbo ostalih informativnih meritev, poskrbite, da:
+
+*	na vaši napravi v času meritve v ozadju ne poganjate podatkovno intenzivnih aplikacij, ki zasegajo pomemben del razpoložljive kapacitete povezave (npr. nalaganje, prenos ali izmenjava datotek, gledanje IP televizije ali videa na zahtevo ipd.),
+*	lokalno omrežje v času meritve ne uporablja drug uporabnik ali naprava (npr. TV komunikator),
+*	je usmerjevalnik ali stikalo dovolj zmogljiv in prepusten v primerjavi z naročenim paketom (nekateri modeli navkljub specifikaciji ne omogočajo procesiranje nazivnih hitrosti),
+*	če uporabljate domače brezžično omrežje (WLAN), naj bo vaša naprava čim bližje usmerjevalnika, da šibek signal WLAN povezave ne izkrivlja rezultatov in da WLAN v času meritev ne koristijo drugi uporabniki (praviloma WLAN zaradi svojih lastnosti izkrivlja meritve, zato pri meritvi uporabite žično povezavo – terminal je žično povezan z domačim stikalom/usmerjevalnikom),
+*	v primeru podatkovne kapice se prepričajte, da razpoložljivih količin podatkov še niste porabili ali da nimate omejene hitrosti zaradi prekoračene porabe znotraj izbranega paketa.
+
+=== Ali je izvirna koda na voljo?
+Open Nettest temelji na principu odprte kode. Izvorna koda je dostopna na naslovu ​​https://github.com/specure/.
+
+=== Koliko pasovne širine potrebujem?
+Zmogljivost in kakovost podatkovne povezave je pogojena z vrsto komunikacijskih storitev, ki jih želite uporabljati. Za brskanje po spletnih straneh, kjer ni veliko multimedijskih gradnikov, zadošča pasovna širina, ki ne presega 2Mbps. Pri uporabi govornih storitev je zadovoljiva hitrost povezave 100 kbps, vendar je kakovost govora pogojena z zakasnitvami na omrežju in spreminjanjem zakasnitve paketov. Kakovost slike pri IP televizije ali videa na zahtevo je pogojena z uporabljenimi kodeki in ločljivostjo slike, zato praviloma zahteva višje hitrosti (min. 3 Mbps) in stabilno povezavo (zakasnitve, izgube paketov in napake pri prenosu). Podatkovne transakcije so občutljive na izgubo paketov in napake pri prenosu. Čeprav danes aplikacije in omrežne naprave uporabljajo medpomnilnike, vse več vsebin zaradi kompleksnosti multimedijskih gradnikov zahteva zmogljivo in zanesljivo povezavo, zato so navedene vrednosti le okvirne.
+
+Ponudniki spletnega dostopa običajno priporočajo naslednjo pasovno širino za naslednje aplikacije:
+
+* Protokol VoIP (Voice over Internet Protocol; VoIP): 100 kbps hitrost prenosa do uporabnika / 100 kbps hitrost prenosa od uporabnika (Skype: https://support.skype.com/en/faq/FA1417/how-much-bandwidth-does-skype-need).
+* Predvajanje videoposnetkov:
+** Spodnja meja: 500 kbps (Youtube: http://support.google.com/youtube/bin/answer.py?hl=en&answer=78358,
+** Standardna ločljivost (Standard Definition; SD, 576p/480p): 3 Mbps (https://help.netflix.com/en/node/306),
+** Visoka ločljivost (High definition; HD, 720p): 5 Mbps (https://help.netflix.com/en/node/306),
+** Ultra visoka ločljivost (Ultra HD; 4K – 3840x2160@60fps): 20–25 Mbps (http://blog.netflix.com/2014/05/netflix-now-streaming-in-ultra-hd-4k.html).
+** Predvajanje pretočne glasbe: 320 kbps hitrost prenosa do uporabnika (Spotify: http://support.spotify.com/at/learn-more/faq/#!/article/What-bitrate-does-Spotify-use-for-streaming).
+
+Če dostop do interneta delite z drugimi uporabniki, se ta razdeli med vse uporabnike sorazmerno z uporabljenimi storitvami. Pomembno je, da ne upoštevate samo pasovne širine do uporabnika, ampak tudi pasovno širino od uporabnika (zlasti za storitve v oblaku).
+
+=== Kateri dejavniki vplivajo na rezultat?
+Številni dejavniki lahko pomembno vplivajo na rezultate testa. Glavni dejavniki so:
+
+* tip povezave do interneta (žičen/brezžičen dostop),
+* vrsta uporabljene dostopovne tehnologije (xDSL, optika, kabelsko-optični razdelilni sistem ...),
+* število uporabnikov na povezavi,
+* zmogljivost povezave, ki vam jo zagotavlja ponudnik dostopa,
+* zmogljivost terminala, na katerem opravljate test,
+* operacijski sistem naprave in njene nastavitve,
+* druge aplikacije, ki so aktivne in uporabljajo povezavo v času izvajanja testa meritve (npr. aktiviran protivirusni ščit, deljenje datotek, posodobitve).
+
+Če uporabljate lokalno omrežje (LAN), lahko na rezultate testa vpliva zmogljivost vašega LAN usmerjevalnika (npr. NAT prepustnost, število in kompleksnost pravil na požarni pregradi).
+
+Če uporabljate brezžično lokalno omrežje (WLAN), lahko na rezultate testa vpliva:
+
+* razdalja med usmerjevalnikom WLAN in vašo napravo,
+* število uporabnikov, ki uporablja WLAN povezavo,
+* zmogljivost vašega usmerjevalnika WLAN (npr. podpora standardu 802.11n ali 802.11ac).
+
+Če uporabljate mobilne storitve, lahko na rezultate testa vpliva:
+
+* vrsta uporabljene tehnologije (EDGE, UMTS, HSPA, LTE),
+* oddaljenost od bazne postaje in število uporabnikov, ki so hkrati z vami povezani in uporabljajo bazno postajo,
+* moč radijskega signala,
+* prepreke na poti razširjanja radijskega signala (stavbe, drevesa …),
+* hitrost vašega premikanja (npr. počasnejša hitrost prenosa podatkov na avtocesti ali na vlaku),
+* pogodbeno dogovorjena hitrost povezave (npr. omejevanje hitrosti (do uporabnika/od uporabnika) glede na izbrano tarifo in/ali po preseganju določene količine prometa, ki je vključen v osnovno mesečno naročnino).
+
+=== Kako na rezultate testa vpliva moj brezžični (WLAN) usmerjevalnik?
+Hitrost in kakovost povezave preko domače brezžične točke se lahko pogosto spreminja na kar ponudnik dostopa praviloma nima vpliva. Na kakovost in hitrost povezave vpliva nivo sprejetega signala (različna oddaljenost od brezžične točke, motnje z okolice), število prijavljenih uporabnikov (uporabniki si delijo razpoložljivo pasovno širino), kot tudi uporabljen standard (na strani terminala, kot brezžične točke). Zmogljivejši usmerjevalniki so tisti, ki že podpirajo standarda IEEE 802.11n ali 802.11ac. Pomembno je tudi, da ima usmerjevalnik visoko stopnjo NAT propustnosti, da razdalja med usmerjevalnikom in napravo ni prevelika in da med njima ni ovir, ki bi slabile radijski signal. Če rezultati testa bistveno odstopajo od pričakovanih rezultatov, priporočamo, da preverite usmerjevalnik WLAN in njegove nastavitve, kot tudi nastavitve vašega odjemalca. Za verodostojno izvajanje testa je potrebno zato upoštevati link:{urlGeneralAct}[*11. člen Splošnega akta o storitvah dostopa do interneta in s tem povezanih pravic končnih uporabnikov*, window="_self"], ki primarno narekuje, da je uporabniški terminal žično povezan neposredno na modem ponudnika dostopa, saj na ta način izločimo vse morebitne negativne vplive, ki izhajajo iz WLAN dostopovne točke oziroma uporabniškega usmerjevalnika.
+
+=== Kako na rezultate testa vpliva moja naprava?
+Na rezultate testa vplivajo številni dejavniki, ki izhajajo iz naprave (zmogljivost in obremenjenost) ter operacijskega sistema in ostale programske opreme, ki je na njega nameščena in teče v času trajanja testa. Svetujemo, da v času testa na napravi ne tečejo nobeni drugi procesi (programi) razen brskalnika oziroma Open Nettest aplikacije na mobilnem terminalu. Na kakovost testa lahko še posebej negativno vplivajo nekateri protivirusni programi, aplikacije, ki uporabljajo P2P povezave, gledanje videa in podobno. Idealno bi bilo torej, da povezavo testirate večkrat in z različnimi napravami, na katerih je minimalno število nameščenih programov.
+
+=== Kako na mojo povezavo vpliva modem?
+Brezžična (WLAN) povezava z usmerjevalnikom je bolj dovzetna za napake pri prenosu, kot je povezava z (UTP) kablom. Če sumite, da so slabi rezultati posledica slabe brezžične (WLAN) povezave, povežite vašo napravo z LAN kablom in ponovno poženite test.
+
+=== Koliko meritev moram opraviti, da dobim zares zanesljiv rezultat?
+Več, ko je opravljenih pravilno izvedenih meritev v različnih časovnih obdobjih dneva, boljši vpogled imate v stanje vaše povezave. Za izvedbo meritev, ki so v skladu z  s link:{urlGeneralAct}[»*Splošnim aktom o storitvah dostopa do interneta in s tem povezanih pravicah končnih uporabnikov (11. člen)*«, window="_self"], sledite link:{urlHowTo}[»*navodila tej povezavi*«].
+Drugače pa so rezultati testa odvisni od številnih dejavnikov, vključno s časom testiranja, uporabo omrežja in vašo lokacijo. Zanesljivost rezultatov testa lahko izboljšate s ponovitvijo testa ob različnih urah dneva in po možnosti iz različnih lokacij.
+
+=== Kako pogosto lahko ponovim Open Nettest?
+Open Nettest je brezplačen za uporabo in ga lahko ponovite tako pogosto, kot želite. Kljub vsemu test uporabljajte razumno, saj se v času testa prenese precej podatkov, ki obremenjuje razpoložljivo pasovno širino omrežja. Test lahko začnete takoj, ko zaključite s predhodnim testom. Izberite meni "Domov" (Home) in nato pritisnite gumb "Začni" (Start). Pred tem se prepričajte in/ali upoštevajte, da:
+
+* se je zaključil izbirni, podrobnejši NDT test (na Android mobilnih napravah),
+* se skupna količina prenesenih podatkov s ponavljanjem testa povečuje,
+* z rednimi testi lahko izboljšate zanesljivost vaših splošnih rezultatov.
+
+=== Kakšna količina podatkov se prenese ob uporabi testa?
+Količina prenesenih podatkov je odvisna od zmogljivosti vaše povezave (višja kot je zmogljivost, več podatkov se prenese). Open Nettest preverja zmogljivost vaše širokopasovne povezave do oziroma od uporabnika približno 20 sekund. V tem času se na podlagi začetnega testa oceni zmogljivost povezave in nato na podlagi izmerjenih parametrov izbere velikost datoteke, ki se bo prenašala med vašim terminalom in Open Nettest strežniki. Med tem, ko je na fiksnih povezavah velikost testne datoteke za isto dostopovno povezavo praviloma vedno enaka (zmogljivost povezave se praviloma izrazito ne spreminja), se v mobilnih omrežjih velikost testne datoteke prilagaja glede na trenutno lokacijo in oddaljenost terminala od bazne postaje ter od same bazne postaje, njene zasedenosti in uporabljene dostopovne tehnologije (EDGE/UMTS/HSPA/LTE). Glede na razpoložljivo zmogljivost se tako lahko količina prenesenih podatkov temu ustrezno spreminja.
+
+* Pri prenosni hitrosti povezave 2 Mbps je količina generiranih podatkov približno 5 MB.
+* Pri zelo hitrih širokopasovnih povezavah Open Nettest uporablja veliko večje datoteke, npr. pri simetrični 100 Mbps povezavi je količina uporabljenih podatkov približno 250 MB.
+* Če izvajate izbirni, podrobnejši NDT test (mobilna Android aplikacija), se količina uporabljenih podatkov poveča za približno 2,5-krat.
+
+Med tem, ko je na fiksnih povezavah količina podatkov, ki jih lahko uporabnik prenese, praviloma neomejena (naročniški paketi dostopa do interneta so praviloma vezani na hitrost prenosa, ne pa na preneseno količino), so v mobilnem omrežju naročniški paketi praviloma vezani na maksimalno hitrost in porabljeno količino (izjema so paketi, ki nadomeščajo fiksni dostop). Pred izvajanjem testa z mobilno napravo zato upoštevajte, koliko imate zakupljene in še razpoložljive količine podatkov, saj je lahko test (po preseženi količini) povezan z visokimi stroški.
+
+=== Katera verzija internetnega protokola je podprta pri testu?
+
+Open Nettest privzeto uporablja internetni protokol verzije 6 (Internet Protocol Version 6; IPv6), če je ta verzija omogočena v (operaterskem in domačem) omrežju in jo podpira terminal. Če je naprava z omrežjem povezana prek IPv4 protokola, se izvede test prek tega protokola. V nastavitvah mobilne aplikacije lahko tudi eksplicitno nastavite, da se test izvede vedno samo prek IPv4 protokola.
+
+Če uporabljate mobilno aplikacijo za Android, lahko na vstopni strani aplikacije vidite, katera verzija internetnega protokola se uporablja.
+
+Več informacij o IPv6 lahko najdete na: http://example.org/internetni-protokol-ipv6.
+
+== Testni rezultati
+
+=== Kaj pomeni prenos v pritočni (download) in odtočni smeri (upload) do uporabnika?
+Operaterji svojo ponudbo storitev oblikujejo na različne načine. Storitve lahko nastopajo bodisi samostojno ali so združene v pakete. Storitev širokopasovnega dostopa do interneta je praviloma opredeljena kot maksimalna hitrost, ki jo uporabnik lahko doseže v pritočni in odtočni smeri pri uporabi interneta. Enota "Mbps" opredeljuje, koliko megabitov podatkov na sekundo se prenese. Če ste npr. naročeni na internetni dostop s povezavo "do 10/2 Mbps", ta številka pomeni, da vam ponudnik širokopasovnega dostopa omogoča skupen prenos podatkov do 10 megabitov na sekundo do vaše terminalne opreme in 2 megabita na sekundo od vaše terminalne opreme do interneta.
+
+=== Kaj pomeni ping?
+PING je programsko orodje, ki ga omrežni skrbniki uporabljajo pri reševanju težav s povezljivostjo. S programom generiramo pakete fiksne dolžine, ki se jih pošilja do določene terminalne opreme v omrežju, hkrati pa merimo čas, ki je potreben, da paketi dosežejo cilj in se vrnejo nazaj na izhodišče. Open Nettest z orodjem PING meri čas, ki je potreben, da paketi dosežejo Open Nettest merilne strežnike in se vrnejo nazaj do terminalne opreme. Časi, ki jih poda orodje, se merijo v milisekundah (ms) in so zelo pomembni pri vseh časovno kritičnih aplikacijah, kot je govor, spletne igre in bančne transakcije. Če čas, ki ga izmeri orodje, preseže npr. 150 ms, je to lahko že znak težav pri uporabi govornih internetnih storitev. Na zakasnitev pomembno vplivata tehnologija dostopa in obremenjenost povezave na celotni poti do strežnika, ki izvaja storitev.
+
+Če dostopate do zelo oddaljenih strežnikov, lahko ima tudi pot prenosa opazen vpliv na zakasnitev (pribl. 280 ms za Japonsko). Pri hitrih širokopasovnih povezavah so zakasnitve krajše od 2 ms (optična vlakna), pri počasnih obremenjenih povezavah pa lahko zakasnitev preseže 500 ms; običajno je zakasnitev med 10 in 50 ms.
+
+=== Kaj pomeni moč signala?
+Močnejši kot je radijski signal, ki ga sprejema mobilni terminal od bazne ali dostopovne (WLAN) postaje, hitrejša in stabilnejša je povezava. Z oddaljevanjem terminala se povečuje šum in napake pri prenosu, zato zaradi zanesljivosti bazna postaja oziroma WLAN dostopovna točka zniža hitrost prenosa in poveča število redundantnih podatkov. Če je vaš mobilni terminal blizu odprtega okna ali zunaj, bo signal običajno boljši kot v zgradbi. Za dober signal pri povezavah WLAN mora biti med dostopno točko WLAN in vašo napravo (npr. tablico) čim manjša razdalja ter čim manj ovir (npr. zidov
+
+=== Kaj nam pove podatek o nivoju signala?
+
+Moč signala (v dBm) se meri z negativnimi številkami. Višja kot je izmerjena vrednost (tj. bliže ničli), močnejši je signal. Vrednost – 50 dBm npr. pomeni zelo dober signal, vrednost –113 dBm pa pomeni zelo šibek signal.
+
+=== Kako vem, ali je moj rezultat dober ali slab?
+Rdeča/oranžna/zelena lestvica (sistem "semaforja") prikazuje izmerjene hitrosti prenosa podatkov od oziroma do uporabnika ("hitrost prenosa podatkov"). Hitrost lahko kategoriziramo, kot sledi:
+
+* zelena: hitrost (do uporabnika) je 10 Mbps ali višja, hitrost (od uporabnika) pa 2 Mbps ali višja,
+* oranžna: hitrost (do uporabnika) je do 10 Mbps, hitrost (od uporabnika) pa do 2 Mbps,
+* rdeča: hitrost (do uporabnika) je do 2 Mbps, hitrost (od uporabnika) pa do 1 Mbps.
+
+Rdeča/oranžna/zelena lestvica se ne nanaša na uporabljeno tehnologijo, ampak zgolj na izmerjeno hitrost prenosa podatkov. Visoke hitrosti prenosa je moč doseči le s tehnologijami, kot sta HSPA+ ali LTE. Posledično rdeč rezultat pove, da ste bili v času merjenja povezani z bazno postaja s starejšo tehnologijo, ste bili daleč od postaje ali pa je bila bazna postaja zelo zasedena (v času meritev jo je uporabljajo veliko uporabnikov).
+
+////
+=== Kako pravilno razlagam rezultate testa?
+Meritev predstavlja trenutni odsev kakovosti vašega širokopasovnega dostopa. Če rezultati odstopajo od oglaševane hitrosti, to še ne pomeni nujno, da vaš ponudnik širokopasovnega dostopa ne izpolnjuje svojih pogodbenih obveznosti.
+
+Na slabšo kakovost povezave lahko vplivajo številni dejavniki, kot so čas izvajanja meritev (ponoči, zjutraj, sredi dneva, zvečer), število uporabnikov na povezavi, obremenjenost računalnika in domačega usmerjevalnika ali WLAN dostopovne točke, število odprtih programov, konfiguracija sistema ipd.
+
+Tudi pri dobri širokopasovni povezavi do testnega strežnika se lahko zgodi, da sta testni strežnik ali povezava do testnega strežnika preobremenjena.
+
+Pri razlaganju testnih rezultatov morate upoštevati, da, čeprav pri oglaševanju večina ponudnikov navaja (relativno visoko) najvišjo podatkovno hitrost, s pogodbo jamčijo precej nižjo hitrost.
+
+Ponavadi so podatkovne hitrosti s pogodbo omejene na določeno hitrost (hitrost "do"). Operaterji imajo tehnične možnosti, da odstranijo te omejitve za posamezni IP naslov. To lahko med drugim vpliva na Open Nettest strežnike. V nekaterih primerih lahko to privede do višje izmerjene hitrosti, kot je običajno mogoča pri uporabi drugih internetnih storitev.
+
+Zanesljive rezultate lahko dobite le, če upoštevate sistemske in naključne napake in če Open Nettest pogosto ponavljate.
+////
+
+=== Zakaj so bile za rdečo/oranžno/zeleno lestvico izbrane mejne vrednosti?
+Mejne vrednosti za ocenjevanje se prikažejo ne glede na vrsto vašega širokopasovnega dostopa (ne glede na to, ali test izvajate na povezavi WLAN, v brskalniku, pametnem telefonu UMTS ali LTE). Barve so splošni pokazatelj, če kakovost zadošča za večino spletnih aplikacij.
+
+
+Splošno sprejeta definicija "zadostne" pasovne širine ne obstaja; subjektivno dojemanje potrebne hitrosti je odvisno od vrste uporabljenih aplikacij. Ker je sistem za oceno hitrosti in zakasnitev na povezavi izbran tako, da je neodvisen od tehnologije, s starejšimi tehnologijami dostopa ni mogoče doseči "zelenega" rezultata (npr. povezave GPRS ali dostop ISDN).
+
+Strokovnjaki pri <organization>-u so izbrali naslednje mejne vrednosti za zeleno (oranžno):
+
+* do uporabnika: 10 Mbps (2 Mbps),
+* od uporabnika: 2 Mbps (1 Mbps);
+
+za zakasnitev pri uporabi orodja PING: 25 ms (75 ms);
+
+za signal:
+
+
+* mobilni GSM/UMTS: – 85 dBm (– 101 dBm),
+* mobilni LTE: – 95 dBm (– 111 dBm),
+* WLAN – 61 dBm (– 76 dBm).
+
+=== Kaj pomeni Mbps?
+V telekomunikacijah se hitrost podatkovnih povezav meri in oglašuje z Mbps (npr. 10 Mbps oziroma 10 Mb/s), kar je enota za megabite na sekundo. Pri tem se uporablja naslednja pretvorba:
+
+10 Mbps = 10.000 kbps
+1 Mbps = 1.000 kbps
+1 kbps = 1.000 bps
+
+Poleg podajanja podatkovne hitrosti v bps (ali b/s) se prenos informacij (podatkov) izraža tudi v bajtih na sekundo (bytes/s). Ker je 1 byte/s enak 8 bps, lahko hitrost prenosa pri širokopasovni povezavi opišemo z 8 Mbps, 8000 kbps ali 1 MByte/s. Prenos datoteke velikosti 3 MB (npr. glasbena mp3 datoteka) pri povezavi s hitrostjo 8 Mbps torej traja najmanj 3 sekunde.
+
+Za merjenje podatkovne hitrosti se pri Open Nettest uporablja pretvorbeni faktor 1000, ker se faktor 1024 v tem kontekstu običajno ne uporablja.
+
+=== Ali obstaja lestvica ponudnikov spletnega dostopa, ki omogočajo najvišje hitrosti ali imajo največ uporabnikov?
+Namen Open Nettest ni izdelava lestvice najhitrejših ali najbolj priljubljenih ponudnikov spletnega dostopa, ampak predstavitev dejanskega stanja izmerjenih povezav s pomočjo velikega števila uporabnikov. Statistiko, ki povzema vse rezultate testov za posameznega ponudnika spletnega dostopa, lahko najdete na: https://example.org/en/statistics.
+
+Za več informacij o ponudbi dostopa do spleta obiščite spletne strani ponudnikov širokopasovnega dostopa. Upoštevajte dejstvo, da so oglaševane hitrosti običajno "hitrosti do", in upoštevajte, da je zagotovljena pasovna širina običajno precej manjša.
+
+=== Kako naj razlagam statistiko?
+Statistika je sestavljena iz dveh poročil. Pri prvem poročilu gre za statistike posameznih operaterjev, pri drugem pa za razlike med napravami. Podatki predstavljajo statistične vrednosti za hitrost prenosa podatkov do oziroma od uporabnika, zakasnitev (latenco) in moč signala. Poleg tega prikazani podatki upoštevajo tudi število opravljenih meritev.
+
+Kateri podatki se uporabijo pri izdelavi poročila, je odvisno od izbranih nastavitev. Pri "Vrsti" lahko izbirate med možnostmi: "mobilno" (tj. aplikacija za mobilna omrežja), "WLAN (aplikacija)" (tj. aplikacija za WLAN) in "brskalnik" (test se opravi v brskalniku brez razlikovanja med vrsto dostopa do spleta). Če izberete "mobilno", lahko nadalje izbirate med "2G" (EDGE), "3G" (UMTS/HSPA) in "4G" (LTE). Tehnologija "mešano" pomeni, da je med merjenjem prišlo do spremembe (npr. iz 3G na 2G). Izberete lahko tudi časovno obdobje, npr. 1 dan, 1 teden, 1 mesec, 3 meseci, 6 mesecev, 1 leto ali 2 leti. Po privzetih nastavitvah se upoštevajo vse meritve, opravljene v 3G mobilnih omrežjih v zadnjih treh mesecih.
+
+Vrednost v tej statistiki imenujemo kvantili. 80-odstotni kvantil pomeni, da je 80 odstotkov vrednosti slabših od tega kvantila, 20 odstotkov vrednosti pa boljših. Tudi 50-odstotni in 20-odstotni kvantil sta določena na enak način ("slabše" pomeni, da so vrednosti za hitrost prenosa do oziroma od uporabnika nižje, vrednosti pinga pa višje). Če poenostavimo, 80-odstotni kvantil označuje vrednost, ki je lahko dosežena ob ugodnih pogojih, 50-odstotni kvantil (mediana) označuje tipično vrednost, 20-odstotni kvantil pa vrednost, ki je dosežena ob neugodnih pogojih. Ob privzetih nastavitvah statistika prikaže mediano.
+
+Statistika naj bi vam ponudila približno oceno, kakšne hitrosti prenosa so možne (izmerjene) pri določenem operaterju oziroma ob uporabi določene opreme na določeni lokaciji. Za pravilno razlaganje statistike pa je treba upoštevati dejstvo, da lahko na statistiko vplivajo številne okoliščine, ki jo v skrajnem primeru lahko tudi popačijo, npr.:
+
+* prenizka frekvenca (pogostost) meritev določenih karakteristik (npr. z določeno napravo),
+* nenavadno visoka frekvenca meritev naprav, katerih prepustnost je nižja od razpoložljive pasovne širine,
+* nenavadno visoka frekvenca meritev v določenem kraju s posebej dobrim ali posebej slabim sprejemom (npr. v naravi, kleti, dvigalu, tunelu).
+
+Vrednosti, ki so prikazane v statistiki, ne smete razlagati kot pričakovane vrednosti; v smislu da lahko pričakujete učinkovito prenosno hitrost Y od operaterja X. Vrednosti se vedno nanašajo na določeno izbiro meritev, ki so bile morda opravljene v neobičajnih razmerah. Upoštevati je treba, da visoke vrednosti v poročilu ni mogoče doseči iz tehničnih omejitev pri nekaterih, zlasti starih napravah.
+
+Vrednosti v statistiki lahko dosežete v ugodnih, neugodnih ali običajnih pogojih, odvisno od izbranega kvantila. Vendar je to odvisno od številnih dejavnikov, kot so tehnologija prenosa, uporabljena naprava, pokritost omrežja na določeni lokaciji, zadevne pogodbene določbe ali omejitev v okviru tarife.
+
+=== Ali lahko poženem nov test, preden se obsežnejši test zaključi?
+Ne, ne morete hkrati poganjati več testov.
+
+=== Ali lahko porabljena količina zakupljenega prenosa podatkov vpliva na slabe rezultate testa?
+Da, pri nekaterih ponudbah je (mesečna) poraba omejena z določeno količino prenesenih podatkov. Če to količino presežete, potem morate – odvisno od pogodbe – ali plačati dodaten znesek ali pa se pasovna širina zelo zmanjša in hkrati se praviloma strošek prenosa na MB podatkov poveča oziroma se dostop do spleta v celoti blokira.
+
+=== Kaj je sinhronizacijska koda?
+Sinhronizacijska koda vam omogoča, da sinhronizirate rezultate testa tudi z drugimi vašimi napravami. Zato mora uporabnik zahtevati sinhronizacijsko kodo s pomočjo Open Nettest aplikacije ali testa v brskalniku, kodo pa nato vnesti v druge naprave. To lahko storite tako v aplikaciji kot testu za brskalnik v meniju "Zgodovina".
+
+=== Kako se rezultati testov porazdelijo po kategorijah "mobilni", "WLAN" in "brskalnik"?
+Rezultati testa iz aplikacije se porazdelijo po kategorijah "mobilni" (npr. v primeru tehnologije 3G ali 4G) ali "WLAN" (npr. v primeru uporabe dostopne točke WLAN).
+
+Vsi testi, opravljeni v brskalniku, so neodvisni od tehnologije za dostop do spleta (npr. LAN omrežje, dostopna točka WLAN, podatkovna kartica HSPA) se dodelijo kategoriji "brskalnik".
+
+=== Imam težave z merjenjem moči signala ...
+Možno je, da nekatere naprave prikažejo napačno ali neosveženo moč signala (med drugim se lahko ta težava pojavlja pri nekateri napravah Samsung Galaxy S II I9100G). V tem primeru se moč signala v aplikaciji ne prikaže in se posledično zavrže.
+
+V različicah za brskalnik in operacijski sistem iOS (iPhone, iPad) moč signala ni prikazana (naprave z operacijskim sistemom iOS ne omogočajo dostop do izmerjene moči radijskega signala).
+
+=== Kaj v statistiki pomeni izraz "operater"?
+Na podlagi izbora so v statistiki prikazani slovenski operaterji fiksnih in mobilnih omrežij. Razlikujemo lahko med naslednjimi primeri:
+
+* Če izberete "mobilni", boste videli seznam slovenskih operaterjev mobilnih omrežij (različne blagovne znamke, ki uporabljajo isto omrežje, so razporejene pod istim operaterjem mobilnega omrežja).
+* Če pri vrsti izberete "WLAN (aplikacija)" ali "brskalnik", se prikaže seznam slovenskih operaterjev (fiksnih) omrežij. V določenih primerih se lahko zgodi, da prikazani v seznamu dejansko ni operater omrežja, temveč podaja avtonomni sistem omrežja.
+* V primeru združitev in razdružitev se izvirno (prvotno) ime operaterja označi s pripono.
+
+Meritve v tujini in meritve gostujočih tujih uporabnikov v Sloveniji se ne upoštevajo.
+
+=== Kaj je test omrežnih storitev?
+Open Nettest Android aplikacija izvaja naslednje teste omrežnih storitev:
+
+* Test "nespremenjena vsebina",
+* Test "referenčna stran",
+* Test "pregledna povezava",
+* Test “DNS",
+* Test "TCP-Vrata",
+* Test "UDP-Vrata".
+* Test "Traceroute"
+* Test "VoIP"
+
+==== Test "nespremenjena vsebina"
+Med tem testom se z merilnega strežnika na terminal prenese v naprej določena vsebina, prejeta vsebina pa se s pomočjo zgoščevalnega algoritma primerja z vsebino, ki je shranjena na strežniku.
+
+Če test ni uspešen, se je vsebina med prenosom spremenila.
+
+==== Test "referenčna stran"
+Evropski inštitut za telekomunikacije (ETSI) je za potrebe meritev pripravil HTML referenčno spletno stran, ki ima natančno določeno velikost in vključuje besedilo, slike in druge spletne gradnike. Referenčna stran je naložena tudi na merilne strežnike Open Nettest (http://example.org/kepler/). V tem koraku se ETSI referenčna stran prenese na terminal, hkrati pa se preveri velikost, število in parametre prenesenih gradnikov ter izmeri čas prenosa.
+
+Če spletne strani ni mogoče prenesti, je to po navadi zaradi zelo počasne spletne povezave. Drug razlog je lahko v tem, da spletni dostop ne dovoljuje dostopa do referenčnih strani. Trajanje prenosa je merilo za to, kako hitro se lahko spletna stran prikaže na uporabljeni napravi glede na trenutno hitrost dostopa do spleta. Hitrejši kot je prenos, boljši je rezultat.
+
+==== Test "transparentnost povezave"
+S testom transparentnosti povezave preverjamo, ali se na poti med testnim strežnikom in terminalom nahaja naprava posredniški strežnik (angl. Proxy), ki preverja vsebino in jo spreminja. Posredniški strežniki imajo nalogo, da v medpomnilnik shranjujejo pogosto obiskane spletne strani, vsebine stiskajo ali varujejo odjemalce pred potencialno nevarno vsebino. Med testom odjemalec pošlje zahteve, ki jih po navadi ni mogoče pravilno posredovati prek vmesnih naprav, zato lahko opazimo morebitne spremembe.
+
+Če povezava ni transparentna, ni mogoče zagotoviti, da je zahtevana spletna stran in njena vsebina popolnoma enaka tisti na strežniku. V odvisnosti od posredniškega strežnika lahko ta zahtevano vsebino pošlje k odjemalcu neosveženo (zastarelo), v slabši kakovosti (uporablja stiskanje) ali nepopolno.
+
+==== Test “DNS”
+Med tem testom se preveri izvajanje storitve DNS, njene performančne lastnosti in napake pri prevajanju domenskega imena v IP naslov. Ko v naslovno vrstico brskalnika vnesemo internetni naslov, se naslov (npr. example.org) prevede v npr. 193.2.13.84 (IPv4) oziroma 2001:1470:8000:402:2::842 (IPv6) z uporabo sistema DNS. Slabo delovanje storitve DNS prevajanja domenskih imen v IP naslov pomembno vpliva na uporabniško izkušnjo pri nalaganju spletnih strani.
+
+==== Test “TCP-vrata”
+Vsaka internetna aplikacija za svojo delovanje odpira specifična TCP ali UDP vrata (port). Pri pošiljanju elektronske pošte prek poštnega odjemalca se npr. uporablja protokol SMTP (vrata 25), pri prejemanju se uporablja POP protokol (vrata 110) ali IMAP (vrata 143). Če so vrata na strani ponudnika dostopa zaprta (na požarni pregradi), aplikacija ne bo delovala. Pri tem testu aplikacija preverja TCP vrata nekaterih najbolj uporabljenih aplikacij. V podjetjih so določena vrata pogosto zaprta oziroma so na voljo samo nekatera vrata (storitve).
+
+==== Test “UDP-vrata”
+Ta test preverja, ali je mogoče vzpostaviti povezavo prek vrat UDP. Enako kot velja pri TCP protokolu, se tudi UDP protokol uporablja za specifične aplikacije. Vrata 5060 se npr. privzeto uporabljajo za VoIP komunikacijo s protokolom SIP. Če so vrata zaprta, zadevne storitve s tem spletnim dostopom ne morete uporabljati.
+
+==== Test “Traceroute”
+Ta test preverja koliko vozlišč se prečka in koliko časa traja zakasnitev, da paketi pridejo od terminala do Open Nettest strežnika.
+
+==== Test “VoIP”
+Ta test simulira delovanje VoIP storitve. Preverja ali je mogoče poslati in prejeti govorni paket na privzeta vrata 5060 ter ali je prihajajoče in odhajajoče potresevanje zakasnitve sprejemljivo za VoIP komunikacijo.
+
+////
+=== Ali <organization> jamči za pravilnost rezultatov testa?
+Kot pri vseh drugih testih ali meritvah so tudi rezultati Open Nettest meritev podvrženi sistemskim in naključnim napakam. Kljub temu arhitektura in design sistema Open Nettest omogočata zelo robusten test. Glejte tudi Pogosta vprašanja v zvezi z rezultati testa in tehnologijo
+
+Vseeno svetujemo, da zanesljivost rezultatov izboljšate z večkratnim ponavljanjem testa.
+////
+
+//=== Ali lahko vložim pritožbo proti mojemu ponudniku širokopasovnega dostopa v skladu s pogodbo (garancijski zahtevki), če na testu dobim slabe rezultate?
+=== Ali lahko vložim pritožbo proti mojemu ponudniku širokopasovnega dostopa v skladu s pogodbo, v kolikor rezultati meritev odstopajo od pogodbeno dogovorjene hitrosti?
+Če z izvedenimi meritvami z uporabo merilnega sistema Open Nettest ugotovite razhajanje med pogodbeno dogovorjeno in dejansko zagotovljeno hitrostjo, morate o tem seznaniti svojega ponudnika na način, kot ga za prijavo slabšega delovanja storitev predvidevajo njegovi splošni pogoji. V tem primeru imate pravico, da od ponudnika zahtevate, da na vašem priključku izvede strokovno meritev hitrosti in kakovosti povezave. Po tem, ko ste ponudniku prijavili slabše delovanje storitev, lahko zoper račun, izdan za obračunsko obdobje, v katerem vam naročene storitve niso delovale oziroma so delovale slabše, vložite ugovor/reklamacijo zaradi nedelovanja oziroma slabšega delovanja storitev ter v okviru ugovora od ponudnika zahtevate nadomestilo. Če z rezultatom reklamacijskega postopka ne bi bili zadovoljni, lahko v roku 15 dni po prejemu odgovora, vložite predlog za rešitev spora pred agencijo. V tem primeru pa morajo meritve biti izvedene v skladu z  s link:{urlGeneralAct}[»*Splošnim aktom o storitvah dostopa do interneta in s tem povezanih pravicah končnih uporabnikov (11. člen)*«, window="_self"]. Navodila se link:{urlHowTo}[»*nahajajo na tej povezavi*«]. V kolikor vas ponudnik v roku 30 dni od prijave razhajanj ne seznani z rezultati opravljenih meritev, se vaša prijava šteje kot podana reklamacija računa za obračunsko obdobje v katerem ste ugotovili razhajanja, in imate časa 15 dni od poteka 30-dnevnega roka, da vložite predlog za rešitev spora pred agencijo.
+
+=== Kje lahko najdem informacije o varovanju podatkov in pogoje uporabe?
+Pogoje uporabe in izjavo o varovanju zasebnosti Open Nettest lahko najdete na: https://example.org/sl/pp.
+
+=== Kaj pomenijo odprti podatki in odprta koda?
+Open Nettest je osnovan na načelu odprte kode in odprtih podatkov.
+
+V skladu z načelom odprte kode je izvorna koda programske opreme Open Nettesta v celoti javno dostopna z namenom večje preglednosti in zanesljivosti. Vsakršna komercialna uporaba izvorne kode Open Nettest, ki je objavljena skladno z MIME licenco, je prepovedana.
+
+Na podlagi načela odprtih podatkov se podatki Open Nettest – v skladu s tukaj opisano politiko o varovanju zasebnosti – v obliki datoteke objavijo na spletni strani Open Nettest pod https://example.org/sl/opendata in so v uporabi na podlagi licence https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution 4.0 (CC BY 4.0)]. Licence so prosto dostopne splošni javnosti za informacije, uporabo, razširjanje in druge načine uporabe.
+
+=== Kakšne so možnosti, ki so na voljo za grafičen prikaz rezultatov testa?
+Tako v mobilni verziji aplikacije kot v verziji za brskalnik imate možnost, da si ogledate prejšnje rezultate testa, ki so geografsko porazdeljeni na zemljevidu. Zemljevid prikazuje skupne rezultate vaših testov in testov drugih uporabnikov. Poleg tega lahko v obeh verzijah nastavite različne filtre, da dobite najbolj ustrezen prikaz rezultatov v posameznem primeru.
+
+== Prikaz podatkov na zemljevidu
+
+=== Kaj je prikazano na zemljevidu?
+Zemljevid prikazuje rezultate meritev, ki so bile opravljene v določenem časovnem obdobju. Kateri podatki so prikazani na zemljevidu, je odvisno od izbranih nastavitev. V prvem kombiniranem polju lahko izbirate:
+
+* med možnostmi: "mobilni" (tj. mobilna aplikacija v mobilnem omrežju), "WLAN (mobilna aplikacija)" (tj. mobilna aplikacija v omrežju WLAN) in "brskalnik" (tj. test se opravi v brskalniku, brez razlikovanja vrste dostopa do spleta) ter
+* med prikazanimi količinami: prenos do uporabnika, prenos od uporabnika, ping (zakasnitev) in morda tudi nivo radijskega signala.
+
+Izbirne gumbe ob strani uporabite za izbiro načina prikazov podatkov:
+
+* kot samostojne točke (ena točka pomeni eno ali več meritev na isti lokaciji),
+* toplotni zemljevid (več točk je združenih v območje) ali
+* samodejno (samostojne točke pri visoki povečavi in toplotni zemljevid pri nizki povečavi).
+
+Na zemljevidu prikazane vrednosti se imenujejo kvantili (oziroma percentili, kadar gre za procentualni prikaz). 80-odstotni kvantil pomeni, da je 80 odstotkov vrednosti slabših in 20 odstotkov vrednosti boljših od določenega kvantila ("slabše" pomenijo nižje vrednosti za hitrost prenosa do oziroma od uporabnika in moč signala ter višje vrednosti za ping). 50-odstotni in 20-odstotni kvantil sta določena na enak način. Če poenostavimo, 80-odstotni kvantil označuje vrednosti, ki jih lahko dosežete ob ugodnih pogojih, 50-odstotni kvantil (mediana) označuje običajne vrednosti, 20-odstotni kvantil pa neugodne pogoje. V privzetem pogledu so na zemljevidu prikazane mediane.
+
+Glede na izbrano vrsto testa ("mobilni", "WLAN (mobilna aplikacija)" in "brskalnik") lahko tudi filtrirate rezultate meritev za posamezno mobilno ali fiksno omrežje. Če ste izbrali "mobilni", se prikažejo samo imena razpoložljivih mobilnih omrežij. Sicer se prikažejo imena fiksnih omrežij. V privzetem pogledu se na zemljevidu prikažejo rezultati za vsa omrežja.
+
+Rezultate lahko filtrirate tudi glede na časovno obdobje.
+
+Zemljevid naj bi podal približno oceno izmerjenih hitrosti prenosa na določenem območju za določene operaterje in z uporabo določene opreme. Pri razumevanju zemljevida pa morate upoštevati, da lahko različne okoliščine vplivajo na predstavitev meritev in celo izkrivijo pravilno predstavitev meritev, npr.:
+
+* previsoka ali prenizka frekvenca meritev določene karakteristike (npr. v omrežju določenega operaterja oziroma z določeno napravo),
+* neobičajno visoka frekvenca meritev z napravami, katerih zmogljivost je nižja od razpoložljive pasovne širine.
+* neobičajno pogosta frekvenca meritev na določenem kraju s posebej dobrimi ali posebej slabimi pogoji sprejema (npr. v naravi, kleti, dvigalu, tunelu ipd.).
+
+== Primer: Lokacija z nadpovprečnim številom 2G meritev v primerjavi s 3G/4G meritvami
+
+image::/assets/img/help-heatmap1.png[]
+
+== Slika: Rezultat z nadpovprečnim številom 2G meritev; desno brez 2G meritev
+Prikazan zemljevid ne pomeni, da lahko na območju X nekdo pričakuje hitrost prenosa Z pri operaterju Y. Zemljevid se vedno nanaša na določen izbor meritev, ki so bile morda opravljene v netipičnih okoliščinah. Upoštevati morate tudi, da prikazanih rezultatov meritev iz tehničnih razlogov ni mogoče doseči na nekaterih, zlasti starejših napravah.
+
+Če na zemljevidu ni prikazana nobena samostojna točka na določenem področju, to pomeni, da na tem območju ni bilo opravljenih meritev. Zato to tudi ni zemljevid pokritosti s širokopasovnimi povezavami.
+
+Prikazane rezultate meritev lahko dosežete pod ugodnimi, neugodnimi ali običajnimi pogoji, odvisno od izbranega kvantila. Vendar je to odvisno od številnih dejavnikov, npr. prenosne tehnologije, uporabljene naprave, pokritosti omrežja na lokaciji oziroma pogodbenih ali tarifnih omejitev (omejevanje hitrosti do oziroma od uporabnika).
+
+=== Kaj pomeni barvna klasifikacija?
+Barvna klasifikacija temelji na določenih razponih vrednosti, ki jih je izbral <organization>. Zelena barva pomeni zelo dobre, visoke rezultate testa (opomba: možni so rezultati boljši od 100 Mbps, vendar so lahko manj natančni), rdeča barva pa majhno pasovno širino. Barvni odtenki služijo za prikaz vrednosti med temi ekstremi.
+
+Samostojne točke testa so obarvane po sistemu "semaforja".
+
+=== Kateri rezultati se uporabijo pri zemljevidu?
+Na zemljevidu so prikazani rezultati Open Nettest meritev. Rezultati izbirnega, podrobnejšega NDT-Testa niso prikazani. Tako v mobilni verziji zemljevida kot verziji za brskalnik lahko nastavite številne filtre in tako sami določite, kateri rezultati se prikažejo na zemljevidu.
+
+=== Ali so prikazani tudi rezultati testov izven Slovenije?
+Da, prikazani so tudi zemljevidi izven Slovenije. Glejte poglavje PING med pogostimi vprašanji in odgovori.
+
+=== Kaj je mediana?
+Mediana ali srednja vrednost je vrednost, ki leži natančno na sredini vseh izmerjenih in urejenih vrednosti. Za razliko od aritmetične sredine, ki se jo izračuna kot povprečje vseh izmerjenih vrednosti, je mediana vrednost, pri kateri je polovica vrednosti večjih, druga polovica pa manjših od nje. Tako je npr. 6,2 aritmetična sredina števil 1, 2, 4, 8 in 16, medtem ko je mediana 4, saj sta dve vrednosti nižji, dve vrednosti pa višji od 4. Ker moramo za aritmetične vrednosti uporabljati razmernostne lestvice, se mediana uporablja, kadar lahko vrednosti merimo le z ocenjevalno lestvico.
+
+=== Kaj je percentil?
+Percentil je statistični kazalec, ki opisuje vrednost, od katere je nižjih X % vzorcev. Npr. 20 % percentil označuje vrednost, pod katero pade 20 % vseh rezultatov testa.
+
+=== Kako točne so samostojne točke?
+Lokacija se določi med meritvijo z vaše naprave. Določanje lokacije je zato odvisno od zmožnosti in nastavitev vaše naprave, lokacija pa se lahko določi:
+
+* s sprejemnikom GPS,
+* z omrežjem (omrežje WLAN ali mobilno omrežje),
+* z IP naslovom.
+
+Določanje lokacije s sistemom GPS je najbolj natančno. Določanje lokacije s pomočjo mobilnega omrežja nudi zgolj grobo oceno, določanje lokacije z IP naslovom pa pogosto ne omogoča uporabnih rezultatov.
+
+Določene lokacije, ki so manj natančne od 2 km, na zemljevidu niso prikazane, točke, kjer je natančnost lokacije nižja od 10 km, niso navedene v podrobnostih. Zato priporočamo, da vključite GPS (če ga imate). Natančnost določene meritve je na voljo kot odprti podatek (glejte podrobnosti s klikom na pojavno okence na zemljevidu).
+
+== Mobilna aplikacija
+
+=== Kakšna dovoljenja ali pooblastila potrebuje vaša mobilna aplikacija?
+
+Vašo lokacijo – približno določena z omrežjem mobilnega operaterja ali točna s pomočjo GPS. S tem dovoljenjem lahko aplikacija določi vašo lokacijo in jo prikaže na zemljevidu.
+
+Spreminjanje ali brisanje podatkov na vaši napravi. S tem omogočite delo z zemljevidi.
+
+Poln dostop do omrežja in WiFi povezave. Da se lahko izvede meritev ter testira omrežne parametre, potrebuje aplikacija dostop do vaših omrežnih nastavitev.
+
+Vaš račun – preberite si nastavitve Googlovih storitev. Dovoljenje omogoča aplikaciji branje konfiguracijskih parametrov za prikaz Google zemljevidov.
+
+Sistemska orodja – preprečuje telefonu, da v procesu meritve preide v fazo spanja.
+
+=== Katere mobilne platforme so podprte?
+Aplikacija podpira mobilna operacijska sistema Android in iOS (npr. iPhone, iPad).
+
+=== Katere različice operacijskega sistema Android so podprte?
+Aplikacija podpira vse verzije operacijskega sistema Android 6.0 ali novejše.
+
+=== Katere različice operacijskega sistema iOS so podprte?
+Aplikacija podpira vse verzije operacijskega sistema iOS 10 ali novejše.
+
+=== Kaj morate vedeti, ko uporabljate mobilno aplikacijo?
+Ko uporabljate mobilno aplikacijo Open Nettest, morate upoštevati naslednje:
+
+* Če nimate paketa z zakupljeno količino podatkov, uporabljajte Open Nettest samo s povezavo WLAN. Za testiranje ne uporabljajte mobilne povezave, ker lahko to povzroči visoke stroške. Vaša poraba podatkov lahko strmo naraste, če test večkrat ponovite.
+* Določeni dejavniki (npr. čas dneva, lokacija, moč signala ipd.) imajo večji vpliv na rezultate testa v mobilnih kot fiksnih omrežjih.
+* Če ste porabili vašo zakupljeno mesečno količino podatkov, je lahko (odvisno od vaše tarife in paketa) hitrost prenosa podatkov zmanjšana ali pa pri tem nastanejo visoki stroški. Obiščite spletno stran ali se pozanimajte pri vašem ponudniku mobilnih storitev, kakšen paket oziroma tarifo imate in kakšno količino podatkov še lahko prenesete v trenutnem obračunskem obdobju.
+
+=== Ali obstaja verzija Open Nettest za tablice?
+Obstoječe mobilne verzije Open Nettest lahko poganjate tudi na tablicah, verzija za Android ("QoS") pa je optimizirana tudi za vodoravni (ležeči) položaj zaslona.
+
+=== Kako lahko namestim mobilno aplikacijo za Android?
+Open Nettest lahko namestite iz trgovine Google Play Store. Obiščite https://play.google.com/store/apps/details?id=<id>.
+
+=== Kako lahko namestim mobilno aplikacijo za iOS?
+Open Nettest mobilno aplikacijo za iOS lahko namestite iz trgovine Apple App Store.
+
+== Brskalniki
+
+=== Kateri so podprti brskalniki?
+Open Nettest podpira vse zadnje verzije brskalnikov: Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge in Opera.
+
+=== Zakaj naj vnesem svoj naslov ali dovolim brskalniku, da prepozna mojo lokacijo?
+Lokacija se uporabi za prikaz rezultatov testa na zemljevidu. Prepoznavanje lokacije z brskalnikom in žično povezavo lahko privede do zelo netočnih in pogosto neuporabnih rezultatov. V tem primeru lahko ročno vnesete naslov ali lokacijo takoj po meritvi. Pri mobilni aplikaciji se lahko lokacija določi dovolj natančno z uporabo mobilnega omrežja oziroma uporabo omrežja WLAN in GPS sprejemnika, ne da bi uporabnik moral sam vnesti podatke.
+
+=== Ali so rezultati odvisni od tipa brskalnika?
+Različni rezultati, odvisni od tipa brskalnika se bodo razlikovali zaradi različnih 'javascript' vsadkov. Ta razlika je posebej opazna pri 1GBit/s povezavah, kjer operacije v okviru 'Javascripa' predstavljajo ozko grlo. Prav tako so velike razlike med brskalniki pri uporabi 'websocket' povezljivosti. Open Nettest ne upošteva časa vzpostavitve 'websocket' povezave, zato lso lahko rezultati meritev zakasnitve ralični, posebej pri zelo hitrih odzivnih časih pod 3ms.
+
+Več o razlikah med vključevanjem Javascript-a v različne brskalnike si lahko preberete na https://en.wikipedia.org/wiki/Browser_speed_test, kjer je navedenenih tudi nekaj povezav na različne Javascript teste,kot so Octane, SunSpider, JetStream in podobni.
+
+== Open Nettest
+
+=== Specifikacija vmesnika odprtih podatkov
+V skladu s Open Nettest politiko zasebnosti so merilni rezultati testiranj razpoložljivi, kot odprti podatki. Specifikacijo vmesnika si lahko preberete na naslednji povezavi. Specifikacija opisuje, kateri podatki so razpoložljivi, kot prosto dostopni. Dostopni so v CSV obliki.
+
+=== CSV vmesnik
+Merilni rezultati zadnjih 31 dni so razpoložljivi v arhivski zip datoteki, ki jo lahko prenesete na povezavi. Preostali rezultati meritev so dostopni na mesečni osnovi (prosim izberite). Prosimo upoštevajte, da časovni žig predstavlja vrednosti v UTC časovnem formatu. Podatki so objavljeni v skladu s licenco https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution 4.0 (CC BY 4.0)].
+
+_Tekst ali deli teksta v zavihu Pomoč so, z dovoljenjem RTR, povzeti po tekstu od RTR-NetTest._

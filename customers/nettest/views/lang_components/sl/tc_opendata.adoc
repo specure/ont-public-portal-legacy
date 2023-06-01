@@ -1,0 +1,8 @@
+Ali se strinjate, da so sledeči podatki objavljeni kot odprti podatki in so javno dostopni?
+
+* Platforma
+* Tip brskalnika
+* Zunanji IP naslov (anonimiziran)
+* Geografska lokacija meritve
+
+Prosimo potrdite, da razumete vprašanje in da se strinjate z javno objavo podatkov pridobljenih v okviru te aplikacije. Kadarkoli lahko prekličete svojo privolitev s tem, da v brskalniku pobrišete piškotek z imenom "opendata".

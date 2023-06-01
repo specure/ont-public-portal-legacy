@@ -1,0 +1,93 @@
+<terms-conditions-check></terms-conditions-check>
+<traffic-consumption-warning data-ng-if="testctrl.taAccepted"></traffic-consumption-warning>
+<div class="main-container">
+    <div class="main wrapper clearfix">
+        <article>
+            <header>
+                <h1 class="article-header" data-translate="menu_test"></h1>
+            </header>
+
+            <section class="test-visualization" data-ng-hide="testctrl.testFailed">
+		<!--<canvas id="test-canvas" width="500" height="500"></canvas>-->
+            </section>
+
+		<link rel="stylesheet" href="vendor/gauge/gauge.min.css" />
+	<link href="vendor/gauge/gauge.min.css?c=e87acff154e471fa5a81" rel="stylesheet"></head>
+	<script type="text/javascript" src="vendor/gauge/gauge.min.js?c=e87acff154e471fa5a81"></script></body>
+
+	<script src="vendor/gauge/gauge.min.js"></script>
+
+	<div id="webTest"></div>
+	<script>
+		WebNetTest.init({
+
+			//ID of element to be replaced with test
+			el: '#webTest',
+
+			colors: {
+				primary: '#09b7b4'
+			},
+
+			onLocationResolve: function(data) {},
+
+			onStart: function(data) {
+				console.log(data);
+			},
+
+			//250ms tick
+			onTick: function(data) {
+			},
+
+			onSuccess: function(resultUrl) {
+				console.log(resultUrl);
+			},
+
+			onError: function(error) {
+				console.log(error);
+			}
+
+		});
+	</script>
+
+            <section class="test-failed" data-ng-show="testctrl.testFailed">
+                <span data-translate="test.error.CONNECT_FAILED"></span> <!-- TODO -->
+                <button data-translate="test.retry"></button>
+            </section>
+
+        </article>
+    </div><!-- #main -->
+</div><!-- #main-container -->
+
+<div class="aside-container">
+    <div class="aside wrapper clearfix">
+        <aside class="clearfix" data-ng-hide="testctrl.testFailed">
+            <dl class="test-data clearfix">
+                <dt data-translate="test.status"></dt>
+                <dd class="test-phase">{{testctrl.phase}}</dd>
+
+                <dt data-translate="ping"></dt>
+                <dd class="test-ping">{{testctrl.ping}}</dd>
+
+                <dt data-translate="down"></dt>
+                <dd class="test-download">{{testctrl.downloadSpeed}}</dd>
+
+                <dt data-translate="up"></dt>
+                <dd class="test-upload">{{testctrl.uploadSpeed}}</dd>
+			</dl>
+                <!-- -->
+			<dl class="test-data clearfix">
+                <dt data-translate="test.location"></dt>
+                <dd class="test-location">{{testctrl.location}}</dd>
+
+                <dt data-translate="test.server"></dt>
+                <dd class="test-server">{{testctrl.serverName}}</dd>
+
+                <dt data-translate="test.ip"></dt>
+                <dd class="test-ip">{{testctrl.remoteIp}}</dd>
+
+                <dt data-translate="test.provider"></dt>
+                <dd class="test-provider">{{testctrl.providerName}}</dd>
+            </dl>
+        </aside>
+    </div> <!-- #aside -->
+</div> <!-- #aside-container -->

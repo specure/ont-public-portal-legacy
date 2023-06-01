@@ -1,0 +1,86 @@
+<div class="main-container">
+    <div class="main wrapper clearfix">
+        <article>
+            <header>
+                <h1 class="article-header" translate="home_start"></h1>
+                <a href="" class="btn-start center" data-ng-click="homectrl.startTest()">&#xe800;</a>
+            </header>
+        </article>
+    </div><!-- #main -->
+</div><!-- #main-container -->
+
+<div class="aside-container">
+    <div class="aside wrapper clearfix">
+        <aside>
+
+			<div class="teaser-row" data-ng-if="customerctrl.MAIN.FEATURES.SHOW_TEASER === true">
+				<div class="teaser-block">
+					<h2>Already performed tests<br>
+						3,578,846</h2>
+				</div>
+				<div class="teaser-block">
+					<h2>Unique users<br>
+						678,335</h2>
+				</div>
+			</div>
+
+            <div data-ng-if="customerctrl.MAIN.FEATURES.ADVERTISED_SPEED_OPTION.enabled && homectrl.settings.settings[0]['advertised_speed_option']">
+            	<h2 class="aside-header">{{ 'adv_spd.title' | translate }}</h2>
+                <form>
+                    <fieldset class="additional-information">
+
+                        <div class="form-row">
+                            <input type="checkbox" id="set_adv_speed" data-ng-model="homectrl.set_adv_speed">
+                            <label for="set_adv_speed" translate="adv_spd.enable_option">
+                        </div>
+
+
+                        <div data-ng-show="homectrl.set_adv_speed">
+                    		<div class="form-row clearfix">
+                    			<div class="form-col x-large-col">
+                    				<label for="adv_spd_technology" translate="adv_spd.technology"></label>
+                    				<select id="adv_spd_technology" data-ng-model="homectrl.adv_spd.technology" data-ng-init="homectrl.adv_spd.technology='-1';">
+                                		<option data-ng-if="customerctrl.MAIN.FEATURES.ADVERTISED_SPEED_OPTION.has_i_dont_know_option" value="-1" translate="adv_spd.i_dont_know"></option>
+                                		<option data-ng-repeat="option in homectrl.settings.settings[0]['advertised_speed_option']" data-ng-value="{{$index}}">{{option.name}}</option>
+                               		</select>
+                    			</div>
+                        	</div>
+
+                    		<div class="form-row clearfix">
+                    			<div class="form-col mid-col">
+                    				<label for="adv_spd_up" translate="adv_spd.up"></label>
+                    				<input type="number" id="adv_spd_up" data-ng-model="homectrl.adv_spd.up.value" class="half-width">
+                    				<select data-ng-model="homectrl.adv_spd.up.unit" data-ng-init="homectrl.adv_spd.up.unit='mbps';" class="half-width">
+                                        <option value="mbps" translate="unit.mbps"></option>
+                                        <option value="kbps" translate="unit.kbps"></option>
+                                    </select>
+                    			</div>
+                    			<div class="form-col mid-col">
+                    				<p class="adv-speed-error">
+                                    	<span translate="{{homectrl.adv_spd.fail.error}}" data-ng-if="homectrl.adv_spd.fail.type=='up'">
+                                	</p>
+                    			</div>
+                    		</div>
+
+                    		<div class="form-row clearfix">
+                    			<div class="form-col mid-col">
+                    				<label for="adv_spd_down" translate="adv_spd.down"></label>
+                    				<input type="number" id="adv_spd_down" data-ng-model="homectrl.adv_spd.down.value" class="half-width">
+                    				<select data-ng-model="homectrl.adv_spd.down.unit" data-ng-init="homectrl.adv_spd.down.unit='mbps';" class="half-width">
+                                        <option value="mbps" translate="unit.mbps"></option>
+                                        <option value="kbps" translate="unit.kbps"></option>
+                                    </select>
+                    			</div>
+                    			<div class="form-col mid-col">
+                    				<p class="adv-speed-error">
+                                    	<span translate="{{homectrl.adv_spd.fail.error}}" data-ng-if="homectrl.adv_spd.fail.type=='down'">
+                                	</p>
+                    			</div>
+                    		</div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </aside>
+    </div> <!-- #aside -->
+</div> <!-- #aside-container -->

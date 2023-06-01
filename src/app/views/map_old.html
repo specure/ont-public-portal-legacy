@@ -1,0 +1,188 @@
+<div class="landing-page-content-wrapper flex-wrapper">
+    <div data-ng-controller="AppDownloadController as appdlctrl">
+        <article>
+            <p class="center app-download-link" data-ng-if="appdlctrl.getPlatform() === 'Android'">
+                <a href="{{appdlctrl.getAndroidUrl()}}" class="no-underline">
+                    <img src="assets/img/google.png">
+                </a>
+            </p>
+            <p class="center app-download-link" data-ng-if="appdlctrl.getPlatform() === 'iOS'">
+                <a href="{{appdlctrl.getIosUrl()}}" class="no-underline">
+                    <img src="assets/img/apple.png">
+                </a>
+            </p>
+        </article>
+    </div>
+    <div class="landing-page-content flex-wrapper">
+        <div class="clearfix main-container">
+            <article>
+                <div id="map"></div>
+
+                <table class="map-legend" ng-style="mapctrl.Legend.legendcolorstyle">
+                    <tbody>
+                        <tr>
+                            <td ng-repeat="leg in mapctrl.Legend.legendcaption track by $index">{{leg}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </div>
+        <!-- #main -->
+        <!-- #main-container -->
+
+        <div class="aside-container">
+            <div class="aside wrapper clearfix">
+                <aside class="clearfix">
+                    <!--  <header data-ng-if="customerctrl.MAIN.CUSTOMER_ID=='RU'"> -->
+                    <header>
+                        <h2>
+                            <span class="icon-stop-watch cursor-default">&#xe800; </span>
+                            <!-- <a class="test" data-ui-sref="home.newtest" translate="home_start">&#xe800;</a> -->
+                            <a data-ng-controller="CustomerController as customerctrl" class="test cursor-pointer" data-ng-click="customerctrl.startTest()" translate="home_start">&#xe800;</a>
+                        </h2>
+                    </header>
+                    <fieldset class="loop-mode">
+                        <!-- <div data-ng-controller="CustomerController as customerctrl" data-ng-if="customerctrl.MAIN.FEATURES.IS_LOOP_MODE_ENABLED"> -->
+                        <div data-ng-controller="CustomerController as customerctrl" data-ng-if="customerctrl.MAIN.FEATURES.IS_LOOP_MODE_ENABLED">
+                            <label>
+                                <h5>{{'loopmode.activate_loop_mode' | translate}}:
+                                    <input type="checkbox" ng-model="customerctrl.loopMode.isEnabled"></input>
+                                </h5>
+                            </label>
+                            <!-- <div data-ng-show="customerctrl.loopMode.isEnabled"> -->
+                            <div class="loop-mode-settings" data-ng-show="customerctrl.loopMode.isEnabled">
+                                <div class="loop-mode-setting">
+                                    <label>{{'loopmode.repetition_interval' | translate}}</label>
+                                    <input style="display:inline;width:5em;" type="text" data-ng-model="customerctrl.loopMode.intervalMinutes" data-ng-required="number"></input>
+                                    <span>{{'loopmode.repetition_interval_suffix' | translate}} {{customerctrl.MAIN.FEATURES.LOOP_MODE_MIN_INTERVAL
+                                        || 60}}</span>
+                                </div>
+                                <div class="loop-mode-setting">
+                                    <label>{{'loopmode.number_of_repetitions' | translate}}:</label>
+                                    <input style="display:inline;width:5em;" type="text" data-ng-model="customerctrl.loopMode.repetitions" data-ng-required="number"></input>
+                                    <span translate="loopmode.number_of_repetitions_suffix"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <header>
+                        <h5 translate="menu_map"></h5>
+                    </header>
+                    <form>
+                        <fieldset>
+                            <div class="form-row form-row-flex clearfix">
+                                <div class="form-col">
+                                    <select ng-options="mt.name for mt in mapctrl.MeasurementOptions track by mt.val"
+                                        ng-model="mapctrl.Filter.MeasurementOption"
+                                        ng-change="mapctrl.updateMeasumentTypes(mapctrl.Filter.MeasurementOption);"
+                                    ></select>
+                                </div>
+                                <div class="form-col">
+                                    <select ng-options="mt.name for mt in mapctrl.MeasurementTypes track by mt.val"
+                                        ng-model="mapctrl.Filter.MeasurementType"
+                                        ng-change="mapctrl.filterRedraw(mapctrl.Filter.MeasurementType);mapctrl.filterChange();"
+                                    ></select>
+                                </div>
+                            </div>
+                            <div class="form-row form-row-flex clearfix">
+                                <div class="form-col short-col" ng-if="mapctrl.StatisticMethods.length > 0">
+                                    <select ng-options="sm.name for sm in mapctrl.StatisticMethods track by sm.val" ng-model="mapctrl.Filter.StatisticMethod" ng-change="mapctrl.filterChange()"></select>
+                                </div>
+                                <div class="form-col short-col" ng-if="mapctrl.Periods.length > 0">
+                                    <select ng-options="p.name for p in mapctrl.Periods track by p.val" ng-model="mapctrl.Filter.Period" ng-change="mapctrl.filterChange()"></select>
+                                </div>
+                            </div>
+                            <div class="form-row form-row-flex clearfix">
+                                <div class="form-col short-col" ng-if="mapctrl.Operators.length > 0">
+                                    <select ng-options="o.name for o in mapctrl.Operators track by o.val" ng-model="mapctrl.Filter.Operator" ng-change="mapctrl.filterChange()"></select>
+                                </div>
+                                <div class="form-col short-col" ng-if="mapctrl.Technologies.length > 0">
+                                    <select ng-options="t.name for t in mapctrl.Technologies track by t.val" ng-model="mapctrl.Filter.Technology" ng-change="mapctrl.filterChange()"></select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!-- <div ng-dropdown-multiselect="" options="example14data" selected-model="example14model" checkboxes="true" extra-settings="example14settings"></div>  -->
+                        <fieldset>
+                            <div class="form-row form-row-flex clearfix">
+                                <div class="form-col">
+                                    <select
+                                        ng-change="mapctrl.filterChange()"
+                                        ng-model="mapctrl.Filter.Layer"
+                                    >
+                                        <option
+                                            ng-repeat="lt in mapctrl.LayerTypes"
+                                            ng-value="lt.val"
+                                        >{{'map.layer.' + lt.val | translate}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-col">
+                                    <select
+                                        ng-change="mapctrl.mapChange()"
+                                        ng-model="mapctrl.Filter.MapType"
+                                    >
+                                        <option
+                                            ng-repeat="t in mapctrl.MapTypes"
+                                            ng-value="t.val"
+                                        >{{t.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row form-row-flex clearfix srchinput-wrapper">
+                                <div class="form-col x-large-col">
+                                    <input id="srchinput" class="controls" type="text" placeholder="{{'input.search' | translate}}">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </aside>
+                <advanced-search
+                    data-ng-if="customerctrl.MAIN.FEATURES.ADVERTISED_SPEED_OPTION.enabled"
+                    model="customerctrl.advSearch"
+                ></advanced-search>
+            </div>
+            <!-- #aside -->
+            <div
+                class="ONT-wrapper"
+                data-ng-controller="CustomerController as customerctrl"
+            >
+                <div class="ONT"></div>
+            </div>
+        </div>
+        <!-- #aside-container -->
+
+
+        <!-- Create directive and replace in both map.html and index.html -->
+        <div class="loop-mode-display-wrapper" data-ng-controller="CustomerController as customerctrl" ng-if="customerctrl.loopMode.isEnabled && customerctrl.loopMode.finishedTestsCount > 0">
+            <div class="loop-mode-display-block">
+                <h5 style="margin:0;">{{'loopmode.title' | translate}}</h5>
+                <hr style="margin:10px 0;">
+                <div class="loop-mode-display-flex">
+                    <div class="loop-mode-display-flex-text">
+                        {{'loopmode.intro' | translate}}
+                        <br> {{'loopmode.next_test' | translate}}:
+                        <strong>{{customerctrl.loopMode.countdown.hours}} {{'loopmode.next_test_unit_h' | translate}} {{customerctrl.loopMode.countdown.minutes}}
+                            {{'loopmode.next_test_unit_min' | translate}} {{customerctrl.loopMode.countdown.seconds}} {{'loopmode.next_test_unit_sec'
+                            | translate}}</strong>
+                        <br> {{'loopmode.test_counter' | translate}}:
+                        <strong>{{customerctrl.loopMode.finishedTestsCount}}</strong>
+                        <br> {{'loopmode.remaining_tests' | translate}}:
+                        <strong>
+                            <span ng-if="customerctrl.loopMode.repetitions > 0">{{customerctrl.loopMode.remainingTestsCount}}</span>
+                            <span ng-if="customerctrl.loopMode.repetitions <= 0">{{'loopmode.endless_mode' | translate}}</span>
+                        </strong>
+                        <br>
+                    </div>
+                    <div class="loop-mode-display-flex-icon">
+                        <span class="icon-stop-watch"></span>
+                    </div>
+                </div>
+                <hr style="margin:10px 0;">
+                <div style="margin-top:0.5em;">
+                    <button data-ng-click="customerctrl.loopModeAbort()">{{'loopmode.abort' | translate}}</button>
+                </div>
+                <!--<br><pre>{{customerctrl.loopMode | json}}</pre>-->
+            </div>
+        </div>
+    </div>
+</div>

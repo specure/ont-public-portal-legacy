@@ -1,0 +1,18 @@
+        <table class="stackable stacktable large-only" cellspacing="0" wt-responsive-table>
+            <tr align="left">
+                <th width="15%"></th>
+                <th width="30%">{{ "stats_operator_and_device" | translate }}</th>
+                <th width="15%" class="align-right">{{ "down_with_unit" | translate }}</th>
+                <th width="10%" class="align-right">{{ "up_with_unit" | translate }}</th>
+                <th width="15%" class="align-right">{{ "ping_with_unit" | translate }}</th>
+                <th width="15%" class="align-right">{{ "signal_with_unit" | translate }}</th>
+            </tr>
+            <tr data-ng-repeat="i in results">
+                <td>{{::i.time}}</td>
+                <td><a data-ui-sref="{{::target}}({opentestuuid: i.open_test_uuid})" target="_blank" >{{::i._title}}</a></td>  
+                <td class="align-right">{{::i.download_kbit}}</td>
+                <td class="align-right">{{::i.upload_kbit}}</td>
+                <td class="align-right">{{::i._ping_ms}}</td>
+                <td class="align-right">{{i.signal_strength | ifnullSignal: i.lte_rsrp:'-' }}</td>
+            </tr>
+        </table>

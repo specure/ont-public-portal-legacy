@@ -1,0 +1,18 @@
+:encoding: utf-8
+:lang: sl
+:linkattrs:
+
+*11.07.2018 Posodobljen sistem Open Nettest:* +
+
+Preoblikovana in izboljšana različica priljubljenega orodja za merjenje hitrosti in kakovosti internetne povezave. Podprte so meritve višjih hitrosti. Možnost prikaza zemljevida na celem zaslonu. Za naprednejše merjenje je na voljo odjemalec Java (CLI). Odprti podatki so zdaj na voljo pod licenco Creative Commons Attribution 4.0 International (CC BY 4.0). Posodobljeni sta tudi Open Nettest aplikaciji za Android in iOS.
+
+Open Nettest je uporabniško usmerjeno merilno orodje, ki omogoča preverjanje kakovosti in prepustnosti trenutne širokopasovne povezave.
+Sistem je optimiziran za spletne brskalnike ter namenske mobilne aplikacije, ki tečejo v okolju Google Android in Apple iOS.
+
+Ob zagonu meritve se s pomočjo več vzporednih podatkovnih tokov vzpostavi povezava z merilnim strežnikom Open Nettest, ter izmeri trenutna maksimalna pritočna in odtočna hitrost ter središčna zakasnitev na širokopasovni povezavi.
+
+Rezultati meritev so prikazani v numerični in grafični obliki na preglednem zemljevidu Slovenije, ki so hkrati tudi odprto dostopni drugim uporabnikom spleta. Podatke je mogoče filtrirati po različnih kriterijih in so hkrati tudi dober pokazatelj stanja pokrivanja in zmogljivosti širokopasovne povezav v Sloveniji glede na ponudnika dostopa in lokacijo.
+
+Uporabniki mobilnih telefonov lahko dodatno še izmerijo trenutno jakost radijskega signala bazne postaje ali lokalnega brezžičnega omrežja ter npr. izvedejo test dodatnih omrežnih storitev, kot je transparentnost povezave in hitrost odzivanja DNS strežnikov.
+
+Več o tehničnih podrobnostih delovanja Open Nettesta si lahko preberete link:sl/methodology[tukaj, window="_self"]. 

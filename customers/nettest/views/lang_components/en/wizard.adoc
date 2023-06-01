@@ -1,0 +1,97 @@
+= How to Peform a Speed Test
+v0.1, May 2019: Ready for review
+:imagesdir: ./assets/img/en/images
+:iconsdir: ./icons
+:stylesdir: ./styles
+:scriptsdir: ./js
+:sectnums:
+:sectanchors:
+:sectlinks:
+:xrefstyle: short
+:icons: font
+:tool: Open Nettest
+:RA: <organization>
+:linkattrs:
+:urlGeneralAct: assets/files/<general_act>.pdf
+:bl: pass:[ +]
+:toc: macro
+
+If you have concerns or complaints about the speed of your Internet service, {tool} will allow you to test your connection and download a copy of the results.
+
+In order to test normally available speed, you should run the test and save results at least five (5) times within five (5) days, at different at least one (1) hour apart intervals in off-peak hour period.
+
+In order to test minimal available speed, you should run the test and save results at least five (5) times within five (5) days, at different at least one (1) hour apart intervals regardless of the provider’s peak hours.
+
+
+Follow the instructions below to conduct a test and submit your results:
+
+== Before running the test
+
+We strongly recommend taking the following steps before running a test, to ensure the results are accurate:
+
+. Connect your computer directly to your modem Internet port with an Ethernet cable (do not use WiFi or an external router).
+. Disconnect fromm the modem/router ports all other devices such as computers, cameras, IPTV Set-Top Box, (those devices might consume additional traffic which consequently influences the measurement).
+. Close all applications running on your computer (except for your Internet browser) including firewall and anti-virus/malware software.
+. On modem/router disable all wireless (WiFi or Bluetooth) interfaces and VPN connections.
+
+== Running the test
+
+. Open your Internet browser and go to the {tool} website at: https://example.org/sl/[example.org (Opens a new window), window="_blank"]
+
+image::wizard-6c2e0.png[Open Nettest,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=2]
+. Click the ‘Start’ button. Then read through the collected data statement and please agree to the Terms of Service.
+
+[#img-permission]
+image::PermissionPage.gif[Permission,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=3]
+. The test will begin (this may take a few minutes: do not close or refresh your browser until the test is complete).
+
+[#img-test]
+image::TestBegins.gif[Test,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=4]
+. Review your results, then scroll to the bottom of the page and click the ‘Export PDF’ button on the far right.
+
+[#img-exportPdf]
+image::ExportToPDF.gif[Export PDF,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=5]
+. Select the folder where you would like to save the pdf.
+
+[#img-saveFile]
+image::SavePDF.gif[Save file,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=6]
+. If you want to reset the test and run it again, open the side menu by clicking the button in the top left corner of the screen, then click ‘Start’.
+
+[#img-again]
+image::RunAgain.gif[Run again,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+== Submitting a complaint to the Internet Service Provider
+
+If you correctly performed measurements and you noticed discrepancyfootnote:[By the Slovenian General Act on Internet Access Service and related end-users' rights, normal available speed should be available 90% of time with at least 80% of declared by contract maximum download and upload speed. Minimum speed is declared as a speed, which must be always available, when specialised services are not in use and it must be at least 50% of declared by contract maximum speed.]  about speed you shall inform the Internet service provider by provider’s general conditions.
+
+You will need to *attach the PDF files* with the all test results to your email when submitting a complaint, so be careful not to lose/delete them.
+
+Internet service provider is by the link:{urlGeneralAct}[*General act on Internet Access Service*, window="_self"] and related end-users’ rights obliged to inform the end user about findings related to the user's complaint within 30 days from reporting discrepancies. Moreover, Internet service provider shall offer professional measurement of the speed and other QoS parameters of the connection, at end-user's request, at least once during billing period or within (10) days at the latest, free of charge.

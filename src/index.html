@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js {{customerctrl.MAIN.NAME.toLowerCase()}}" lang="" ng-app="nettestApp" ng-controller="CustomerController as customerctrl">
+<!--<![endif]-->
+
+<head>
+    <base href="/"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title data-ng-bind="::customerctrl.MAIN.TITLE"></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="speedtest, internet speed, download, nettest, netztest" />
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+    <link id="favicon" rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/asciidoctor.css" />
+    <!-- compiled CSS -->
+    <% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>"/>
+    <% }); %>
+    <load-map data-provider="{{customerctrl.MAP.DEFAULT_PROVIDER}}"></load-map>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
+    <script src="https://rawgit.com/pimterry/loglevel/master/dist/loglevel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-regenerator-runtime@6.5.0/runtime.js"></script>
+    <!-- compiled JavaScript -->
+    <% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script>
+    <% }); %>
+</head>
+
+<body ng-controller="PagesController as pagectrl"
+      ng-class="{'cutted-footer': pagectrl.getCurrentPageFooterType() === 'cutted'}"
+      >
+<!--[if lt IE 10]>
+
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<h1 style="visibility: hidden; height: 0; padding: 0; margin: 0;" class="customer-name"><%= customer %></h1>
+
+<div class="cookies-policy" data-ng-if="!customerctrl.COOKIES_POLICY && customerctrl.MAIN.FEATURES.COOKIES_POLICY">
+    <h3>{{'cookies_policy' | translate}}
+      <a ui-sref="home.cookies">Cookie Policy</a>
+    </h3>
+    <button data-ng-click="customerctrl.acceptCookies()">Ok</button>
+</div>
+
+<div id="loading-overlay" class="overlay" data-ajax-loading>
+    <!-- <img class="overlay loading" src="assets/img/loader.gif" /> -->
+</div>
+
+<resolve-loader></resolve-loader>
+
+<div data-ui-view data-ng-hide="stateIsLoading" class="flex-wrapper" data-ng-class="{'height-adjust':pagectrl.getCurrentPageClass() === 'height-adjust'}"></div>
+
+<div class="footer-container">
+    <customer-footer></customer-footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/vfs_fonts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvg/dist/browser/canvg.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+// COLOR DEFINITION
+@black: rgb(40, 41, 40);
+@dark-grey: rgb(51, 51, 51);
+@medium-grey: rgb(212, 212, 212);
+@white: rgb(250, 248, 246);
+
+// TEXT COLOR LIGHTNESS
+.smart-text-color (@a) when (lightness(@a) >= 50%) {
+  // Its a light color return a dark output
+  color: darken(@a, 86.5%);
+}
+.smart-text-color (@a) when (lightness(@a) < 50%) {
+  // Its a dark color return a light output
+  color: lighten(@a, 100%);
+}
+
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+body    {
+    background:@black;
+    .smart-text-color(@black);
+}
+select,
+input  {
+  background:@white;
+  border:solid 1px @medium-grey;
+  color:@black;
+}
+button,
+input [type='submit']	{
+    background:@black;
+    .smart-text-color(@black);
+}
+pre {
+  background:@white;
+  box-sizing:border-box;
+  .smart-text-color(@white);
+  padding:.5em;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.header-container,
+.header-container .wrapper  {
+    background:@black;
+}
+.header-container select	{
+	background:@dark-grey;
+	border:none;
+	color:@white;
+}
+.main-container {
+    background:@dark-grey;
+    .smart-text-color(@dark-grey);
+}
+#nav {
+    background:@black;
+    color:@white;
+}
+.menu-link,
+.settings-link  {
+    .smart-text-color(@dark-grey);
+}
+.lang-selection select	{
+	background:@black;
+	.smart-text-color(@black);
+}
+.main-nav a {
+    color:@white;
+}
+.main-nav a:hover   {
+    background:rgba(212,212,212,.3);
+}
+
+/*
+    Footer
+*/
+
+
+/*
+    Tables
+*/
+.main-container td  {
+    border-top:solid 1px @medium-grey;
+}
+.aside-container td  {
+    border-top:solid 1px @medium-grey;
+}

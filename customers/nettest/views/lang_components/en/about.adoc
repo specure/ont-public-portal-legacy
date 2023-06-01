@@ -1,0 +1,16 @@
+:encoding: utf-8
+:lang: sl
+:linkattrs:
+*11.07.2018 Open Nettest UPDATE:* +
+
+A redesigned and improved version of the popular tool for measuring of the internet speed and quality. Measurements of higher speeds are supported. The map can be switched to full screen. Java command-line client (CLI) is available for more advanced testing. Open Data is now available under Creative Commons Attribution 4.0 International (CC BY 4.0) license. The Open Nettest apps for Android and iOS have also been updated.
+
+Open Nettest is a user-oriented measurement tool which allows users to verify the quality and throughput of their broadband connection.
+The system is optimised for web browsers and dedicated mobile apps running on the Google Android and Apple iOS platform.
+
+After the start of the measurement several data streams are used to establish a connection with the Open Nettest test server and the current maximum download and upload speed, as well as the median latency of the broadband connection are measured.
+The measurement results are shown in numbers (text) and graphics and presented on a comprehensive map of Slovenia, while they can also be freely accessed by other online users. The data can be filtered by different criteria and serves as a good indicator of broadband coverage and data speeds in Slovenia by internet service provider and/or location.
+
+Moreover, mobile phone users can also measure the signal strength of the connected base station or the signal strength of the WLAN signal, and perform an additional network service test, e.g. transparent connection, speed of DNS server response.
+
+More about technical specifications can be found at link:en/methodology[this, window="_self"] link.

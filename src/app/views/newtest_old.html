@@ -1,0 +1,72 @@
+<terms-conditions-check></terms-conditions-check>
+<traffic-consumption-warning data-ng-if="newtestctrl.taAccepted"></traffic-consumption-warning>
+
+<div class="main-container">
+    <div class="main wrapper clearfix">
+        <article>
+            <p>
+            <section class="test-visualization" data-ng-hide="newtestctrl.testFailed">
+                <div class="gauge-canvas-wrapper">
+                    <canvas id="gauge-canvas" width="400" height="400"></canvas>
+                </div>
+            </section>
+
+            <section style="text-align: center" class="test-failed" data-ng-show="newtestctrl.testFailed">
+                <span data-translate="test.error.CONNECT_FAILED"></span> <!-- TODO -->
+                <button data-translate="test.retry" data-ng-click="newtestctrl.retryTest()"></button>
+            </section>
+
+        </article>
+    </div><!-- #main -->
+</div><!-- #main-container -->
+
+<div class="aside-container">
+    <div class="aside wrapper clearfix">
+        <aside class="test-result-table" data-ng-hide="newtestctrl.testFailed">
+            <div class="test-result-block">
+                <div>
+                    <span data-translate="test.status"></span>
+                    <span class="test-phase">{{newtestctrl.phase}}</span>
+                </div>
+
+                <div>
+                    <span data-translate="ping"></span>
+                    <span class="test-ping">{{newtestctrl.ping}}</span>
+                </div>
+
+                <div>
+                    <span data-translate="download"></span>
+                    <span class="test-download">{{newtestctrl.downloadSpeed}}</span>
+                </div>
+
+                <div>
+                    <span data-translate="upload"></span>
+                    <span class="test-upload">{{newtestctrl.uploadSpeed}}</span>
+                </div>
+	</div>
+                <!-- -->
+		<p>
+	<div class="test-result-block">
+                <div>
+                    <span data-translate="test.location"></span>
+                    <span class="test-location">{{newtestctrl.location}}</span>
+                </div>
+
+                <div>
+                    <span data-translate="test.server"></span>
+                    <span class="test-server">{{newtestctrl.serverName}}</span>
+                </div>
+
+                <div>
+                    <span data-translate="test.ip"></span>
+                    <span class="test-ip">{{newtestctrl.remoteIp}}</span>
+                </div>
+
+                <div>
+                    <span data-translate="test.provider"></span>
+                    <span class="test-provider">{{newtestctrl.providerName}}</span>
+                </div>
+    </div>
+        </aside>
+    </div> <!-- #aside -->
+</div> <!-- #aside-container -->

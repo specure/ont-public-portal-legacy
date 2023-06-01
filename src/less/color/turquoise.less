@@ -1,0 +1,55 @@
+// COLOR DEFINITION
+@turquoise: rgb(109, 158, 152);
+
+// TEXT COLOR LIGHTNESS
+.smart-text-color (@a) when (lightness(@a) >= 50%) {
+  // Its a light color return a dark output
+  color: darken(@a, 86.5%);
+}
+.smart-text-color (@a) when (lightness(@a) < 50%) {
+  // Its a dark color return a light output
+  color: lighten(@a, 100%);
+}
+
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+.btn-start  {
+    color:@turquoise;
+}
+.aside-container,
+.aside-container a {
+    background:@turquoise;
+    .smart-text-color(@turquoise);
+}
+.main-container a {
+  color:(@turquoise);
+}
+.article-header  {
+    color:@turquoise;
+}
+.aside-header  {
+    .smart-text-color(@turquoise);
+}
+.detail-accordeon {
+    background:@turquoise;
+    .smart-text-color(@turquoise);
+}
+
+/*
+    Forms
+*/
+.search-opentest-filter	{
+	border-top:solid 3px @turquoise;
+}
+
+/*
+    Tables
+*/
+.main-container .stacktable.large-only   {
+    border-top:solid 3px @turquoise;
+}
+.aside-container .stacktable.large-only   {
+    border-top:solid 3px @white;
+}

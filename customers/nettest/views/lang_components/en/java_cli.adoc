@@ -1,0 +1,97 @@
+= Java Command-Line-Interface (CLI)
+:encoding: utf-8
+:lang: sl
+:linkattrs:
+
+== About the Java RMBT Client 
+The Java RMBT Client can be used to test both the speed and Quality of Service (QoS). It comes as a one-click solution. Prerequisite is an installed http://www.oracle.com/technetwork/java/javase/downloads/jre10-downloads-4417026.html[Java Runtime]
+
+== One-Click Java RMBT Client
+For a one-click test, click link:https://example.org/RMBTControlServerV2/jnlp[here, window="_self"]
+
+////
+== Full Java RMBT Client
+The Command line client can be started with following options:
+
+[cols=3*,options="header"]
+|=======================
+|
+|Command
+|Description
+
+|1
+|-? \| -help
+|Show help
+
+|2
+|-h \| -host
+|RMBT server IP or hostname
+
+|3
+|-p \| -port
+|RMBT server port
+
+|4
+|-s \|-ssl
+|Use SSL/TLS
+
+|5
+|-ssl-no-verify
+|Turn off SSL/TLS certificate validation
+
+|6
+|-t \|-threads
+|Number of threads (required when dev-mode)
+
+|7
+|-d \|-duration
+|Test duration in seconds (required when dev-mode)
+
+|8
+|-n \| -ndt
+|Run NDT after RMBT
+
+|9
+|-v \| -verbose
+|Show verbose output
+
+|10
+|-q \| -qos
+|Run QOS after RMBT
+
+|11
+|-ndt-host
+|NDT host to use
+
+|12
+|-u \| -uuid
+|User's uuid
+
+|13
+|-o \| -open
+|Open test result in browser
+
+|14
+|-l \| -loop
+|Enable loop mode with defined count of measurements
+
+|15
+|-i \| -interval
+|Interval in seconds between two measurements in loop mode
+|=======================
+
+== Examples how to run tests from CLI
+
+* Run basic speed tests and open result in browser:
+** java -jar RMBTClient-1.0.jar -o
+* Run also QoS tests and open result in browser:
+** java -jar RMBTClient-1.0.jar -o -q
+* Run basic speed tests in loop mode (100 times, each minute) and open each result in browser:
+** java -jar RMBTClient-1.0.jar -o -l 100 -i 60
+* Run also QoS tests in loop mode (100 times, each minute) and open each result in browser:
+** java -jar RMBTClient-1.0.jar -q -o -l 100 -i 60
+
+== Download the Full Java RMBT Client
+//Try the link if it doesn't work change to link://./path/to/file or link:./path/to/file
+You can download the CLI from link:./assets/RMBTClient-1.0.jar[here].
+////

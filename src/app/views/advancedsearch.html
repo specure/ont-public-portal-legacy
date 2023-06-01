@@ -1,0 +1,63 @@
+<div class="advanced-search-wrapper" style="width: 100%; display: none;">
+    <h2 class="aside-header">{{ 'adv_spd.title' | translate }}</h2>
+    <form>
+        <fieldset class="additional-information">
+
+            <div class="form-row" style="justify-content: center;" ng-click="advSrchCtrl.updateSizes()">
+                <input type="checkbox" id="set_adv_speed" data-ng-model="advSearch.enabled" style="margin-right: 10px;">
+                <label for="set_adv_speed" translate="adv_spd.enable_option">
+            </div>
+
+            <div data-ng-show="advSearch.enabled">
+                <div class="form-row clearfix">
+                    <div class="form-col x-large-col">
+                        <label for="adv_spd_technology" translate="adv_spd.technology"></label>
+                        <select id="adv_spd_technology" data-ng-model="advSearch.technology">
+                            <option
+                                data-ng-if="advSrchCtrl.MAIN.FEATURES.ADVERTISED_SPEED_OPTION.has_i_dont_know_option"
+                                data-ng-value="-1"
+                                translate="adv_spd.i_dont_know"
+                            ></option>
+                            <option
+                                data-ng-repeat="option in advSrchCtrl.technologyOptions"
+                                data-ng-value="{{option.uid}}"
+                            >{{option.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row clearfix">
+                    <div class="form-col mid-col">
+                        <label for="adv_spd_up" translate="adv_spd.up"></label>
+                        <input type="number" id="adv_spd_up" data-ng-model="advSearch.up.value" class="half-width">
+                        <select data-ng-model="advSearch.up.unit" class="half-width">
+                            <option value="mbps" translate="unit.mbps"></option>
+                            <option value="kbps" translate="unit.kbps"></option>
+                        </select>
+                    </div>
+                    <div class="form-col mid-col">
+                        <p class="adv-speed-error">
+                            <span class="validation-error" translate="{{advSearch.fail.error}}" data-ng-if="advSearch.fail.type === 'up'">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-row clearfix">
+                    <div class="form-col mid-col">
+                        <label for="adv_spd_down" translate="adv_spd.down"></label>
+                        <input type="number" id="adv_spd_down" data-ng-model="advSearch.down.value" class="half-width">
+                        <select data-ng-model="advSearch.down.unit" class="half-width">
+                            <option value="mbps" translate="unit.mbps"></option>
+                            <option value="kbps" translate="unit.kbps"></option>
+                        </select>
+                    </div>
+                    <div class="form-col mid-col">
+                        <p class="adv-speed-error">
+                            <span class="validation-error" translate="{{advSearch.fail.error}}" data-ng-if="advSearch.fail.type === 'down'">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

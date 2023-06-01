@@ -1,0 +1,521 @@
+= Open Nettest Nettest Help
+:toc: left
+:encoding: utf-8
+:lang: en
+:linkattrs:
+:urlGeneralAct: assets/files/<general_act>.pdf
+:urlHowTo: en/wizard
+
+toc::[]
+
+== General FAQ
+
+=== What is the purpose of Open Nettest software?
+Open Nettest is an agency-certified measurement and analytics tool that allows end users of Internet access services to perform measurements of Internet connection performance, quality and transparency.
+
+Its purpose is to provide users with transparent and comprehensible information.
+
+Open Nettest includes:
+
+* map and visual representation of the completed measurements with the option to filter by type of access (fixed/mobile), test parameters, technology, statistics, ISPs and period,
+* statistics on the results for all the major ISPs with the option to filter by quantile, test parameters and test duration,
+* a red/orange/green evaluation of the test result (“traffic-light”-system),
+* the option to synchronise the results of various devices and show them in the browser,
+* provision of measurement data according to the Open Data principle,
+* provision of entire Source Code,
+* detailed FAQ
+
+=== Who provides Open Nettest?
+
+Open Nettest is provided by the <organization>, while the software was developed with the software company Specure. The test can be carried out in the network of any broadband access provider, thus being ISP-independent to a great extent.
+
+=== Why should I test my connection?
+The available bandwidth and other network parameters have a significant impact on the user experience when using different communication services. In the event of bad or varying parameters of the connection from the ISP to your terminal are not good or stable, this can result in slow website download times, interference when using voice services or pixelation when streaming videos or television services. This is especially obvious when the network or service is used by a large number of users, and the available capacity is used. Open Nettest offers you the opportunity to check your current connection speed and quality, while you can also check other users' results on a transparent map of Slovenia, which can be potentially helpful when selecting your internet service provider depending on your location or type of access (fixed/mobile). Open Nettest Android app further enables users to perform a more extensive network and connection diagnostic test. It includes the measurement of signal strength, quality parameters, connection transparency and additional network parameters (using the NDT tool).
+
+=== What is tested?
+With Open Nettest you can test the quality parameters of your internet connection:
+
+* download speed (from the measurement server to the user),
+* upload speed (from the user to the measurement server),
+* ping (latency),
+* transparency and quality of the connection (mobile devices) and
+* signal strength (depending on the device and OS).
+
+With the Android app you can also run the more extensive test (NDT-Test) and, depending on the device, you can also test additional quality parameters such as packet losses. In the current version for Android the transparency of the connection and/or potential prevention of access to specific services can be tested as well (see Network Services Test).
+
+=== How can I contact the team responsible for Open Nettest?
+
+For questions and feedback you can contact us by e-mail at example@example.org
+
+=== What types of connection can be tested?
+Open Nettest is available for:
+
+* modern web browsers,
+* mobile phones with Android OS (version 6.0 or higher) and iOS (version 10 or higher).
+
+With the web browser version you can test fixed access networks (DSL, cable and optical fibre) networks, while you can use the mobile app and smartphones to test the mobile and wireless networks (EDGE, UMTS, HSPA, LTE, WLAN).
+
+=== Who can give me support if I have problems with Open Nettest?
+
+If you do not find the information you need to deal with your problem in these FAQ, we will be happy to help you by e-mail at example@example.org
+
+=== What is the difference between Open Nettest and other speed tests?
+Open Nettest offers:
+
+* the independence and expertise of the regulator,
+* the opportunity to synchronise your test results from several different devices,
+* a statistical presentation of all Internet service providers with various filter options based on the completed tests,
+* a map showing previous test results,
+* comprehensive FAQs with background information giving tips on the possible causes of defective connections,
+* open data and,
+* testing of connection transparency and quality (only for Android and iOS).
+
+== Technology
+
+=== How does Open Nettest work?
+Open Nettest measures quality parameters of your current Internet access by test transmissions from your terminal (PC or smart phone) to the <organization> Measurement server. The results of a specific test are calculated on the basis of acquired parameters of transmission. All details on the methodology of the test are available in (Open Nettest Technical Specification).
+
+Open Nettest consists of several steps:
+
+* First of all, the so-called initialisation test is performed; i.e. the client (web browser/mobile application) connects with the test server through a secure TLS connection and exchanges basic parameters.
+* This is followed by a preliminary test of the downlink during which several parallel TCP connection are used to exchange small files and assess the current capacity of the user's connection and to measures the latency (ping) of the connection. In the case of a mobile terminal equipped with Android OS the current signal strength is also measured.
+* On the basis of the gathered parameters the main connection speed (upload and download) tests are performed.
+* The speed test on mobile devices is followed by a test of transparency and network services test. The (Android) mobile app also allows users to perform a more detailed measurement (NDT – Network Diagnostic Tool) test, which is performed with the independent M-Lab platform (http://www.measurementlab.net).
+
+=== What does the optional more detailed test do?
+The Android mobile app also allows users to carry out a more detailed connection test based on the tool developed within the M-Lab platform. The test is intended for advanced users, since it does not measure only the capacity of the connection, but also tries to examine which problems might limit the speed. By default the NDT test is not activated in the mobile app and you must activate it in the app settings. Upon completion of the test the results of the NDT test are visible in the Details view. Currently the NDT Test is supported on the Android platform only.
+
+=== What are the advantages of the optional more detailed test?
+The more detailed test covers numerous network performance parameters necessary for a comprehensive analysis of your connection that are not checked by Open Nettest. Further information and a full list of all the tested network parameters can be found under www.measurementlab.net/tools/ndt and linked sites therein.
+
+=== Which part of my Internet access is tested?
+Open Nettest measures the connection from your device (computer, mobile, tablet) to the <organization> test server. The test servers are in immediate proximity of the Slovenian Internet eXchange (SIX). Since all main operators and service providers in Slovenia are connected to SIX, it is an independent and the most optimal exchange point for all operators where direct exchange of traffic takes place.
+
+=== What should I watch out for before starting the test?
+To perform measurements that are in accordance with the link:{urlGeneralAct}[*General Act on Internet Access Services and Related End User Rights (Article 11)*, window="_self"], follow these link:{urlHowTo}[*instructions*].
+
+To perform other informative measurements, make sure that:
+
+* You are not running any data intensive applications on your device during the measurement in the background that seize a significant portion of the available connection capacity (eg file downloads, file sharing, watch IP TV or video on demand, etc.),
+* the local network is not used by another user or device at the time of measurement (eg TV communicator),
+* the router or switch is sufficiently powerful and bandwidth compared to the ordered package (some models do not allow nominal speeds to be processed despite the specification),
+* If you are using a home wireless network (WLAN), keep your device as close to the router as possible so that the weak WLAN signal does not distort the results and that the WLAN is not used by other users during the measurement (as a rule, WLAN distorts the measurement due to its properties, so use wired connection - the terminal is wired directly to the home switch / router),
+* In the case of a data cap, make sure that you have not used up the available amounts of data or that you do not have a speed limit due to the exceeded data volume within the selected bundle/subscription.
+
+=== Is the source code available?
+Open Nettest is an open source project. The source code is available at https://github.com/specure/.
+
+=== What bandwidth do I need?
+The capacity and quality of the data connection depends on the type of communication services which you wish to use. For some applications the bandwidth is not critical. For normal surfing on the web a bandwidth of 2 Mbps is often found to be sufficient. When using voice services adequate bandwidth is 100kbps, however, the quality of the conversation depends on the ping of the network and changing ping. The quality of the image when watching IP TV or VoD depends on the codecs used and resolution and therefore required higher bandwidth (min 3 Mbps) and a stable connection (latency, packet loss and errors during transmission). Data transactions are sensitive to packet loss and errors during transmission. Although current applications and network devices use cache, an increasing share of content requires a fast and reliable connection due to the complexity of their multi-media components, therefore the values below serve as reference values only.
+
+The following bandwidths are typically recommended by Internet providers for specific applications:
+
+* Voice over Internet Protocol (VoIP): 100 kbps / 100 kbps upload (Skype: https://support.skype.com/en/faq/FA1417/how-much-bandwidth-does-skype-need)
+* Video:
+** Lower limit: 500 kbps (Youtube: http://support.google.com/youtube/bin/answer.py?hl=en&answer=78358,
+** Standard definition (SD, 576p/480p): 3 Mbps (https://help.netflix.com/en/node/306),
+** High definition (HD, 720p): 5 Mbps (https://help.netflix.com/en/node/306),
+** Ultra HD (4K - 3840x2160@60fps): 20-25 Mbps (http://blog.netflix.com/2014/05/netflix-now-streaming-in-ultra-hd-4k.html).
+* Music streaming: 320 kbps download ( Spotify: http://support.spotify.com/at/learn-more/faq/#!/article/What-bitrate-does-Spotify-use-for-streaming).
+
+If you share your Internet access with other users, the capacity of the connection is proportionally distributed among all users and higher data rates are needed accordingly. The important thing is to consider not only the download bandwidth but the upload bandwidth (especially for cloud services).
+
+=== What factors have an effect on the result?
+Several factors have a significant influence on the test result. The main ones are:
+
+* type of internet connection (cable(fixed)/wireless access),
+* type of the used access technology (xDSL, optical fibre, cable-optical distribution system, etc),
+* the number of users using the connection,
+* capacity of the connection provided by your ISP,
+* the device you are testing with,
+* the operating system of the device and its configuration and
+* simultaneous use of the same connection by other apps and programs during the test (e.g. file sharing, updates, antivirus software, etc).
+
+If a local area network (LAN) is used the test results can be affected by the quality of your LAN router (e.g. NAT throughput, number and complexity of firewall rules).
+
+If a local wireless area network (WLAN) is used the test results can be affected by:
+
+* the distance between the WLAN router and your device,
+* the number of users using the WLAN connection and
+* the quality of your WLAN router (e.g. supporting 802.11n or 802.11ac).
+
+If mobile services are used the test results can be affected by:
+
+* the technology used (EDGE, UMTS, LTE),
+* distance from the base station and the number of users sharing the base station with you,
+* the quality of service at your location (signal strength),
+* obstacles between the mobile terminal and base station (buildings, trees, etc),
+* how fast you are moving (e.g. lower data transmission rates on the motorway or in the train) and
+* the contractually agreed maximum bandwidth of your mobile Internet access (e.g. speed throttling (download/upload) depending on the chosen tariff and/or after exceeding the data volume included in the monthly subscription).
+
+=== What influence does my WLAN router have on the test result?
+
+The speed and quality of a connection through a wireless home hotspot can often change, which is generally unaffected by the access provider. The quality and speed of the connection is affected by the received signal level (different distance from the wireless point, interference from the environment), the number of logged in users (users share the available bandwidth), as well as the standard used (both on the terminal side and the wireless access points side). More powerful routers are those that already support IEEE 802.11n or 802.11ac standards.
+
+It is also important that the router has a high NAT bandwidth, that the distance between the router and the device is not too large and that there are no obstructions between them that weaken the radio signal.
+
+If the test results deviate significantly from the expected results, it is recommended that you check the WLAN router and its settings as well as your client settings.
+
+Therefore, for the authentic implementation of the test, it is necessary to comply with Article 11 of the link:{urlGeneralAct}[*General Act on Internet Access Services and related rights of end users*, window="_self"], which primarily requires that the user terminal is wired directly to the modem of the access provider, thus eliminating any possible negative influences arising from the WLAN access point or user router.
+
+=== What influence does my device have?
+The test results can be affected by several factors with respect to device (performance and load), OS and other installed software which is running at the time of the test. We strongly advise that at the time of test you are not running any other apps or software (i.e. browser and/or Open Nettest app on your mobile terminal). Specific AV and P2P software, video streaming and similar applications can have a significant deteriorating effect on the test results. So ideally, if possible, you should test the connection several times with different devices with the minimum number of installed apps and software
+
+=== What influence does my connection to the modem have?
+
+A wireless connection (WLAN) using a router is more prone to faults than a connection using a LAN (UTP) cable. If you suspect that you might have got a poor test result due to an inadequate wireless (WLAN) connection, connect your device with a LAN cable and run the test again.
+
+=== How many measurements must I do to get a really reliable result?
+
+The more measurements you take correctly at different times of day, the better you can see the status of your connection To perform measurements that are in accordance with the link:{urlGeneralAct}[*General Act on Internet Access Services and Related End User Rights (Article 11)*, window="_self"], follow these link:{urlHowTo}[*instructions*].
+
+Otherwise, test results depend on many factors, including test time, network usage, and your location. You can improve the reliability of your test results by repeating the test at different times of the day and preferably from different locations.
+
+=== How often can I repeat the Open Nettest test?
+Open Nettest can be used free of charge and you can repeat it as often as you like. However, use the test reasonably since the data volume transmitted during the test can significantly increase the use of the available bandwidth. You can repeat the test immediately upon the finished prior test by choosing the "Home" menu followed by pressing the "Start" button. But please make sure and/or note that:
+
+* the optional, more detailed test (NDT-Test) has been finished (Android only),
+* total data volumes may be very high if tests are repeated,
+* regular tests can improve the reliability of your overall result.
+
+=== What data volumes are used during a test?
+The data volume used varies depending on the bandwidth of your Internet connection (the higher the capacity, the higher the data volume). Open Nettest tests the download and upload capacity of your Internet connection for about 20 seconds. During this time an initial test is used to assess the capacity of the connection and use the acquired parameters to select the size of file between your terminal and Open Nettest servers. Although the size of the test file for the same fixed connection should be the same (usually the bandwidth of the connection does not change significantly), whereby the size of the test file in mobile networks is adjusted to the current location and distance of the terminal from the base station and the base station itself (load and used access technology (EDGE/UMTS/HSPA/LTE). Depending on the available bandwidth of your connection the data volume of transmitted data can be correspondingly adjusted.
+
+* At a bandwidth of 2 Mbps a single test generates a data volume of about 5 MB.
+* With very fast Internet connections Open Nettest (RMB-Test) uses much bigger data volumes, e.g. with a symmetrical 100 Mbps connection the data volume used is about 250 MB.
+* If you are executing the optional more extensive test (NDT-Test), the used data volume increases about 2.5-fold.
+
+While the data volume transmitted for fixed connections is usually unlimited (Internet access bundles are usually based on the bandwidth and not data volumes), in the mobile networks most bundles are usually based on the maximum available bandwidth and data volumes (with the exception of bundles that substitute fixed access). Prior to running the test on a mobile device please consider the available data volume of your bundle, since running of the test upon exceeded data volume can result in significant additional costs.
+
+=== What version of the Internet protocol is supported by <organization> Test
+By default, Open Nettest uses Internet Protocol Version 6 (IPv6), if this version is available on the device and supported by the home (operator's) network. If not, Open Nettest uses Internet Protocol Version 4 (IPv4) to perform the test. In the mobile app settings you can also select the option to always run the test using the IPv4 protocol only.
+
+When using the Android app you can find out which version of the Internet Protocol is used on the app homepage
+
+More information on IPv6 can be found at: http://en.wikipedia.org/wiki/IPv6.
+
+== Test Results
+
+=== What does download and upload mean?
+Operators can design their service offers in different ways. They can offer stand-alone services or services joined in bundles. Broadband access service is usually defined as the maximum downlink/uplink bandwidth that the user can reach when using the Internet. The unit "Mbps" specifies how many Megabits per second were transmitted. E.g. if you are subscribed to internet access with the speed "up to 10/2 Mbps", this means that the broadband access provider enables the total data transfer rate up to 10 megabits per second in the direction to your terminal, and up to 2 megabits per second from your terminal to the Internet.
+
+=== What does ping mean?
+PING is a software tool used by network administrators for solving connection problems. The programme generates fixed-length packets which are transmitted to a specific terminal equipment within the network, while measuring the time needed for packets to reach the destination and return back. Open Nettest simulates PING tool to measure the time required for packets to reach the Open Nettest measurement servers and return to the terminal equipment. The results provided by the tool are in milliseconds (ms) and are very important for all time-intensive applications, such as voice, online gaming and banking transactions. If the time measured by the tool exceeds 150ms this can serve as an indicator of problems when using online voice services. The delay is critically influenced both by your Internet access technology and by its utilisation level.
+
+If you are accessing very far remote servers, the length of the transmission route also has a marked effect on the ping time (e.g. about 280 ms for Japan). Fast Internet connections have a ping time of less than 2 ms (optical fibre), slow Internet connections may have ping times of over 500 ms (GSM access); typically ping times range from 10 to 50 ms
+
+=== What does signal strength mean?
+The stronger the signal received by your device from a base station (or WLAN access point), the faster and more stable is the Internet connection. When you are move away from the base station the jitter and faults during transmission increase and due to reliability the base station or WLAN access point decrease the transmission rate and increase the volume of redundant data. If your mobile phone is near an open window or outside, the signal is normally better than inside a building. For a connection using WLAN it is important for a "good signal" that there are as few obstacles as possible (e.g. walls) between the WLAN access point and your device (e.g. tablet).
+
+=== How do I interpret the signal strength meter?
+Signal strength (in dBm) is measured in negative numbers. The higher the value measured (i.e. the nearer to zero), the stronger the signal is. A value of -50 dBM, for example, is a very good signal; a value of -113 dBm is in GSM/UMTS a very weak signal and consequently lower bit rate.
+
+=== How do I know if my result is good or bad?
+The red/orange/green scale (“traffic-light”-system) visualizes the measured up- or downlink-speed ("data rate"). The speed can be categorized as follows:
+
+* green: rate is 10 Mbps or higher (downlink) and 2 Mbps or higher (uplink) respectively,
+* orange: rate is up to 10 Mbps (downlink) and up to 2 Mbps (uplink) respectively,
+* red: rate is up to 2 Mbps (downlink) and up to 1 Mbps (uplink) respectively.
+
+The red/orange/green scale is irrespective of the technology in question and refers solely to the measured data rate. However, very high data rates in mobile networks can only be achieved by certain technologies such as HSPA+ or LTE. Therefore a red result might mean that you were connected with a base station using an older technology; that you were far away from the base station or that the base station was very busy (it was used by many users during the test).
+
+////
+=== How do I interpret the test results correctly?
+A measurement represents a snapshot of the quality of your Internet access. If test results derivate from advertised speeds, this does not necessarily mean that your Internet provider is not fulfilling the contractual agreement.
+
+The connection can be impaired by various technological factors; e.g. time of test (night, morning, day, evening), number of users using the connection, WLAN router, number of running programmes, system configuration, etc.
+
+Despite the good Internet connection to the test server, it can happen that the test server or the connection to the test server is overloaded.
+
+When interpreting the test results, you should bear in mind that while a (quite high) maximum bandwidth is mentioned in advertising campaigns by most of the providers, a much lower bandwidth is contractually guaranteed.
+
+Typically, the data connection is contractually limited to a certain speed ("up to" speed). Operators have the technical ability to remove such a limitation for individual IP addresses. This can affect the Open Nettest servers for example. In some cases this may lead to better test results than normally possible when using other Internet services.
+
+In any case, you can only get a reliable result if systematic and random measurement errors are taken into account and the Open Nettest test is repeated frequently.
+////
+=== Why were these threshold values chosen for the red/orange/green scale?
+The threshold values for the evaluation are shown regardless of your Internet access (regardless whether testing is carried out with a WLAN, a browser, UMTS or LTE smart phone). The colours give a general indication whether the quality is sufficient for the majority of Internet services.
+
+There is no generally accepted definition of “sufficient” bandwidth; the subjective perception of the necessary speed depends on the type of services used. As the system for evaluating speed and ping was chosen to be technology neutral, with some technologies it is not possible to achieve a "green-light\” result (e.g. with GPRS connections or ISDN Internet access).
+
+<organization> experts selected the following threshold values for green (orange):
+
+* downlink: 10 Mbps (2 Mbps)
+* uplink: 2 Mbps (1 Mbps)
+* ping: 25 ms (75 ms);
+
+signal:
+
+* mobile GSM/UMTS: -85 dBm (-101 dBm),
+* mobile LTE: -95 dBm (-111 dBm),
+* WLAN -61 dBm (-76 dBm).
+
+=== What does Mbps mean?
+The speed of a data connection is normally given in advertisements in Mbps (e.g. 10 Mbps), which is the abbreviation for Megabits per second. The following conversion values are used:
+
+10 Mbps = 10.000 kbps
+1 Mbps = 1.000 kbps
+1 kbps = 1.000 bps
+
+As well as giving the speed in bps it is also common to give it in bytes/s. As 1 byte/s = 8 bps, an Internet connection can equally be described as having a data rate of 8 Mbps, 8000 kbps or 1 MByte/s. So downloading a 3 MB file (e.g. an MP3 music file) on an 8 Mbps connection takes about 3 seconds at least.
+
+When measuring speed of data connections with Open Nettest a conversion factor of 1000 is used, because a factor of 1024 is generally not used.
+
+=== Is there a ranking of the fastest Internet providers or those with the most users?
+The aim of the Open Nettest is not to produce a ranking of the fastest and/or most popular Internet service providers, but rather to provide comprehensive information to users about the quality of their Internet connection. Summarising statistics on all the test results broken down by Internet provider can be found under: https://example.org/en/statistics.
+
+Please consult the Internet providers’ websites to find out more about the products on offer. Please always be aware that the speeds quoted are usually “up to” values. And bear in mind too that the guaranteed bandwidth is usually much lower.
+
+=== How is the statistic to be interpreted?
+The statistic consists of two reports. A distinction is made between operators in the first one and between devices in the second one. The data represent statistical values for downlink and uplink transmission rates, the latency and signal strength. Moreover, the number of measurements taken into account is provided.
+
+Which data are used for the report, depends on the selected settings. By "Type", a distinction is made between "Mobile" (i.e., app in mobile network), "WLAN (App)" (i.e., app in WLAN), and "Browser" (i.e., test is performed in the browser without distinction by type of Internet access). If "Mobile" is selected as the type, another distinction can be made by "Technology" between "2G" (GSM), "3G" (UMTS) and "4G" (LTE). The technology is "Mixed" if a change, e.g. from 3G to 2G, is made during a measurement. It is possible to choose a duration of one day, one week, one month, three months, six months, a year or 2 years. By default, all measurements from 3G mobile networks during the last three months are taken into account.
+
+The values shown in the statistic are called quantiles. An 80-percent quantile means that 80 percent of the values are worse than the quantile and 20 percent better than the quantile. 50- and 20-percent quantiles are defined accordingly ("worse" means lower values for download, upload, and signal strength, and higher values for ping). In simple terms, the 80-percent quantile denotes a value that can be achieved under favorable conditions, the 50-percent quantile (the median) should correspond to typical, the 20-percent quantile to unfavorable conditions. By default, the statistic reports the median.
+
+The statistic should give you an idea which transmission rates are possible for specific operators or by using certain equipment. For interpretation, however, it must be noted that different circumstances can affect or even distort the statistic, for example:
+
+* too low frequency of measurements of certain characteristics (e.g., with a particular device),
+* an unusually high frequency of measurements by devices whose throughput is lower than the available bandwidth,
+* an unusually high frequency of measurements in a particular place with particularly good or particularly bad reception conditions (e.g., hiking tour, basement, elevator, tunnel).
+
+The values shown in the statistic are not to be interpreted as expectation values in the sense that one might expect an effective transmission rate Y from operator X. They always refer to a specific selection of measurements, which might have been done under atypical circumstances. It has to be taken into account that the reported values cannot be achieved for technical reasons for some, in particular older devices.
+
+The reported values can be achieved under favourable, unfavourable or typical conditions depending on the chosen quantile. But it depends on various factors, such as the transfer technology, the device used, the network coverage in the location or of the principles set by the respective contract or tariff restrictions.
+
+=== Can I run a new test before the more extensive test has been finished?
+No, several tests cannot run simultaneously.
+
+=== Can a poor test result be due to the fact that my monthly data volume has been used up?
+Yes, with some Internet products (monthly) usage is restricted to a specific data volume. If this volume is exceeded, then - depending on your contract - you will either have to pay an additional fee or the bandwidth will be heavily reduced significantly, while the cost of transfer per MB increases, or your Internet access is blocked altogether
+
+=== What is the synchronisation code?
+It is possible to synchronise the test results of other devices. To this end, the user must request a synchronisation code using the Open Nettest app or browser test and enter them in other devices. You can do this both in the app and the browser test under “History”.
+
+=== How are the test results allocated to the categories "mobile", "WLAN" and "browser"?
+Test results based on the App are allocated to the categories "mobile" (e.g. in case of 3G or 4G) or "WLAN" (e.g. in case of usage of a WLAN-Access-Point).
+
+All tests based on the browser are independently of their access-net-technology (e.g. via LAN, WLAN-Access-Point, HSPA-data-card) allotted to the category "browser".
+
+In the map view of the App and the browser version as well as in the statistics of the browser version of Open Nettest you have the option to filter all test results by the categories "mobile", "WLAN" and "browser".
+
+=== I have problems with the measurement of the signal strength...
+It is possible that some devices display a wrong or not updated mobile network signal strength (among others this has been observed with some Samsung Galaxy S II I9100G devices). In this case the signal strength measurement is not shown by the App, and respectively discarded.
+
+Under the operating system iOS (iPhone, iPad) and in the web browser app, the signal strength is not displayed
+
+=== What is the meaning of the term operator in the statistic?
+Based on the selection, the statistic displays the Slovenian fixed and mobile network operators. The following cases should be distinguished:
+
+* If the type "Mobile" is selected, the Slovenian mobile network operators are listed (i.e., different trademarks are assigned to the same mobile network operator).
+* If the type "WLAN (App)" or "Browser" is selected, the Slovenian network operators are listed. In certain cases it is possible that the listed item is actually not a network operator but an autonomous system.
+* In the case of mergers and demergers the original network operator name of the operator is marked by the suffix "(old)".
+
+Measurements abroad as well as measurements of foreign customers in Slovenia are not taken into account.
+
+=== What is the Network Services Test (NST)?
+Open Nettest Android app offers the following network services tests:
+
+* Test “unchanged content”,
+* Test “reference-website”,
+* Test “transparent connection”,
+* Test “DNS”,
+* Test "TCP-Ports",
+* Test "UDP-Ports"
+* Test "Traceroute"
+* Test "VoIP"
+
+==== Test "unchanged content“
+In the course of this test content is downloaded from a measurement server and the received content is cross-checked with the content available on the server by means of check sums.
+
+If this test is not successful the content was changed in the course of transmission.
+
+==== Test “reference website”
+The European Telecommunications Standards Institute (ETSI) prepared a reference HTML website of a specific size, which includes text, images and other web parts. The reference website has also been uploaded on the Open Nettest measurement servers (http://example.org/kepler/). In the course of this test the ETSI reference website is retrieved, while Open Nettest measures the size and parameters of retrieved web parts and how long the download of the website takes.
+
+If the website cannot be downloaded it is mostly due to a very slow connection to the internet. Another reason might be that internet access does not allow access to reference sites. The duration of transmission is a measure for how quickly a website can be depicted with the used device and internet access. The quicker the transmission, the better.
+
+==== Test “transparent connection”
+This test checks whether a direct (unchanged) transmission of data between test-client and test-server is possible, or whether an intervening entity (middle-box e.g. proxy) changes the request. Proxy servers are designed to cache the most commonly visited webpages, compress content or protect clients from potentially harmful content. In the course of this tests requests are sent, which typically cannot be forwarded correctly by middle-boxes and therefore changes can be identified.
+
+If the connection is not transparent it cannot be guaranteed that websites correspond exactly to those on the server. Such proxy requests typically buffer and possibly transmit to the client antiquated content, content of lower quality (using compression) or incomplete content.
+
+==== Test “DNS”
+In the course of this test the successful resolution of names on the internet is checked. When a website is addressed the hostname (e.g. example.org) is converted into an address e.g. 193.2.13.84 (IPv4) or 2001:1470:8000:402:2::842 (IPv6) using the DNS-system. Successful operation of the DNS translation of domain names into IP addresses has a significant impact on the user experience when retrieving websites.
+
+==== Test “TCP-ports”
+This test checks whether the connection can be set up via special TCP or UDP ports. Each protocol uses a certain port, e.g. port 25 is used for the exchange of mails via SMTP, port 110 is used by the POP protocol and port 43 is used by the IMAP protocol. If a certain port is not available with a specific provider, the corresponding service cannot be used via this access. If the ports are locked by the ISP (firewall) the application will not work. This test tests the TCP ports of the most commonly used application. In company environments certain ports are often locked (firewall) or only relevant ports (services) are available.
+
+==== Test “UDP-ports”
+This test checks whether the connection can be set up via special UDP-ports. Similar to the TCP protocol the UDP protocol uses a certain port for a specific service; e.g. port 5060 is used for VoIP-communication via SIP. If the port is locked, the corresponding service cannot be used via this access.
+
+==== Test “Traceroute”
+This test checks how many nodes packets across and how long delay occur during the test between your terminal and Open Nettest server.
+
+==== Test “VoIP”
+This test simulate VoIP service. It checks whether it possible to send and receive voice packet to default port 5060 and if incoming and outcoming jitter acceptable for VoIP communication.
+
+////
+=== Does <organization> guarantee a correct test result?
+Like any test or measurement, the results of Open Nettest are subject to systematic and random measurement errors. However, the architecture and design of Open Nettest ensure a highly robust test. See also FAQ regarding the test results and technology.
+
+It is recommended in any case to increase the reliability of the test results by repeating the tests several times.
+////
+=== Can I file a complaint under the contract against my Internet provider if the measurement results deviate from the contractually agreed speed?
+If measurements made by the Open Nettest measurement system reveal a discrepancy between the contractually agreed and the actual guaranteed speed, you must inform your provider of this in the manner that is provided by its general conditions for reporting poor service performance.
+
+In this case, you have the right to ask the provider to perform a professional measurement of connection speed and quality on your connection. After you have reported poor service performance to the provider, you can file an objection / complaint for inactivity or poor performance of the services against the invoice issued for the accounting period in which the services you ordered did not function or function worse, and you can claim compensation from the provider .
+
+If you are not satisfied with the outcome of the complaint process, you can file a motion to resolve the dispute with the Agency within 15 days of receiving the response. In this case, the measurements must be carried out in accordance with the link:{urlGeneralAct}[*General Act on Internet Access Services and Related End User Rights (Article 11)*, window="_self"]. The instructions are available link:{urlHowTo}[*here*].
+
+If the provider does not inform you about the results of the measurements made within 30 days from the reporting of the discrepancies, your application shall be considered as a complaint of the invoice for the accounting period in which you found the discrepancies and you have 15 days from the expiry of the 30-day deadline for submitting the proposal. to resolve a dispute before the agency.
+
+=== Where can I find information on data protection and terms of use?
+Open Nettest Terms of Use and Privacy Policy can be found under: https://example.org/en/pp.
+
+=== What does open data and open source mean?
+Open Nettest is based on the open source and open data principle.
+
+Open source principle means that the source code of Open Nettest software is published completely. This is mainly for transparency and reliability issues. Any commercial use of Open Nettest source code, which is published under the MAME license, is not allowed.
+
+In compliance with the privacy policy described here and based on the open data principle, Open Nettest data are published on the Open Nettest website as a file under: https://example.org/en/opendata and are under the usage of the https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution 4.0 (CC BY 4.0)], so they are made freely available to the general public for information, use, dissemination and other applications.
+
+=== What graphical display options are available for the test results?
+Both in the mobile and the browser version of Open Nettest you have the option of viewing previous tests distributed geographically on a map. The map shows the cumulative results from both your own and other people’s tests. In addition, in both versions you can set various filters to make sure you get the most interesting view of the results in each case
+
+== Presentation of results on the map
+
+=== How is the map to be interpreted?
+The map displays results of measurements which have been performed within the selected period of time. Which data are included in the map, depends on the selected settings. In the first combo box, a distinction is made:
+
+* on the one hand between "Mobile" (i.e. mobile app in a mobile network), "WLAN (App)" (i.e., mobile app in a WLAN network), and "Browser" (i.e., test is performed in the browser without distinction by type of Internet access)
+* on the other hand between the quantities to be displayed: Download, upload, ping, and possibly signal.
+
+The radio buttons located at the side are used to select in which way data should be presented:
+
+* as single points (each point indicating one or more measurements at the same location),
+* as a heatmap (several points merged to an area) or
+* automatically (single points at high zoom level, heatmap at low zoom level).
+
+The values shown in the map are called quantiles (also called percentiles when using percentual representation). An 80-percent quantile means that 80 percent of the values are worse than the quantile and 20 percent better than the quantile ("worse" means lower values for download, upload, and signal strength, and higher values for ping). 50- and 20-percent quantiles are defined accordingly. In simple terms, the 80-percent quantile denotes a value that can be achieved under favourable conditions, the 50-percent quantile (the median) should correspond to typical, the 20-percent quantile to unfavourable conditions. By default, the map displays medians.
+
+Depending on the type selected ("Mobile", "WLAN (App)", and "Browser"), it is also possible to filter the measurement results of a single mobile or fixed network. If the type is "Mobile", only the names of mobile networks are available. Otherwise, only the names of fixed networks are available. By default, the measurement results of all networks are included in the map.
+
+It is also possible to filter by period of time.
+
+The map should give you an idea which transmission rates are possible in a specific area for specific operators or by using certain equipment. For interpretation, however, it must be noted that different circumstances can affect or even distort the map representation, for example:
+
+* too high or too low frequency of measurements of certain characteristics (e.g., within the network of a particular operator or with a particular device),
+* an unusually high frequency of measurements by devices whose throughput is lower than the available bandwidth,
+* an unusually high frequency of measurements in a particular place with particularly good or particularly bad reception conditions (e.g., hiking tour, basement, elevator, tunnel).
+
+== Example: Location with above average number of 2G measurements compared with 3G/4G
+
+image::/assets/img/help-heatmap1.png[]
+
+== Figure: Above average number of 2G measurements - right without 2G
+
+The map representation does not mean that in the area X, one might expect an effective transmission rate Z from operator Y. It always refers to a specific selection of measurements, which might have been done under atypical circumstances. It has to be taken into account that the displayed measurement results cannot be achieved for technical reasons for some, in particular older devices.
+
+If no measurement points are displayed within certain areas this can mean that either no measurements have been carried out at that location or that there might be no signal. Thus this is not a broadband coverage map.
+
+The displayed measurement results can be achieved under favourable, unfavourable or typical conditions depending on the chosen quantile. But it depends on various factors, such as the transfer technology, the device used, network coverage in the location or of the principles set by the respective contract or tariff restrictions (throttling of download and upload speeds).
+
+=== How is the colour classification to be interpreted?
+
+The colour classification is based on a defined range of values selected by <organization>. The colour green stands for very good, high test results (note: higher results than 100 Mbps are possible, but the test-results may be less precise for browser tests) and red for low speed. Colour gradations are shown between those extremes.
+
+Individual test points are coloured according to the "traffic-light" scale.
+
+=== What results feed into the map view?
+
+The results of the measurements of Open Nettest feed into the map view. The results of the optional, more detailed NDT Test are not shown. Both in the mobile and the browser version the map offers the option of setting various filters and therefore you decide for yourself what results are fed into your map view.
+
+=== Are test results outside Slovenia shown?
+Yes, also results outside Slovenia are shown. See also FAQ on PING.
+
+=== What is the median?
+The median is the value that lies exactly in the middle of all observed and ranked values. Unlike the mean which is calculated from observed values the median is an actual value, whereby half the values are higher and the other half are lower than the median. Thus the mean for the values 1, 2, 4, 8, 16 equals 6.2. On the contrary 4 is the median of this distribution as two values are higher and two values are lower than 4. As the mean demands at least ratio scales, the median is applied in those cases where values can only be measured by ratio scales.
+
+=== What is a percentile?
+A percentile is an indicator in statistics describing that value below which X% of the sample lies. For instance, the 20% percentile defines that point below which 20% of all test results fall.
+
+=== How accurate are the data points?
+The location will be determined in the course of the measurement with your device. The localisation is done depending on the functions and settings of the device:
+
+* via GPS,
+* through the network (WLAN or mobile network),
+* or via the IP.
+
+The localisation over GPS is most accurate. The localisation via mobile network provides only rough results and localisation via IP-address is often not very helpful.
+
+Localisation with accuracy of less than 2 km are not shown on the map, points with accuracy less than 10 km are not listed under the details. Therefore activating GPS (if available) on mobile device is recommended. The accuracy of a specific measurement is available as open data (shown under details and via clicking on a pop-up in the map).
+
+== Mobile App
+
+=== What permissions or authorisations does the app need?
+Your location - approximate (network-based) location, precise (GPS) location":
+This permission allows the app to retrieve your location and e.g. to locate the test result on the map
+
+"Storage - modify or delete the contents of your storage". This permission is required for caching of maps.
+
+"Network communication - full network access, view network and WiFi connections":
+In order to establish a test connection and to test the network parameters of your Internet connection, the app needs access to your network communication.
+
+"Your accounts - read Google service configuration":
+This permission allows the app to read configuration data for the presentation of Google maps.
+
+"System tools - prevent phone from sleeping":
+The measurement of the <organization> Net Test could be biased if your smartphone's state changes to sleep while running a test.
+
+=== Which mobile platforms are supported?
+The platforms Android and Apple iOS (e.g. iPhone) are supported.
+
+=== Which Android versions are supported?
+All versions from Android 6.0 and above are supported.
+
+=== Which iOS versions are supported?
+All versions from iOS 10 and above are supported.
+
+=== What is important to know when using the app?
+You should bear in mind the following points when using the mobile version of Open Nettest:
+
+* If you do not have a tariff with inclusive data volume, use Open Nettest only on a WLAN connection. Do not use a mobile connection for testing because this can incur high costs. Your data use can increase sharply if you run the test several times.
+* If you have used up your monthly data volume, depending on your tariff, either your data transmission speed can be throttled or high costs may be incurred. You can query your mobile provider’s customer website to find out what kind of tariff you have and what data volume you can still use in your current billing period.
+
+=== Is there a tablet version of Open Nettest?
+The current mobile version of Open Nettest runs on tablets and is under the android version ("NST") optimised for the landscape mode as well.
+
+=== How can I install the Android app?
+The <organization> Net Test app can be installed from the Google Play Store.
+Please refer to https://play.google.com/store/apps/details?id=<id>.
+
+=== How can I install the iOS App?
+Open Nettest iOS app can be installed from the Apple App Store.
+
+== Browsers
+
+=== Which browsers are supported?
+The latest versions of Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge and Opera are all supported by Open Nettest.
+
+=== Why should I enter my address or allow the browser to identify my location?
+The location is used in order to show the test results on a map. Identifying a location with the browser and a cable connection produces very imprecise and often useless results. In this case it is optionally possible to manually enter the address or rather the location immediately after a measurement. With the mobile app the location can be identified with sufficient accuracy via the mobile network or using the WLAN and GPS information, and the user does not have to actively input data.
+
+=== Does results depend on browser type?
+Result on different browsers will always differ because of different Javascript engines. Especially when using 1GBit/s connections the bottleneck becomes more and more the Javascript calculation itself. There are also huge differencies in using websocket connections at different browsers. Although Open Nettest does not take into account the time for opening websocket threads the latency values could vary, especially when having a very fast round trip time below 3ms.
+
+To learn more about differences between Javacript implementations of different browsers, please refer to https://en.wikipedia.org/wiki/Browser_speed_test. There you can find some links to Javascript test suites like Octane, SunSpider, JetStream and similar.
+
+== Open Nettest
+
+=== Open Data Interface
+Pursuant to the Open Nettest Privacy Policy the test results are available as open data. The Open Data Interface can be viewed here. The Specification of the open data interface determines which data can be openly accessed. The data is available in CSV form.
+
+=== CSV Interface
+Measurement results for the last 31 days are available in an archived zip file which you can download here. The remaining test results are available on a monthly basis.
+
+Please consider that the time stamp is entered in UTC time.
+
+The data are published in accordance with the https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution 4.0 (CC BY 4.0)].
+
+_Text or parts of this text are based on the FAQ of the RTR-NetTest by authorization of RTR._

@@ -1,0 +1,8 @@
+DE
+Do you agree that the following collected data, which could be used to possibly identify you, are published as an open data and can be publically available?
+
+Platform
+Browser type
+Public IP address (anonymized)
+Geographic location of executed measurement
+Please confirm that you understand the above statement and that you agree to publishing of the measured data completed within this application. You can cancel this authorization at any time by deleting "opendata" cookie from your browser.

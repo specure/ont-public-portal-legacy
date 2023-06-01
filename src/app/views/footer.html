@@ -1,0 +1,29 @@
+<footer>
+    <p data-ng-if="customerctrl.MAIN.FEATURES.SHOW_DISCLAIMER" class="beta-badge">{{ 'alert.beta' | translate }}</p>
+    <a data-ng-href="{{ customerctrl.MAIN.LINK }}" class="ONT">{{ customerctrl.MAIN.NAME }}</a>
+    <div style="display:flex" class="address">
+        <div style="margin:0 auto">
+            <a href="{{'footer_specure.external_link' | translate}}" target="_blank">
+                <p class="bold center">
+                    <b>{{ 'footer_specure.organisation' | translate }}</b>
+                </p>
+            </a>
+            <p>Address</p>
+            <span>Phone
+                <a href="mailto:example@example.org">Email</a>
+            </span>
+        </div>
+    </div>
+    <p class="center" data-ng-if="customerctrl.MAIN.LINK_SUBTITLE_ENABLED">{{ customerctrl.MAIN.NAME }}</p>
+    <div class="license-marks">
+        <p>Open Nettest uses and processes open data from the following sources:</p>
+        <ul>
+            <li>
+                <a href="https://example.org">Open Nettest</a> by Organization
+                <span class="license-link">
+                    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+                </span>
+            </li>
+        </ul>
+    </div>
+</footer>

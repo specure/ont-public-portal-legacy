@@ -1,0 +1,55 @@
+// COLOR DEFINITION
+@gold: rgb(141, 99, 75);
+
+// TEXT COLOR LIGHTNESS
+.smart-text-color (@a) when (lightness(@a) >= 50%) {
+  // Its a light color return a dark output
+  color: darken(@a, 86.5%);
+}
+.smart-text-color (@a) when (lightness(@a) < 50%) {
+  // Its a dark color return a light output
+  color: lighten(@a, 100%);
+}
+
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+.btn-start  {
+    color:@gold;
+}
+.aside-container,
+.aside-container a {
+    background:@gold;
+    .smart-text-color(@gold);
+}
+.main-container a {
+  color:(@gold);
+}
+.article-header  {
+    color:@gold;
+}
+.aside-header  {
+    .smart-text-color(@gold);
+}
+.detail-accordeon {
+    background:@gold;
+    .smart-text-color(@gold);
+}
+
+/*
+    Forms
+*/
+.search-opentest-filter	{
+	 border-top:solid 3px @gold;
+}
+
+/*
+    Tables
+*/
+.main-container .stacktable.large-only   {
+    border-top:solid 3px @gold;
+}
+.aside-container .stacktable.large-only   {
+    border-top:solid 3px @white;
+}

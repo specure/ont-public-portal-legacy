@@ -1,0 +1,61 @@
+<div class="main-container">
+    <div class="main wrapper clearfix">
+        <article>
+            <header>
+                <h1 data-ng-if="customerctrl.MAIN.FEATURES.OPENDATA.IS_OPENDATA_ENABLED" class="article-header" translate="menu_opendata"></h1>
+                <h1 data-ng-if="!customerctrl.MAIN.FEATURES.OPENDATA.IS_OPENDATA_ENABLED" class="article-header" translate="reports.menu_report_export"></h1>
+            </header>
+
+            <section class="open-data-export-wrapper">
+                <p>{{ 'opendata.description' | translate }}</p>
+                <br />
+
+                <div class="select-wrapper">
+                    <div class="form-row">
+                        <label for="export-format"><span>{{ 'opendata.format' | translate }}</span>: </label>
+                        <select
+                            ng-options="format.name for format in opendatactrl.exportFormats track by format.val"
+                            ng-model="opendatactrl.exportFormat"
+                            name="export-format" 
+                            id="export-format">
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="opendata-date"><span>{{ 'opendata.month' | translate }}</span>: </label>
+                        <select 
+                            id="'opendata-date'" 
+                            data-ng-model="opendatactrl.selectedMonth" 
+                        >
+                            <option data-ng-repeat="(i,d) in opendatactrl.exportDates" value="{{i}}">{{d}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row clearfix export-actions">
+                        <div class="form-col mid-col">
+                            <button ng-disabled="opendatactrl.selectedMonth === '0'" data-ng-click="opendatactrl.downloadOpendata(opendatactrl.selectedMonth)">
+                                {{'opendata.monthly' | translate}}
+                            </button>
+                        </div>
+                        <div class="form-col mid-col">
+                            <button data-ng-click="opendatactrl.downloadOpendata(0)">
+                                {{'opendata.full' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <br /><br />
+
+            <section>
+                <span>{{'opendata.license_text' | translate}}</span>
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 (CC BY 4.0).</a>
+                <br/><br/>
+                <div><img style="display:block" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></div>
+            </section>
+        </article>
+    </div>
+    <!-- #main -->
+</div>
+<!-- #main-container -->

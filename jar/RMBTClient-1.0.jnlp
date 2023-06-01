@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="https://nettest.org/jar" href="RMBTClient-1.0.jnlp">
+	<information>
+		<title>Jnlp Testing</title>
+		<vendor>Specure GmbH</vendor>
+		<homepage href="https://nettest.org/" />
+		<description>Testing Testing</description>
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+	<resources>
+		<j2se version="1.7+" />
+		<jar href="RMBTClient-1.0.jar" />
+	</resources>
+	<application-desc main-class="at.alladin.rmbt.client.RMBTClientRunner">
+    <argument>-v</argument>
+    <argument>-o</argument>
+    <argument>-q</argument>
+    <argument>-h=example.org</argument>
+    <argument>-p=443</argument>
+    <argument>-g</argument>
+  </application-desc>
+</jnlp>

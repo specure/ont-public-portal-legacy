@@ -1,0 +1,113 @@
+<div class="main-container">
+	<div class="main wrapper clearfix">
+		<article>
+			<header>
+				<h1 class="article-header" translate="menu_opentest_search"></h1>
+			</header>
+			<section>
+				<form>
+					<fieldset>
+						<h2 class="search-opentest" data-ng-click="searchctrl.triggerFilterType()" data-ng-if="searchctrl.showFilter" translate="search._advanced_search"></h2>
+						<h2 class="search-opentest" data-ng-click="searchctrl.triggerFilterType()" data-ng-if="!searchctrl.showFilter" translate="search._simple_search"></h2>
+						<!-- Advanced Search panel -->
+						<div data-ng-show="searchctrl.showFilter" class="search-opentest-filter">
+							<div data-ng-repeat="(key, i) in searchctrl.options" class="form-row clearfix">
+								<div class="form-col third-col">
+									<label for="{{::key}}" translate="{{::i.label}}"></label>
+								</div>
+								<div class="form-col large-col">
+									<select data-ng-if="i.type==='select'" id="{{::key}}" data-ng-model="searchctrl.searchParams[key]">
+										<option data-ng-if="i.hasAllOption" translate="option_all"></option>
+										<option data-ng-repeat="(optionKey, optionValue) in i.options" value="{{::optionKey}}">{{optionValue}}</option>
+									</select>
+									<span data-ng-if="i.type==='range'">
+										<span class="first-range">
+											<span class="range-label">{{ 'search._from' | translate }}</span> 
+											<input id="{{::key}}" type="number" data-ng-model="searchctrl.searchParams.range[key].from" />
+										</span> 
+										<span class="range-label">{{ 'search._up_to' | translate }}</span>
+										<input id="{{::key + '_upper'}}" type="number" data-ng-model="searchctrl.searchParams.range[key].to" />
+									</span>
+
+									<input data-ng-if="i.type==='text'" id="{{::key}}" type="text" data-ng-model="searchctrl.searchParams[key]" />
+									<div data-ng-if="i.type==='custom.datepicker'" class="input-group" id="{{::key}}">
+										<span class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</span>
+										<input date-range-picker class="form-control date-picker" options="searchctrl.date_input_options" data-ng-model="searchctrl.searchParams[key]" data-ng-model-options="{updateOn: 'default'}" />
+									</div>
+									<span data-ng-if="i.label_end">{{ ::i.label_end | translate }}</span>
+								</div>
+							</div>
+							<div class="form-row clearfix">
+								<div class="form-col mid-col">
+									<button type="submit" data-ng-click="searchctrl.runAdvancedSearch(true); searchctrl.showFilter = true;">
+										{{'search._apply_filters' | translate}}
+									</button>
+								</div>
+								<div class="form-col mid-col">
+									<button type="reset" data-ng-click="searchctrl.clearSearch();searchctrl.runAdvancedSearch(true);">
+										{{'search._reset_filters' | translate}}
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- Simple Search panel -->
+						<div data-ng-show="!searchctrl.showFilter" class="search-opentest-filter">
+							<div data-ng-repeat="(key, i) in searchctrl.options" class="form-row clearfix">
+								<div class="form-col third-col">
+									<label data-ng-if="i.label==='testresult.cat_technology'" for="{{::key}}" translate="{{::i.label}}"></label>
+									<label data-ng-if="i.label==='testresult.network_country'" for="{{::key}}" translate="{{::i.label}}"></label>
+									<label data-ng-if="i.label==='testresult.time'" for="{{::key}}" translate="{{::i.label}}"></label>
+								</div>
+                                                                <div class="form-col large-col">
+                                                                  <div data-ng-if="i.label==='testresult.cat_technology'" class="form-col large-col">
+                                                                    <select data-ng-model="searchctrl.searchParams[key]">
+                                                                      <option data-ng-if="i.hasAllOption" translate="option_all"></option>
+                                                                      <option data-ng-if="techKey==='4G'" data-ng-repeat="(techKey, techValue) in i.options" value="{{::techKey}}">{{techValue}}</option>
+                                                                      <option data-ng-if="techKey==='5G'" data-ng-repeat="(techKey, techValue) in i.options" value="{{::techKey}}">{{techValue}}</option>
+                                                                      <option data-ng-if="techKey==='LAN'" data-ng-repeat="(techKey, techValue) in i.options" value="{{::techKey}}">{{techValue}}</option>
+                                                                    </select>
+                                                                  </div>
+                                                                  <div data-ng-if="i.label==='testresult.network_country'" class="form-col large-col">
+                                                                    <select data-ng-model="searchctrl.searchParams[key]" data-ng-click="searchctrl.printCons()">
+                                                                      <option data-ng-if="i.hasAllOption" translate="option_all"></option>
+                                                                      <option data-ng-repeat="(countryKey, countryValue) in i.options" value="{{::countryKey}}">{{countryValue}}</option>
+                                                                    </select>
+                                                                  </div>
+                                                                  <div data-ng-if="i.type==='custom.datepicker'" class="input-group" id="{{::key}}">
+                                                                          <span class="input-group-addon">
+                                                                                  <i class="fa fa-calendar"></i>
+                                                                          </span>
+                                                                          <input date-range-picker class="form-control date-picker" options="searchctrl.date_input_options" data-ng-model="searchctrl.searchParams[key]" data-ng-model-options="{updateOn: 'default'}" />
+                                                                  </div>
+                                                                </div>
+							</div>
+							<div class="form-row clearfix">
+								<div class="form-col mid-col">
+									<button type="submit" data-ng-click="searchctrl.runAdvancedSearch(true); searchctrl.showFilter = false;">
+										{{'search._apply_filters' | translate}}
+									</button>
+								</div>
+								<div class="form-col mid-col">
+									<button type="reset" data-ng-click="searchctrl.clearSearch();searchctrl.runAdvancedSearch(true);">
+										{{'search._reset_filters' | translate}}
+									</button>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</section>
+			<section>
+				<div data-test-list data-results="searchctrl.search.results" data-target="home.opentest"></div>
+				<p>
+					<div data-ng-if="searchctrl.search.results" translate="search._total_results" translate-values="{value: searchctrl.search.results.length}"></div>
+					<button data-ng-show="searchctrl.search.next_cursor" data-ng-click="searchctrl.showMoreResults();" >
+						{{'stats_show_more' | translate}}
+					</button>
+				</p>
+			</section>                   
+		</article>
+	</div><!-- #main -->
+</div><!-- #main-container -->

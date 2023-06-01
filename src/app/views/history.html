@@ -1,0 +1,82 @@
+        <terms-conditions-check></terms-conditions-check>
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+                <article>
+                    <header>
+                        <h1 class="article-header" translate="menu_history"></h1>
+                    </header>
+
+                    <section ng-if="historyctrl.isHistoryAllowed === true">
+                        <table class="stackable stacktable large-only" cellspacing="0" wt-responsive-table>
+                            <tr align="left">
+                                <th width="15%">{{ "device" | translate }}</th>
+                                <th width="15%">{{ "access" | translate }}</th>
+                                <th width="30%">{{ "date" | translate }}</th>
+                                <th width="10%" class="align-right">{{ "down_with_unit" | translate }}</th>
+                                <th width="10%" class="align-right">{{ "up_with_unit" | translate }}</th>
+                                <th width="10%" class="align-right">{{ "ping_with_unit" | translate }}</th>
+                            </tr>
+                            <tr data-ng-repeat="i in ::historyctrl.search.history">
+                                <td>{{::i.model}}</td>
+                                <td>{{::i.network_type}}</td>
+                                <td><a href="" data-ng-click="historyctrl.showTest(i.test_uuid)">{{i._time}}</a></td>
+                                <td class="align-right">{{::i.speed_download}}</td>
+                                <td class="align-right">{{::i.speed_upload}}</td>
+                                <td class="align-right">{{::i.ping_shortest}}</td>
+                            </tr>
+                        </table>
+
+                        <p>
+                            <div translate="search._total_results" translate-values="{value: historyctrl.search.history.length || 0}"></div>                            
+                            <button data-ng-show="historyctrl.search.next_cursor" data-ng-click="historyctrl.showMoreResults();" >{{'stats_show_more' | translate}}</button>
+                        </p>
+                    </section>
+                    <section class="no-history" ng-if="historyctrl.isHistoryAllowed === false">
+                        <p translate="history_not">History is not available.</p>
+                        <p translate="enable_cookie">Please enable functional cookies to enable the history.</p>
+                    </section>
+                    <section class="no-history" ng-if="historyctrl.isHistoryAllowed === null && !historyctrl.isIE">
+                        <p translate="history._loading"></p>
+                    </section>
+                    <section class="no-history" ng-if="!historyctrl.isHistoryAllowed && historyctrl.isIE">
+                        <p>
+                          <span translate="history._warning_ie"></span><a ng-if="historyctrl.warning_ie_link" href="{{historyctrl.warning_ie_link}}">{{historyctrl.warning_ie_link}}</a>
+                        </p>
+                    </section>
+                </article>
+            </div><!-- #main -->
+        </div><!-- #main-container -->
+
+        <div class="aside-container" ng-if="historyctrl.isHistoryAllowed">
+    		<div class="aside wrapper clearfix">
+    			<aside class="clearfix">
+    				<header>
+    					<h2>{{ 'history._request_sync_code_header' | translate }}</h2>
+    				</header>
+    				<div >
+                    	<p data-ng-show="!historyctrl.syncCodeRequest"><em><a style="font-size: 1.2em; text-decoration: underline"; href="" data-ng-click="historyctrl.requestSyncCode();"></em>{{ 'history._request_sync_code' | translate }}</a> {{ 'history._sync_code_info' | translate }}</p>
+
+                       	<p data-ng-show="historyctrl.syncCodeRequest">{{ 'history._sync_code' | translate }} <span>{{ historyctrl.syncCodeRequest }}</span></p>
+
+                        <form>
+                        	<fieldset>
+                        		<div class="form-row clearfix">
+                        			<div class="form-col mid-col">
+			                            <label for="sync-code">{{ 'history._code' | translate }}
+			                            	<input type="text" id="sync-code" data-ng-model="historyctrl.syncCode" />
+			                            </label>
+	                            	</div>
+	                            	<div class="form-col mid-col">
+	                            		<button type="submit" data-ng-disabled="!historyctrl.syncCode" data-ng-click="historyctrl.sendSyncCode();">{{ 'history._send_code' | translate }}</button>
+	                            	</div>
+	                            </div>
+	                        </fieldset>
+	                    </form>
+                    </div>
+
+                   	<div data-ng-show="historyctrl.syncResponse">
+                   		<p>{{historyctrl.syncResponse.sync[0].msg_text}}</p>
+                   	</div>
+    			</aside>
+    	    </div> <!-- #aside -->
+		</div> <!-- #aside-container -->

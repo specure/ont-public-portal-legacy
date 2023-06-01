@@ -1,0 +1,28 @@
+<footer class="wrapper-nettest footer-nettest" data-ng-if="customerctrl.MAIN.CUSTOMER_ID=='NETTEST'" ng-class="appliedClass(myObj)">
+    <aside class="contact address">
+        <div style="margin: 0 auto;">
+            <a href="{{'footer_nettest.external_link' | translate}}" target="_blank">
+                <p class="bold">{{ 'footer_nettest.organisation' | translate }}</p>
+            </a>
+            <p>Address</p>
+            <p>Phone</p>
+            <p style="margin: 0;">Fax</p>
+        </div>
+    </aside>
+    <a data-ng-href="{{ customerctrl.MAIN.LINK }}" class="ONT">{{ customerctrl.MAIN.NAME }}</a>
+    <aside class="copyright">
+        <div class="copyright-content">© 2015-2021 NETTEST</div>
+        <div class="copyright-content-host">
+            <div style="display: inline-block; margin-top:-2px;">
+                <div style="display: flex;">
+                    <div style="align-self: flex-end;margin-right:0.5em;">{{'footer_nettest.hosted_by' | translate}}</div>
+                    <div style="align-self: flex-end;">
+                        <a href="http://example.org/">
+                            <img src="/assets/img/placeholder.svg" style="width: 89px;height:auto;margin-bottom:2px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</footer>

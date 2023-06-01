@@ -1,0 +1,94 @@
+= Kako opraviti preizkus hitrosti povezave
+v0.1, May 2019: Ready for review
+:imagesdir: ./assets/img/en/images
+:iconsdir: ./icons
+:stylesdir: ./styles
+:scriptsdir: ./js
+:sectnums:
+:sectanchors:
+:sectlinks:
+:xrefstyle: short
+:icons: font
+:tool: Open Nettest
+:RA: <organization>
+:linkattrs:
+:urlGeneralAct: assets/files/<general_act>.pdf
+:bl: pass:[ +]
+:toc: macro
+
+V kolikor imate pomisleke ali pritožbe glede hitrosti dostopa do interneta, vam bo Open Nettest omogočil preizkus povezave in prenos kopije rezultatov meritev.
+
+V kolikor želite preveriti dejansko običajno razpoložljivo hitrost, morate izvesti meritev in shraniti rezultate vsaj pet (5) krat v petih (5) dneh, v različnih vsaj eno (1) urah oddaljenih časih in izven vršnih ur ponudnika dostopa.
+
+V kolikor želite preveriti dejansko minimalno razpoložljivo hitrost, morate izvesti meritev in shraniti rezultate vsaj pet (5) krat v petih (5) dneh, v različnih vsaj enem (1) uro oddaljenih časih ne glede na obdobje vršnih ur ponudnika. Sledite spodnjim navodilom, da opravite test in predložite svoje rezultate:
+
+== Preden zaženete meritev
+
+Priporočamo, da pred zagonom meritve izvedete naslednje korake s katerimi zagotovite natančnost rezultatov:
+
+. Računalnik z mrežnim Ethernet kablom  povežite neposredno na internetni priključek modema (ne uporabljajte WiFi ali zunanjega usmerjevalnika).
+. Iz modema / usmerjevalnika odklopite vseh druge naprave, kot so drugi računalniki, kamere, IPTV Set-Top Box (te naprave lahko porabijo dodatno pasovno širino, kar posledično vpliva na meritev).
+. Zaprite vse programe, ki delujejo na vašem računalniku (razen spletnega brskalnika), vključno z požarnim zidom in protivirusno zaščito.
+. V modemu / usmerjevalniku onemogočite vse brezžične (WiFi ali Bluetooth) vmesnike in VPN povezave.
+
+
+== Zagon meritve
+
+. Odprite spletni brskalnik in pojdite na spletno mesto {tool} na naslovu:: https://example.org/sl/[example.org (Odpre novo okno), window="_blank"]
+
+image::wizard-6c2e0.png[Open Nettest,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=2]
+. Kliknite gumb »Start«. Za zagon meritve, se morate strinjate s Pogoji uporabe. Preberite pogoje uporabe orodja in, če se strinjate z njimi, jih potrdite.
+
+[#img-permission]
+image::PermissionPage.gif[Permission,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=3]
+. Preizkus se bo začel (to lahko traja nekaj minut: brskalnika ne zapirajte ali osvežujte, dokler test ne bo končan).
+
+[#img-test]
+image::TestBegins.gif[Test,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=4]
+. Preglejte rezultate, nato se pomaknite na dno strani in na skrajni desni strani kliknite gumb »Izvozi PDF«.
+
+[#img-exportPdf]
+image::ExportToPDF.gif[Export PDF,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=5]
+.	Izberite mapo, v katero želite shraniti rezultate meritve (PDF dokument).
+
+[#img-saveFile]
+image::SavePDF.gif[Save file,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+[start=6]
+.	Če želite ponastaviti test in ga zagnati znova, odprite stranski meni s klikom na gumb v zgornjem levem kotu zaslona in nato kliknite »Start«.
+
+[#img-again]
+image::RunAgain.gif[Run again,600,align="center"]
+{bl}
+{bl}
+{bl}
+
+== Predložitev pritožbe ponudniku storitev dostopa do interneta
+Če ste pravilno izvedli meritve in opazili odstopanjefootnote:[Na podlagi slovenskega link:{urlGeneralAct}[»*Splošnega akta o storitvah dostopa do interneta in s tem povezanih pravicah končnih uporabnikov*«, window="_self"] mora biti običajno razpoložljiva hitrost dosegljiva 90% časa dneva (in se meri izven vršnih ur) ter mora znašati vsaj 80% maksimalne pritočne in odtočne hitrosti povezave. V primeru uporabe širokopasovnega dostopa na fiksni lokaciji z uporabo brezžičnih tehnologij (FWBA dostop) mora običajno razpoložljiva hitrost znašati vsaj 50 % maksimalne hitrosti. Minimalna hitrost je definirana kot hitrost povezave, ki mora biti ob izključenih specializiranih storitvah vedno na voljo na omrežni priključni točki končnega uporabnika, razen v primerih, kot jih predvidevajo 140. in 141. člen ZEKom-1 ter tretji odstavek 3. člena Uredbe 2015/2120 oziroma na njihovi podlagi sprejeti pogoji poslovanja ponudnikov. Minimalna hitrost v primeru fiksnega širokopasovnega dostopa mora znašati vsaj 50 % maksimalne ter vsaj 25 % maksimalne pritočne in odtočne hitrosti z uporabo FWBA dostopa.] glede hitrosti, obvestite ponudnika internetnih storitev kot je to določeno v splošnih pogojih ponudnika.
+
+Ob vložitvi pritožbe boste morali svoji e-pošti priložiti *rezultate meritev (PDF datoteke)*, zato bodite previdni, da jih ne izgubite / izbrišete.
+
+Ponudnik internetnih storitev je s link:{urlGeneralAct}[»*Splošnim aktom o storitvah dostopa do interneta in s tem povezanih pravicah končnih uporabnikov*«, window="_self"] dolžan v 30 dneh od prijave neskladnosti obvestiti končnega uporabnika o ugotovitvah, povezanih s pritožbo uporabnika. Poleg tega mora ponudnik internetnih storitev na zahtevo končnega uporabnika vsaj enkrat med obračunskim obdobjem ali najpozneje v roku 10 dni, brezplačno ponudi strokovno merjenje hitrosti in drugih QoS parametrov povezave.

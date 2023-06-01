@@ -1,0 +1,97 @@
+<terms-conditions-check></terms-conditions-check>
+<traffic-consumption-warning data-ng-if="newtestctrl.taAccepted"></traffic-consumption-warning>
+
+<div class="main-container">
+    <div class="main wrapper clearfix">
+
+        <h1 class="text-center" style="">{{ 'nettest.measure' | translate }}</h1>
+        <h2 class="text-center" style="margin-bottom: 1em;">{{'nettest.speed_of_you_internet'|translate}}</h2>
+
+
+        <div class="wave">
+            <div id="ping" class="box">
+                <div class="box-label">{{ 'nettest.ping' | translate }}</div>
+                <div class="box-value">{{delayRate ? delayRate : '-'}}</div>
+                <div class="box-unit">ms</div>
+                <div class="box-progress">
+                    <div class="box-progress-init">
+                        <span></span>
+                    </div>
+                    <div class="box-progress-main">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div id="download" class="box">
+                <div class="box-label">{{ 'nettest.download' | translate }}</div>
+                <div class="box-value">{{downloadRate ? downloadRate : '-'}}</div>
+                <div class="box-unit">Mbit/s</div>
+                <div class="box-progress">
+                    <div class="box-progress-init">
+                        <span></span>
+                    </div>
+                    <div class="box-progress-main">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div id="upload" class="box">
+                <div class="box-label">{{ 'nettest.upload' | translate }}</div>
+                <div class="box-value">{{uploadRate ? uploadRate : '-'}}</div>
+                <div class="box-unit">Mbit/s</div>
+                <div class="box-progress">
+                    <div class="box-progress-init">
+                        <span></span>
+                    </div>
+                    <div class="box-progress-main">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <table id="test-info">
+            <tr>
+                <td>{{ 'nettest.status' | translate }}</td>
+                <td class="val">
+                    <p id="infostatus"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ 'nettest.location' | translate }}</td>
+                <td class="val">
+                    <p id="infogeo"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ 'nettest.test_server' | translate }}</td>
+                <td class="val">
+                    <p id="infoserver"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>IP</td>
+                <td class="val">
+                    <p id="infoip"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ 'nettest.provider' | translate }}</td>
+                <td class="val">
+                    <p id="infoprovider"></p>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <!-- #main -->
+</div>
+<!-- #main-container -->
+
+<div id="ff-dialog">
+    <p>
+        <span>{{ 'test.error.MEASUREMENT_FAILED' | translate }}</span>
+        <span data-ng-if="newtestctrl.isFF82()">{{ 'test.error.FF82' | translate }}</span>
+    </p>
+</div>
